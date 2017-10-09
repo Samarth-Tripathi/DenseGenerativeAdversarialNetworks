@@ -4,7 +4,9 @@ Generative models with DenseNet and ResNet equivalents
 Already Available code online under Creative Commons License
 
 DenseNet.py  => DenseNet classifier 
+
 train.py => trains DenseNet on Cifar10
+
 gan.py => Runs DCGan on Cifar10
 
 *************************************
