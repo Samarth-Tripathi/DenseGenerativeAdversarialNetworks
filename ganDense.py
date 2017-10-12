@@ -116,37 +116,40 @@ class _netG(nn.Module):
         self.ubn3 = nn.BatchNorm2d(ngf * 2)
         self.uconv4 =  nn.ConvTranspose2d(ngf * 2,     ngf, 4, 2, 1, bias=False)
         self.ubn4 = nn.BatchNorm2d(ngf)
-        self.uconv4 =  nn.ConvTranspose2d(ngf,     nc, 4, 2, 1, bias=False)
+        self.uconv5 =  nn.ConvTranspose2d(ngf,     nc, 4, 2, 1, bias=False)
         self.ufinal = nn.Tanh()
         
     def forward(self, input):
         
+        #print(input.size())
         out = self.uconv1(input)
         out = self.ubn1(out)
         out = self.ur(out)
-        x = out
+        #x = out
         out = self.uconv2(out)
         out = self.ubn2(out)
         out = self.ur(out)
-        y = out
-        out = torch.cat((x, out), 1)
-        x = y
+        #y = out
+        #out = torch.cat((x, out), 1)
+        #x = y
         out = self.uconv3(out)
         out = self.ubn3(out)
         out = self.ur(out)
-        y = out
-        out = torch.cat((x, out), 1)
-        x = y
+        #y = out
+        #out = torch.cat((x, out), 1)
+        #x = y
         out = self.uconv4(out)
         out = self.ubn4(out)
         out = self.ur(out)
-        out = torch.cat((x, out), 1)
+        #out = torch.cat((x, out), 1)
         
-        out = self.conv5(out)
-        out = self.final(out)
+        out = self.uconv5(out)
+        out = self.ufinal(out)
         
         #output = self.make_main(input)
-        return out.view(-1, 1).squeeze(1)
+        #print(out.size())
+        return out
+        #return out.view(-1, 1).squeeze(1)
 
 
 netG = _netG(ngpu)
@@ -172,38 +175,41 @@ class _netD(nn.Module):
         self.bn2 = nn.BatchNorm2d(ndf * 4)
         self.conv4 = nn.Conv2d(ndf * 4, ndf * 8, 4, 2, 1, bias=False)
         self.bn3 = nn.BatchNorm2d(ndf * 8)
-        self.conv5 = nn.Conv2d(ndf * 8, 1, 4, 1, 0, bias=False),
+        self.conv5 = nn.Conv2d(ndf * 8, 1, 4, 1, 0, bias=False)
         self.final = nn.Sigmoid()
 
 
     def forward(self, input):
         
+        input = input.resize(opt.batchSize, 3, opt.imageSize, opt.imageSize)
+        #print(input.size())
         out = self.conv1(input)
         out = self.lr(out)
-        x = out
+        #x = out
         out = self.conv2(out)
         out = self.bn1(out)
         out = self.lr(out)
-        y = out
-        print (x.size())
-        print (out.size())
-        out = torch.cat((x, out), 1)
-        x = y
+        #y = out
+        #print (x.size())
+        #print (out.size())
+        #out = torch.cat((x, out), 1)
+        #x = y
         out = self.conv3(out)
         out = self.bn2(out)
         out = self.lr(out)
-        y = out
-        out = torch.cat((x, out), 1)
-        x = y
+        #y = out
+        #out = torch.cat((x, out), 1)
+        #x = y
         out = self.conv4(out)
         out = self.bn3(out)
         out = self.lr(out)
-        y = out
-        out = torch.cat((x, out), 1)
-        x = y
+        #y = out
+        #out = torch.cat((x, out), 1)
+        #x = y
+        #print (out.size())
+        #y = out
         out = self.conv5(out)
         out = self.final(out)
-        
         #output = self.make_main(input)
         return out.view(-1, 1).squeeze(1)
 
@@ -251,7 +257,7 @@ for epoch in range(opt.niter):
         label.resize_(batch_size).fill_(real_label)
         inputv = Variable(input)
         labelv = Variable(label)
-
+        
         output = netD(inputv)
         errD_real = criterion(output, labelv)
         errD_real.backward()
