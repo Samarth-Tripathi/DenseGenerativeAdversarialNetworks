@@ -1,3 +1,13 @@
+##### DCGAN with exactly 1 residual/dense connection! :-) 
+##### Feel free to add more, using a similar template (uconv2_d and conv3_d represent the residual connections in generator and discriminators respectively)
+##### uncomment print statements for architectures
+##### run as - 
+##### mkdir dataroot
+##### mkdir dchkpts
+##### python3 ganDense.py --dataset cifar10 --dataroot dataroot/ --manualSeed 2 --outf dchkpts/ --cuda
+
+
+
 from __future__ import print_function
 import argparse
 import os
@@ -107,13 +117,16 @@ class _netG(nn.Module):
         super(_netG, self).__init__()
         self.ngpu = ngpu
         
-        self.uconv1 =  nn.ConvTranspose2d(nz, ngf * 8, 4, 1, 0, bias=False)
+        self.uconv1 =  nn.ConvTranspose2d(nz, ngf * 8, 4, 2, 0, bias=False)
         self.ubn1 = nn.BatchNorm2d(ngf * 8)
         self.ur = nn.ReLU(True)
         self.uconv2 =  nn.ConvTranspose2d(ngf * 8, ngf * 4, 4, 2, 1, bias=False)
         self.ubn2 = nn.BatchNorm2d(ngf * 4)
-        self.uconv3 =  nn.ConvTranspose2d(ngf * 4, ngf * 2, 4, 2, 1, bias=False)
+        self.uconv2_d =  nn.ConvTranspose2d(ngf * 4, ngf * 8, 3, 1, 1, bias=False)
+        self.ubn2_d = nn.BatchNorm2d(ngf * 8)
+        self.uconv3 =  nn.ConvTranspose2d(ngf * 12, ngf * 2, 4, 2, 1, bias=False)
         self.ubn3 = nn.BatchNorm2d(ngf * 2)
+        
         self.uconv4 =  nn.ConvTranspose2d(ngf * 2,     ngf, 4, 2, 1, bias=False)
         self.ubn4 = nn.BatchNorm2d(ngf)
         self.uconv5 =  nn.ConvTranspose2d(ngf,     nc, 4, 2, 1, bias=False)
@@ -121,35 +134,45 @@ class _netG(nn.Module):
         
     def forward(self, input):
         
-        #print(input.size())
+        #print("**********************G**********************")
+        #print (input.size())
         out = self.uconv1(input)
         out = self.ubn1(out)
         out = self.ur(out)
-        #x = out
+        #print (out.size())
+        
         out = self.uconv2(out)
         out = self.ubn2(out)
         out = self.ur(out)
-        #y = out
-        #out = torch.cat((x, out), 1)
-        #x = y
+        x = out
+        #print (out.size())
+        
+        
+        out = self.uconv2_d(out)
+        out = self.ubn2_d(out)
+        out = self.ur(out)
+        #print (out.size())
+        
+        out = torch.cat((x, out), 1)
+        #print ("New size= " + str(out.size()))
         out = self.uconv3(out)
         out = self.ubn3(out)
         out = self.ur(out)
-        #y = out
-        #out = torch.cat((x, out), 1)
-        #x = y
+        #print (out.size())
+
         out = self.uconv4(out)
         out = self.ubn4(out)
         out = self.ur(out)
-        #out = torch.cat((x, out), 1)
+        #print (out.size())
+
         
         out = self.uconv5(out)
+        #print (out.size())
         out = self.ufinal(out)
         
-        #output = self.make_main(input)
         #print(out.size())
+        #print("**********************G**********************")
         return out
-        #return out.view(-1, 1).squeeze(1)
 
 
 netG = _netG(ngpu)
@@ -173,7 +196,9 @@ class _netD(nn.Module):
         self.bn1 = nn.BatchNorm2d(ndf * 2)
         self.conv3 = nn.Conv2d(ndf * 2, ndf * 4, 4, 2, 1, bias=False)
         self.bn2 = nn.BatchNorm2d(ndf * 4)
-        self.conv4 = nn.Conv2d(ndf * 4, ndf * 8, 4, 2, 1, bias=False)
+        self.conv3_d = nn.Conv2d(ndf * 4, ndf * 8, 3, 1, 1, bias=False)
+        self.bn2_d = nn.BatchNorm2d(ndf * 8)
+        self.conv4 = nn.Conv2d(ndf * 12, ndf * 8, 4, 2, 1, bias=False)
         self.bn3 = nn.BatchNorm2d(ndf * 8)
         self.conv5 = nn.Conv2d(ndf * 8, 1, 4, 1, 0, bias=False)
         self.final = nn.Sigmoid()
@@ -181,36 +206,42 @@ class _netD(nn.Module):
 
     def forward(self, input):
         
-        input = input.resize(opt.batchSize, 3, opt.imageSize, opt.imageSize)
-        #print(input.size())
+        #print("**********************D**********************")
+        #input = input.resize(input.size()[0], 3, opt.imageSize, opt.imageSize)
+        
         out = self.conv1(input)
         out = self.lr(out)
-        #x = out
+        
+        #print (out.size())
         out = self.conv2(out)
         out = self.bn1(out)
         out = self.lr(out)
-        #y = out
-        #print (x.size())
         #print (out.size())
-        #out = torch.cat((x, out), 1)
-        #x = y
+
         out = self.conv3(out)
         out = self.bn2(out)
         out = self.lr(out)
-        #y = out
-        #out = torch.cat((x, out), 1)
-        #x = y
+        x = out
+
+        #print (out.size())
+        out = self.conv3_d(out)
+        out = self.bn2_d(out)
+        out = self.lr(out)
+
+        #print (out.size())
+        out = torch.cat((x, out), 1)
+        #print ("New size= " + str(out.size()))
         out = self.conv4(out)
         out = self.bn3(out)
         out = self.lr(out)
-        #y = out
-        #out = torch.cat((x, out), 1)
-        #x = y
+
         #print (out.size())
-        #y = out
         out = self.conv5(out)
+        #print (out.size())
         out = self.final(out)
-        #output = self.make_main(input)
+        #print (out.size())
+        #print("**********************D**********************")
+        
         return out.view(-1, 1).squeeze(1)
 
 
