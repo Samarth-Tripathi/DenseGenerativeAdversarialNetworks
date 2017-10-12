@@ -2,7 +2,9 @@
 
 New Files - 
 
-ganDense.py - Finally works, a DCGAN with 1 Dense Connection in both Generator and Discriminator each.
+ganDense.py - Finally works, a DCGAN with 1 Dense Connection in both Generator and Discriminator each. 
+
+ganDense_v2.py - each network with two connections, not sure if works yet
 
 Architecture - 
 
@@ -14,15 +16,20 @@ torch.Size([64, 64, 32, 32])
 
 torch.Size([64, 128, 16, 16])
 
-x=torch.Size([64, 256, 8, 8])
+res1 = torch.Size([64, 256, 4, 4])
 
-y=torch.Size([64, 512, 8, 8])
+res2=torch.Size([64, 256, 8, 8])
 
-x,y concatenated.
+out=torch.Size([64, 512, 8, 8])
+
+res2, out concatenated.
 
 New size= torch.Size([64, 768, 8, 8])
 
 torch.Size([64, 512, 4, 4])
+
+res1, out concatednated. 
+New Size= torch.Size([64,768,4,4])
 
 torch.Size([64, 1, 1, 1])
 
@@ -35,19 +42,24 @@ torch.Size([64, 1, 1, 1])
 
 torch.Size([64, 100, 1, 1])
 
+res1=torch.Size([64,100,64,64])
+
 torch.Size([64, 512, 4, 4])
 
-x=torch.Size([64, 256, 8, 8])
+res2=torch.Size([64, 256, 8, 8])
 
-y=torch.Size([64, 512, 8, 8])
+out=torch.Size([64, 512, 8, 8])
 
-x,y concatenated.
+res2,out concatenated.
 
 New size= torch.Size([64, 768, 8, 8])
 
 torch.Size([64, 128, 16, 16])
 
 torch.Size([64, 64, 32, 32])
+
+res1, out concatenated.
+New Size = torch.Size([64,64+100,32,32]) * this is awkward, will change it.
 
 torch.Size([64, 3, 64, 64])
 
