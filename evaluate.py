@@ -25,28 +25,41 @@ def get_inception_score(images, splits=10):
 	assert(type(images[0]) == np.ndarray)
 	assert(len(images[0].shape) == 3)
 
+	#gathering inputs
 	inputs = []
-
 	for img in images:
 		img = img.astype(np.float32)
 		inputs.append(np.expand_dims(img, 0))
+	
+	#batches
 	bs = 100
-
-	preds = []
 	n_bathces = int(math.ceil(float(len(inps))/float(bs)))
 
+	#get predictions
+	preds = []
+	for i in range(n_batches):
+		sys.stdout.write(".")
+		sys.stdout.write(str(i))
+		sys.stdout.flush()
+
+		inp = inputs[(i * bs):min((i + 1) * bs, len(inputs))]
+		inp = np.concatenate(inp, 0)
+		pred = nn.Softmax(inp)
+		preds.append(pred)
+	preds = np.concatenate(preds, 0)
+
+	#get score
+	scores = []
+	for i in range(splits):
+		part = preds[(i * preds.shape[0] // splits):((i + 1) * preds.shape[0] // splits), :]
+		kl = part * (np.log(part) - np.log(np.expand_dims(np.mean(part, 0), 0)))
+		kl = np.mean(np.sum(kl,1))
+		scores.append(np.exp(kl))
+
+	return np.mean(score), np.std(score)
 
 
-def _init_inception():
-	global softmax
-	filepath = None
-	if not os.path.exists(filepath):
-		def _progress(count, block_size, totalsize):
 
-
-
-if spftmax is None:
-	_init_inception()
 
 
 
