@@ -57,6 +57,8 @@ print("Random Seed: ", opt.manualSeed)
 random.seed(opt.manualSeed)
 torch.manual_seed(opt.manualSeed)
 
+use_label = False
+
 cudnn.benchmark = True
 
 if torch.cuda.is_available() and not opt.cuda:
@@ -87,6 +89,8 @@ elif opt.dataset == 'cifar10':
                                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
                            ])
     )
+    use_label = True
+
 assert dataset
 dataloader = torch.utils.data.DataLoader(dataset, batch_size=opt.batchSize,
                                          shuffle=True, num_workers=int(opt.workers))
@@ -105,6 +109,12 @@ def weights_init(m):
     elif classname.find('BatchNorm') != -1:
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
+
+#conversion to Variables
+def to_var(x):
+    if torch.cuda.is_available():
+        x = x.cuda()
+    return Variable(x)
 
 if opt.noBN:
     netG = dcgan.DCGAN_G_nobn(opt.imageSize, nz, nc, ngf, ngpu, opt.G_extra_layers)
@@ -172,7 +182,15 @@ for epoch in range(opt.niter):
         while j < Diters and i < len(dataloader):
             j += 1
 
-            data = data_iter.next()
+            ##testing SSL
+            if not use_label:
+                data = data_iter.next()
+
+            if use_label:
+                data, label = data_iter.next()
+                cifar_fake_labels = to_var(torch.Tensor(10 * data.size(0)).long())
+                criterion = nn.CrossEntropyLoss()
+
             i += 1
 
             # train with real
@@ -187,6 +205,7 @@ for epoch in range(opt.niter):
 
             vphi_real = netD(inputv)
 
+
             # train with fake
             noise.resize_(opt.batchSize, nz, 1, 1).normal_(0, 1)
             noisev = Variable(noise, volatile = True) # totally freeze netG
@@ -194,6 +213,12 @@ for epoch in range(opt.niter):
             inputv = fake
 
             vphi_fake = netD(inputv)
+
+            ##evaluation for SSL
+            if use_label:
+                ssl_loss = criterion(vphi_fake, cifar_fake_labels)
+                print("the SSL loss result is " , ssl_loss)
+                
             # NOTE here f = <v,phi>   , but with modified f the below two lines are the
             # only ones that need change. E_P and E_Q refer to Expectation over real and fake.
             E_P_f,  E_Q_f  = vphi_real.mean(), vphi_fake.mean()

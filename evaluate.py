@@ -59,7 +59,8 @@ def get_inception_score(images, splits=10):
 	return np.mean(score), np.std(score)
 
 
-
+def ssl_performance():
+	pass
 
 
 
