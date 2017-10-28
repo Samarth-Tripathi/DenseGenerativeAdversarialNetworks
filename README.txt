@@ -1,5 +1,15 @@
 Dense-Generative models with DenseNet equivalent for Fisher GANs
 
+###updates 10/27
+Implemented SSL on the model, however after 8 epochs the loss hasn’t changed a bit. 
+
+The last convolution layer is now followed by a fully-connected layer and then softmax is computed.
+###
+
+
+
+
+
 New Files -
 
 DenseFisher/main_dense.py - run a Dense F-GAN with 2 dense connections
