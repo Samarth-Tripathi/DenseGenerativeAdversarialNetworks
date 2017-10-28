@@ -527,9 +527,10 @@ class Dense_netG3(nn.Module):
 
 class Dense_netD3(nn.Module):
     
-    def __init__(self, ngpu):
+    def __init__(self, ngpu, nclasses):
         super(Dense_netD3, self).__init__()
         self.ngpu = ngpu
+        self.nclasses = nclasses
         nc = 3     
         
         ndf = 64
@@ -549,8 +550,9 @@ class Dense_netD3(nn.Module):
         self.conv4_d = nn.Conv2d(ndf * 4, ndf * 4, 3, 1, 1, bias=False)
         self.bn3_d = nn.BatchNorm2d(ndf * 4)
         
-        self.conv4 = nn.Conv2d(ndf * 8, 1, 4, 1, 0, bias=False)
+        self.conv4 = nn.Conv2d(ndf * 8, ndf * 4, 4, 1, 0, bias=False)
 
+        self.fc1 = nn.Linear(ndf * 4, nclasses + 1, bias=False)
 
 
     def forward(self, input):
@@ -603,10 +605,15 @@ class Dense_netD3(nn.Module):
         
         out = self.conv4(out)
 
-        #print (out.size())
-        #print("**********************D**********************")
 
-        return out.view(-1)
+        out = out.view(-1)
+
+        out = self.fc1(out)
+
+        print (out.size())
+        print("**********************D**********************")
+
+        return nn.Softmax(out)
     
     
     

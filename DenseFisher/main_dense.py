@@ -22,7 +22,7 @@ parser.add_argument('--dataset', required=True, help='cifar10 | lsun | imagenet 
 parser.add_argument('--dataroot', required=True, help='path to dataset')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=2)
 parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
-parser.add_argument('--imageSize', type=int, default=64, help='the height / width of the input image to network')
+parser.add_argument('--imageSize', type=int, default=32, help='the height / width of the input image to network')
 parser.add_argument('--nc', type=int, default=3, help='input image channels')
 parser.add_argument('--nz', type=int, default=100, help='size of the latent z vector')
 parser.add_argument('--ngf', type=int, default=64)
@@ -46,6 +46,7 @@ parser.add_argument('--D_extra_layers', type=int, default=0, help='Number of ext
 parser.add_argument('--experiment', default=None, help='Where to store samples and models')
 parser.add_argument('--adam', action='store_true', help='Whether to use adam (default is rmsprop)')
 parser.add_argument('--rho', type=float, default=1e-6, help='Weight on the penalty term for (sigmas -1)**2')
+parser.add_argument('--nclasses', type=int, default=10, help='number of classes for the classifier')
 opt = parser.parse_args()
 print(opt)
 
@@ -97,6 +98,11 @@ nz = int(opt.nz)
 ngf = int(opt.ngf)
 ndf = int(opt.ndf)
 nc = int(opt.nc)
+nclasses = int(opt.nclasses)
+bs = int(opt.batchSize)
+
+#for labels 
+lab = torch.zeros(1, nclasses + 1)
 
 # custom weights initialization called on netG and netD
 def weights_init(m):
@@ -108,6 +114,12 @@ def weights_init(m):
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
         print("B Assigned")
+
+def to_var(x):
+    if torch.cuda.is_available():
+        x = x.cuda()
+    return Variable(x)
+
 '''
 if opt.noBN:
     netG = dcgan.DCGAN_G_nobn(opt.imageSize, nz, nc, ngf, ngpu, opt.G_extra_layers)
@@ -132,7 +144,7 @@ else:
     netD.apply(weights_init)
 '''    
 #netD = densegan.DCGAN_D(opt.imageSize, nz, nc, ndf, ngpu)
-netD = densegan.Dense_netD3(ngpu)
+netD = densegan.Dense_netD3(ngpu, nclasses)
 netD.apply(weights_init)
 
 if opt.netD != '':
@@ -140,6 +152,7 @@ if opt.netD != '':
 print(netD)
 
 input = torch.FloatTensor(opt.batchSize, 3, opt.imageSize, opt.imageSize)
+print(input.size(), "******input size*****")
 noise = torch.FloatTensor(opt.batchSize, nz, 1, 1)
 fixed_noise = torch.FloatTensor(opt.batchSize, nz, 1, 1).normal_(0, 1)
 one = torch.FloatTensor([1])
@@ -187,9 +200,18 @@ for epoch in range(opt.niter):
             i += 1
 
             # train with real
-            real_cpu, _ = data
+            real_cpu, label = data
+            print(real_cpu.size(), "********")
+            print(label.size())
             netD.zero_grad()
             batch_size = real_cpu.size(0)
+            criterion = nn.CrossEntropyLoss()
+
+            #create real and fake labels (one-hot)
+            #real_label = lab.scatter_(1, torch.LongTensor([[label]]), 1)
+            real_label = label
+            fake_label = lab.scatter_(1, torch.LongTensor([[10]]), 1)
+            fake_label = fake_label.expand(64, 11)
 
             if opt.cuda:
                 real_cpu = real_cpu.cuda()
@@ -197,6 +219,7 @@ for epoch in range(opt.niter):
             inputv = Variable(input)
 
             vphi_real = netD(inputv)
+            vphi_real = criterion(vphi_real, real_label)
 
             # train with fake
             noise.resize_(opt.batchSize, nz, 1, 1).normal_(0, 1)
@@ -205,6 +228,7 @@ for epoch in range(opt.niter):
             inputv = fake
 
             vphi_fake = netD(inputv)
+            vphi_fake = criterion(vphi_fake, fake_label)
             # NOTE here f = <v,phi>   , but with modified f the below two lines are the
             # only ones that need change. E_P and E_Q refer to Expectation over real and fake.
             E_P_f,  E_Q_f  = vphi_real.mean(), vphi_fake.mean()
@@ -232,10 +256,12 @@ for epoch in range(opt.niter):
         fake = netG(noisev)
         vphi_fake = netD(fake)
         obj_G = -vphi_fake.mean() # Just minimize mean difference
+        """evaluation: print generator loss"""
         obj_G.backward() # G: min_theta
         optimizerG.step()
         gen_iterations += 1
 
+        #clarify what these numbers mean? 
         IPM_enum  = E_P_f.data[0]  - E_Q_f.data[0]
         IPM_denom = (0.5*E_P_f2.data[0] + 0.5*E_Q_f2.data[0]) ** 0.5
         IPM_ratio = IPM_enum / IPM_denom

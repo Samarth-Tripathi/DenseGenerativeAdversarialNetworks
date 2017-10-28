@@ -185,21 +185,23 @@ for epoch in range(opt.niter):
             ##testing SSL
             if not use_label:
                 data = data_iter.next()
+                real_cpu, _ = data
 
             if use_label:
                 data, label = data_iter.next()
                 cifar_fake_labels = to_var(torch.Tensor(10 * data.size(0)).long())
                 criterion = nn.CrossEntropyLoss()
+                real_cpu = data
 
             i += 1
 
             # train with real
-            real_cpu, _ = data
+            
             netD.zero_grad()
             batch_size = real_cpu.size(0)
 
             if opt.cuda:
-                real_cpu = real_cpu.cuda()
+            real_cpu = real_cpu.cuda()
             input.resize_as_(real_cpu).copy_(real_cpu)
             inputv = Variable(input)
 
