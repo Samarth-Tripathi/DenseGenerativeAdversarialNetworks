@@ -92,6 +92,7 @@ transition internal shape 1torch.Size([64, 96, 16, 16])
 transition internal shape 2torch.Size([64, 48, 16, 16])
 transition internal shape 3torch.Size([64, 48, 32, 32])
 dense + trans 5 finished shape torch.Size([64, 48, 32, 32])
+Output shape torch.Size([64, 3, 32, 32])
 ######################G#####################
 
 
