@@ -13,6 +13,7 @@ import torchvision.utils as vutils
 from torch.autograd import Variable
 import os
 
+from models.densegan_complete5 import DisDenseNet, GenDenseNet
 import models.densegan as densegan
 #import models.dcgan as dcgan
 #import models.mlp as mlp
@@ -130,6 +131,7 @@ else:
 '''
 
 netG = densegan.Dense_netG3(nz, ngpu)
+#netG = GenDenseNet(growthRate=12, depth=13, increase=1, nz = 100, verbose=0,  bottleneck=True)
     
 netG.apply(weights_init)
 if opt.netG != '': # load checkpoint if needed
@@ -145,6 +147,9 @@ else:
 '''    
 #netD = densegan.DCGAN_D(opt.imageSize, nz, nc, ndf, ngpu)
 netD = densegan.Dense_netD3(ngpu, nclasses)
+
+#netD = DisDenseNet(growthRate=12, depth=13, reduction=1, verbose=0, bottleneck=True)
+
 netD.apply(weights_init)
 
 if opt.netD != '':
