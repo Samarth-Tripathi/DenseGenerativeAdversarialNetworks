@@ -12,11 +12,15 @@ import torchvision.transforms as transforms
 import torchvision.utils as vutils
 from torch.autograd import Variable
 import os
+import matplotlib.pyplot as plt
 
 from models.densegan_complete5 import DisDenseNet, GenDenseNet
 import models.densegan as densegan
 #import models.dcgan as dcgan
 #import models.mlp as mlp
+
+plt.axis([0, 100, 0, 20])
+plt.ion()
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', required=True, help='cifar10 | lsun | imagenet | folder | lfw ')
@@ -285,6 +289,12 @@ for epoch in range(opt.niter):
             fake = netG(Variable(fixed_noise, volatile=True))
             fake.data = fake.data.mul(0.5).add(0.5)
             vutils.save_image(fake.data, '{0}/fake_samples_{1}.png'.format(opt.experiment, gen_iterations))
+
+            #draw generator loss
+            plt.scatter(gen_interations/1000, obj_G, label="loss")
+            plt.ylabel('generator loss')
+            plt.xlabel('interations(thousand)')
+            plt.draw()
             
         #break
 
