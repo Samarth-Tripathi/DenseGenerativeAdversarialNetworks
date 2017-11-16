@@ -14,13 +14,13 @@ import torchvision
 import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
-from tensorboard_logger import configure, log_value
+#from tensorboard_logger import configure, log_value
 
 from models import Generator, Discriminator, FeatureExtractor
 from utils import Visualizer
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', type=str, default='cifar100', help='cifar10 | cifar100 | folder')
+parser.add_argument('--dataset', type=str, default='cifar10', help='cifar10 | cifar100 | folder')
 parser.add_argument('--dataroot', type=str, default='./data', help='path to dataset')
 parser.add_argument('--workers', type=int, default=2, help='number of data loading workers')
 parser.add_argument('--batchSize', type=int, default=16, help='input batch size')
@@ -74,16 +74,16 @@ dataloader = torch.utils.data.DataLoader(dataset, batch_size=opt.batchSize,
 generator = Generator(16, opt.upSampling)
 if opt.generatorWeights != '':
     generator.load_state_dict(torch.load(opt.generatorWeights))
-print generator
+print(generator)
 
 discriminator = Discriminator()
 if opt.discriminatorWeights != '':
     discriminator.load_state_dict(torch.load(opt.discriminatorWeights))
-print discriminator
+print(discriminator)
 
 # For the content loss
 feature_extractor = FeatureExtractor(torchvision.models.vgg19(pretrained=True))
-print feature_extractor
+print(feature_extractor)
 content_criterion = nn.MSELoss()
 adversarial_criterion = nn.BCELoss()
 
@@ -101,13 +101,13 @@ if opt.cuda:
 optim_generator = optim.Adam(generator.parameters(), lr=opt.generatorLR)
 optim_discriminator = optim.Adam(discriminator.parameters(), lr=opt.discriminatorLR)
 
-configure('logs/' + opt.dataset + '-' + str(opt.batchSize) + '-' + str(opt.generatorLR) + '-' + str(opt.discriminatorLR), flush_secs=5)
+#configure('logs/' + opt.dataset + '-' + str(opt.batchSize) + '-' + str(opt.generatorLR) + '-' + str(opt.discriminatorLR), flush_secs=5)
 visualizer = Visualizer(image_size=opt.imageSize*opt.upSampling)
 
 low_res = torch.FloatTensor(opt.batchSize, 3, opt.imageSize, opt.imageSize)
 
 # Pre-train generator using raw MSE loss
-print 'Generator pre-training'
+print('Generator pre-training')
 for epoch in range(2):
     mean_generator_content_loss = 0.0
 
@@ -142,7 +142,7 @@ for epoch in range(2):
         visualizer.show(low_res, high_res_real.cpu().data, high_res_fake.cpu().data)
 
     sys.stdout.write('\r[%d/%d][%d/%d] Generator_MSE_Loss: %.4f\n' % (epoch, 2, i, len(dataloader), mean_generator_content_loss/len(dataloader)))
-    log_value('generator_mse_loss', mean_generator_content_loss/len(dataloader), epoch)
+    #log_value('generator_mse_loss', mean_generator_content_loss/len(dataloader), epoch)
 
 # Do checkpointing
 torch.save(generator.state_dict(), '%s/generator_pretrain.pth' % opt.out)
@@ -151,7 +151,7 @@ torch.save(generator.state_dict(), '%s/generator_pretrain.pth' % opt.out)
 optim_generator = optim.Adam(generator.parameters(), lr=opt.generatorLR*0.1)
 optim_discriminator = optim.Adam(discriminator.parameters(), lr=opt.discriminatorLR*0.1)
 
-print 'SRGAN training'
+print('SRGAN training')
 for epoch in range(opt.nEpochs):
     mean_generator_content_loss = 0.0
     mean_generator_adversarial_loss = 0.0
@@ -215,10 +215,10 @@ for epoch in range(opt.nEpochs):
     mean_discriminator_loss/len(dataloader), mean_generator_content_loss/len(dataloader), 
     mean_generator_adversarial_loss/len(dataloader), mean_generator_total_loss/len(dataloader)))
 
-    log_value('generator_content_loss', mean_generator_content_loss/len(dataloader), epoch)
-    log_value('generator_adversarial_loss', mean_generator_adversarial_loss/len(dataloader), epoch)
-    log_value('generator_total_loss', mean_generator_total_loss/len(dataloader), epoch)
-    log_value('discriminator_loss', mean_discriminator_loss/len(dataloader), epoch)
+    #log_value('generator_content_loss', mean_generator_content_loss/len(dataloader), epoch)
+    #log_value('generator_adversarial_loss', mean_generator_adversarial_loss/len(dataloader), epoch)
+    #log_value('generator_total_loss', mean_generator_total_loss/len(dataloader), epoch)
+    #log_value('discriminator_loss', mean_discriminator_loss/len(dataloader), epoch)
 
     # Do checkpointing
     torch.save(generator.state_dict(), '%s/generator_final.pth' % opt.out)
