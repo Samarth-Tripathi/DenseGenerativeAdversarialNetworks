@@ -135,7 +135,7 @@ def inception_score(imgs, cuda=gpu, batch_size=2, resize=False):
 
 
 def ssl_performance():
-		pass
+	pass
 
 
 imgs = load_images(folder)

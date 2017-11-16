@@ -48,7 +48,7 @@ parser.add_argument('--mlp_G', action='store_true', help='use MLP for G')
 parser.add_argument('--mlp_D', action='store_true', help='use MLP for D')
 parser.add_argument('--G_extra_layers', type=int, default=0, help='Number of extra layers on gen and disc')
 parser.add_argument('--D_extra_layers', type=int, default=0, help='Number of extra layers on gen and disc')
-parser.add_argument('--experiment', default=None, help='Where to store samples and models')
+parser.add_argument('--experiment', default='./outputs', help='Where to store samples and models')
 parser.add_argument('--adam', action='store_true', help='Whether to use adam (default is rmsprop)')
 parser.add_argument('--rho', type=float, default=1e-6, help='Weight on the penalty term for (sigmas -1)**2')
 parser.add_argument('--nclasses', type=int, default=10, help='number of classes for the classifier')
@@ -134,8 +134,8 @@ else:
     netG = dcgan.DCGAN_G(opt.imageSize, nz, nc, ngf, ngpu, opt.G_extra_layers)
 '''
 
-netG = densegan.Dense_netG3(nz, ngpu)
-#netG = GenDenseNet(growthRate=12, depth=13, increase=1, nz = 100, verbose=0,  bottleneck=True)
+#netG = densegan.Dense_netG3(nz, ngpu)
+netG = GenDenseNet(growthRate=12, depth=13, increase=1, nz = 100, verbose=0,  bottleneck=True)
     
 netG.apply(weights_init)
 if opt.netG != '': # load checkpoint if needed
