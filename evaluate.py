@@ -14,6 +14,7 @@ import torch.utils.data
 from torchvision.models.inception import inception_v3
 from torch.autograd import Variable
 
+
 import sys
 import argparse
 import os 
@@ -33,6 +34,40 @@ print(opt)
 folder = opt.dataroot
 gpu = opt.cuda
 
+def crop_images(path):
+	"""crop a image to nine sections and save image"""
+	imgList = os.listdir(path)
+	#count1 = 1 
+	count2 = 0
+	for image in imgList:
+		if not image.startswith('.'):
+			print(image[:])
+			imagePath = image[:-4]
+			os.mkdir(path + '/' + imagePath)
+			img = Image.open(path + '/' + image)
+			#print(np.asarray(img))
+			w = img.size[0]
+			h = img.size[1]
+			for x in range(1, w-1, (w-2)//8):
+				for y in range(1, h-1, (h-2)//8):
+					newImage = img.crop((x, y, x+(w-2)//8, y+(h-2)//8))
+					count2 = count2 + 1
+					newImage.save(path + '/' + imagePath + '/' + str(count2) + '.png')
+					print("saving images")
+
+			count2 = 0
+			#count1 = count1 + 1
+	return
+
+def normalize(arr):
+	"""normalize an array to [0,1]"""
+	arr = arr.astype('float32')
+	if arr.max() > 1.0:
+		arr /= 255.0
+	return arr
+
+
+
 def load_images(path):
 	#return image array
 
@@ -44,11 +79,12 @@ def load_images(path):
 		img = np.asarray(img)
 		#print(img.shape)
 		img = np.transpose(img, (2, 0, 1))
-		img = img/255.0
+		img = normalize(img)
 		#print(img.shape)
 		loadedImages.append(img)
 
 	return loadedImages
+
 
 
 
@@ -57,7 +93,7 @@ def generator_score():
 	#print(-vphi_fake.mean())
 	pass
 
-def inception_score(imgs, cuda=gpu, batch_size=2, resize=False):
+def inception_score(imgs, cuda=gpu, batch_size=2, resize=True):
 	"""Computes the inception score of the generated images imgs
 		imgs -- list of (HxWx3) numpy images normalized in the range [0,1]
 		cuda -- whether or not to run on GPU
@@ -66,7 +102,7 @@ def inception_score(imgs, cuda=gpu, batch_size=2, resize=False):
 		"""
 
 	N = len(imgs)
-	print(imgs[0].shape)
+	#print(imgs[0].shape)
 
 	assert batch_size > 0
 
@@ -137,9 +173,25 @@ def inception_score(imgs, cuda=gpu, batch_size=2, resize=False):
 def ssl_performance():
 	pass
 
+running_sum = 0
+count = 0
+folder_list = os.listdir(folder)
+with open('inception_score', 'a') as file:
+	for fol in folder_list:
+		if os.path.isdir(folder + "/" + fol):
+			imgs = load_images(folder + "/" + fol)
+			score = inception_score(imgs)
+			running_sum = running_sum + score
+			count = count + 1
+			print(fol)
+			print(score)
+			file.write(fol + ":" + str(score) + "\n")
+	mean = running_sum / count
+	print(mean)
+	file.write(str(mean))
 
-imgs = load_images(folder)
-print(inception_score(imgs))
+
+#crop_images(folder)
 
 '''if __name__ == '__main__':
     print ("Generating images...")
