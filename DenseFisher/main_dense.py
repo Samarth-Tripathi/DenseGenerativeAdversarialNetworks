@@ -12,22 +12,18 @@ import torchvision.transforms as transforms
 import torchvision.utils as vutils
 from torch.autograd import Variable
 import os
-import matplotlib.pyplot as plt
 
-from models.densegan_complete5 import DisDenseNet, GenDenseNet
 import models.densegan as densegan
 #import models.dcgan as dcgan
 #import models.mlp as mlp
-
-plt.axis([0, 100, 0, 20])
-plt.ion()
+#from models.densegan_complete5 import DisDenseNet, GenDenseNet
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', required=True, help='cifar10 | lsun | imagenet | folder | lfw ')
 parser.add_argument('--dataroot', required=True, help='path to dataset')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=2)
 parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
-parser.add_argument('--imageSize', type=int, default=32, help='the height / width of the input image to network')
+parser.add_argument('--imageSize', type=int, default=64, help='the height / width of the input image to network')
 parser.add_argument('--nc', type=int, default=3, help='input image channels')
 parser.add_argument('--nz', type=int, default=100, help='size of the latent z vector')
 parser.add_argument('--ngf', type=int, default=64)
@@ -41,25 +37,25 @@ parser.add_argument('--ngpu'  , type=int, default=1, help='number of GPUs to use
 parser.add_argument('--netG', default='', help="path to netG (to continue training)")
 parser.add_argument('--netD', default='', help="path to netD (to continue training)")
 parser.add_argument('--wdecay', type=float, default=0.000, help='wdecay value for Phi')
-parser.add_argument('--Diters', type=int, default=5, help='number of D iters per each G iter')
+parser.add_argument('--Diters', type=int, default=2, help='number of D iters per each G iter')
 parser.add_argument('--hiDiterStart'  , action='store_true', help='do many D iters at start')
 parser.add_argument('--noBN', action='store_true', help='use batchnorm or not (only for DCGAN)')
 parser.add_argument('--mlp_G', action='store_true', help='use MLP for G')
 parser.add_argument('--mlp_D', action='store_true', help='use MLP for D')
 parser.add_argument('--G_extra_layers', type=int, default=0, help='Number of extra layers on gen and disc')
 parser.add_argument('--D_extra_layers', type=int, default=0, help='Number of extra layers on gen and disc')
-parser.add_argument('--experiment', default='./outputs', help='Where to store samples and models')
+parser.add_argument('--experiment', default=None, help='Where to store samples and models')
 parser.add_argument('--adam', action='store_true', help='Whether to use adam (default is rmsprop)')
-parser.add_argument('--rho', type=float, default=1e-6, help='Weight on the penalty term for (sigmas -1)**2')
-parser.add_argument('--nclasses', type=int, default=10, help='number of classes for the classifier')
+parser.add_argument('--rho', type=float, default=3e-7, help='Weight on the penalty term for (sigmas -1)**2')
 opt = parser.parse_args()
 print(opt)
 
 if opt.experiment is None:
-    opt.experiment = 'samples_dense3'
+    opt.experiment = 'cifar10_gdense3_ext_250'
 os.system('mkdir {0}'.format(opt.experiment))
 
-opt.manualSeed = random.randint(1, 10000) # fix seed
+#opt.manualSeed = random.randint(1, 10000) # fix seed
+opt.manualSeed = 2
 print("Random Seed: ", opt.manualSeed)
 random.seed(opt.manualSeed)
 torch.manual_seed(opt.manualSeed)
@@ -103,11 +99,6 @@ nz = int(opt.nz)
 ngf = int(opt.ngf)
 ndf = int(opt.ndf)
 nc = int(opt.nc)
-nclasses = int(opt.nclasses)
-bs = int(opt.batchSize)
-
-#for labels 
-lab = torch.zeros(1, nclasses + 1)
 
 # custom weights initialization called on netG and netD
 def weights_init(m):
@@ -119,12 +110,6 @@ def weights_init(m):
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
         print("B Assigned")
-
-def to_var(x):
-    if torch.cuda.is_available():
-        x = x.cuda()
-    return Variable(x)
-
 '''
 if opt.noBN:
     netG = dcgan.DCGAN_G_nobn(opt.imageSize, nz, nc, ngf, ngpu, opt.G_extra_layers)
@@ -134,10 +119,11 @@ else:
     netG = dcgan.DCGAN_G(opt.imageSize, nz, nc, ngf, ngpu, opt.G_extra_layers)
 '''
 
-#netG = densegan.Dense_netG3(nz, ngpu)
-netG = GenDenseNet(growthRate=12, depth=13, increase=1, nz = 100, verbose=0,  bottleneck=True)
-    
-netG.apply(weights_init)
+#netG = densegan.DC_netG2(nz, ngpu)
+netG = densegan.Dense_netG3(nz, ngpu)
+#netG = densegan.Dense_netG9_renbo(nz, ngpu)
+
+#netG.apply(weights_init)
 if opt.netG != '': # load checkpoint if needed
     netG.load_state_dict(torch.load(opt.netG))
 print(netG)
@@ -149,19 +135,15 @@ else:
     netD = dcgan.DCGAN_D(opt.imageSize, nz, nc, ndf, ngpu, opt.D_extra_layers)
     netD.apply(weights_init)
 '''    
-#netD = densegan.DCGAN_D(opt.imageSize, nz, nc, ndf, ngpu)
-netD = densegan.Dense_netD3(ngpu, nclasses)
 
-#netD = DisDenseNet(growthRate=12, depth=13, reduction=1, verbose=0, bottleneck=True)
-
-netD.apply(weights_init)
+netD = densegan.DC_netD2(opt.imageSize, ngpu)
+#netD = densegan.Dense_netD3(ngpu)
 
 if opt.netD != '':
     netD.load_state_dict(torch.load(opt.netD))
 print(netD)
 
 input = torch.FloatTensor(opt.batchSize, 3, opt.imageSize, opt.imageSize)
-print(input.size(), "******input size*****")
 noise = torch.FloatTensor(opt.batchSize, nz, 1, 1)
 fixed_noise = torch.FloatTensor(opt.batchSize, nz, 1, 1).normal_(0, 1)
 one = torch.FloatTensor([1])
@@ -185,6 +167,8 @@ else:
     optimizerD = optim.RMSprop(netD.parameters(), lr = opt.lrD, weight_decay=opt.wdecay)
     optimizerG = optim.RMSprop(netG.parameters(), lr = opt.lrG, weight_decay=opt.wdecay)
 
+print ("Len of data loader = " + str(len(dataloader)))
+
 gen_iterations = 0
 for epoch in range(opt.niter):
     data_iter = iter(dataloader)
@@ -197,10 +181,12 @@ for epoch in range(opt.niter):
             p.requires_grad = True # they are set to False below in netG update
 
         # train the discriminator Diters times
-        if opt.hiDiterStart and (gen_iterations < 25 or gen_iterations % 500 == 0):
+        
+        if opt.hiDiterStart and (gen_iterations < 25 or gen_iterations % 200 == 0):
             Diters = 100
         else:
             Diters = opt.Diters
+            
         j = 0
         while j < Diters and i < len(dataloader):
             j += 1
@@ -209,18 +195,9 @@ for epoch in range(opt.niter):
             i += 1
 
             # train with real
-            real_cpu, label = data
-            print(real_cpu.size(), "********")
-            print(label.size())
+            real_cpu, _ = data
             netD.zero_grad()
             batch_size = real_cpu.size(0)
-            criterion = nn.CrossEntropyLoss()
-
-            #create real and fake labels (one-hot)
-            #real_label = lab.scatter_(1, torch.LongTensor([[label]]), 1)
-            real_label = label
-            fake_label = lab.scatter_(1, torch.LongTensor([[10]]), 1)
-            fake_label = fake_label.expand(64, 11)
 
             if opt.cuda:
                 real_cpu = real_cpu.cuda()
@@ -228,7 +205,6 @@ for epoch in range(opt.niter):
             inputv = Variable(input)
 
             vphi_real = netD(inputv)
-            vphi_real = criterion(vphi_real, real_label)
 
             # train with fake
             noise.resize_(opt.batchSize, nz, 1, 1).normal_(0, 1)
@@ -237,7 +213,6 @@ for epoch in range(opt.niter):
             inputv = fake
 
             vphi_fake = netD(inputv)
-            vphi_fake = criterion(vphi_fake, fake_label)
             # NOTE here f = <v,phi>   , but with modified f the below two lines are the
             # only ones that need change. E_P and E_Q refer to Expectation over real and fake.
             E_P_f,  E_Q_f  = vphi_real.mean(), vphi_fake.mean()
@@ -265,12 +240,10 @@ for epoch in range(opt.niter):
         fake = netG(noisev)
         vphi_fake = netD(fake)
         obj_G = -vphi_fake.mean() # Just minimize mean difference
-        """evaluation: print generator loss"""
         obj_G.backward() # G: min_theta
         optimizerG.step()
         gen_iterations += 1
 
-        #clarify what these numbers mean? 
         IPM_enum  = E_P_f.data[0]  - E_Q_f.data[0]
         IPM_denom = (0.5*E_P_f2.data[0] + 0.5*E_Q_f2.data[0]) ** 0.5
         IPM_ratio = IPM_enum / IPM_denom
@@ -282,19 +255,14 @@ for epoch in range(opt.niter):
                 IPM_enum, IPM_denom, IPM_ratio,
                 E_P_f.data[0], E_Q_f.data[0], E_P_f2.data[0], E_Q_f2.data[0]))
         
-        
-        if gen_iterations % 500 == 0:
+        ## For lfw use 100
+        #if gen_iterations % 100 == 0:
+        if gen_iterations % 250 == 0:
             real_cpu = real_cpu.mul(0.5).add(0.5)
             vutils.save_image(real_cpu, '{0}/real_samples.png'.format(opt.experiment))
             fake = netG(Variable(fixed_noise, volatile=True))
             fake.data = fake.data.mul(0.5).add(0.5)
             vutils.save_image(fake.data, '{0}/fake_samples_{1}.png'.format(opt.experiment, gen_iterations))
-
-            #draw generator loss
-            plt.scatter(gen_interations/1000, obj_G, label="loss")
-            plt.ylabel('generator loss')
-            plt.xlabel('interations(thousand)')
-            plt.draw()
             
         #break
 

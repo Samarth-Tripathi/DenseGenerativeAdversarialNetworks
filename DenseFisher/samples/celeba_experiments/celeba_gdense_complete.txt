@@ -1,0 +1,1035 @@
+Namespace(D_extra_layers=0, Diters=5, G_extra_layers=0, adam=False, batchSize=64, beta1=0.5, cuda=True, dataroot='dataroot_celeba/', dataset='celeba', experiment=None, hiDiterStart=False, imageSize=64, lrD=5e-05, lrG=5e-05, mlp_D=False, mlp_G=False, nc=3, ndf=64, netD='', netG='', ngf=64, ngpu=1, niter=30, noBN=False, nz=100, rho=1e-06, wdecay=0.0, workers=2)
+Random Seed:  2
+GenDenseNet_64 (
+  (conv1): ConvTranspose2d(100, 120, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn_1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True)
+  (dense0): Sequential (
+    (0): GenBottleneck (
+      (bn1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True)
+      (conv1): ConvTranspose2d(120, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+      (conv2): ConvTranspose2d(48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (trans0): GenTransition (
+    (bn1): BatchNorm2d(132, eps=1e-05, momentum=0.1, affine=True)
+    (conv1): ConvTranspose2d(132, 108, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (up1): Upsample(scale_factor=2, mode=nearest)
+  )
+  (dense1): Sequential (
+    (0): GenBottleneck (
+      (bn1): BatchNorm2d(108, eps=1e-05, momentum=0.1, affine=True)
+      (conv1): ConvTranspose2d(108, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+      (conv2): ConvTranspose2d(48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (trans1): GenTransition (
+    (bn1): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True)
+    (conv1): ConvTranspose2d(120, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (up1): Upsample(scale_factor=2, mode=nearest)
+  )
+  (dense2): Sequential (
+    (0): GenBottleneck (
+      (bn1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True)
+      (conv1): ConvTranspose2d(96, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+      (conv2): ConvTranspose2d(48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (trans2): GenTransition (
+    (bn1): BatchNorm2d(108, eps=1e-05, momentum=0.1, affine=True)
+    (conv1): ConvTranspose2d(108, 84, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (up1): Upsample(scale_factor=2, mode=nearest)
+  )
+  (dense3): Sequential (
+    (0): GenBottleneck (
+      (bn1): BatchNorm2d(84, eps=1e-05, momentum=0.1, affine=True)
+      (conv1): ConvTranspose2d(84, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+      (conv2): ConvTranspose2d(48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (trans3): GenTransition (
+    (bn1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True)
+    (conv1): ConvTranspose2d(96, 72, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (up1): Upsample(scale_factor=2, mode=nearest)
+  )
+  (dense4): Sequential (
+    (0): GenBottleneck (
+      (bn1): BatchNorm2d(72, eps=1e-05, momentum=0.1, affine=True)
+      (conv1): ConvTranspose2d(72, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+      (conv2): ConvTranspose2d(48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (trans4): GenTransition (
+    (bn1): BatchNorm2d(84, eps=1e-05, momentum=0.1, affine=True)
+    (conv1): ConvTranspose2d(84, 60, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (up1): Upsample(scale_factor=2, mode=nearest)
+  )
+  (dense5): Sequential (
+    (0): GenBottleneck (
+      (bn1): BatchNorm2d(60, eps=1e-05, momentum=0.1, affine=True)
+      (conv1): ConvTranspose2d(60, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+      (conv2): ConvTranspose2d(48, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (trans5): GenTransition (
+    (bn1): BatchNorm2d(72, eps=1e-05, momentum=0.1, affine=True)
+    (conv1): ConvTranspose2d(72, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (up1): Upsample(scale_factor=2, mode=nearest)
+  )
+  (ur): ReLU (inplace)
+  (ubn_e0): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+  (uconv_e1): ConvTranspose2d(48, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (ubn_e1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+  (uconv_e2): ConvTranspose2d(96, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (ubn_e2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True)
+  (bn_f): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True)
+  (conv_f): ConvTranspose2d(144, 3, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (ufinal): Tanh ()
+)
+DC_netD2_64 (
+  (conv1): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (lr): LeakyReLU (0.2, inplace)
+  (conv2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True)
+  (conv3): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True)
+  (conv3v2): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+  (bn2v2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True)
+  (conv4): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), bias=False)
+)
+Len of data loader = 3166
+[0/30][100/3166][20] IPM_enum: 43.9536 IPM_denom: 22.8758 IPM_ratio: 1.9214 E_P_f: 21.7039 E_Q_f: -22.2497 E_P_(f^2): 530.0610 E_Q_(f^2): 516.5463
+[0/30][200/3166][40] IPM_enum: 26.6560 IPM_denom: 13.6685 IPM_ratio: 1.9502 E_P_f: 14.1657 E_Q_f: -12.4903 E_P_(f^2): 211.2415 E_Q_(f^2): 162.4120
+[0/30][300/3166][60] IPM_enum: 21.6506 IPM_denom: 11.0179 IPM_ratio: 1.9650 E_P_f: 11.1749 E_Q_f: -10.4756 E_P_(f^2): 128.3521 E_Q_(f^2): 114.4362
+[0/30][400/3166][80] IPM_enum: 20.6498 IPM_denom: 10.5845 IPM_ratio: 1.9509 E_P_f: 8.8239 E_Q_f: -11.8258 E_P_(f^2): 80.8935 E_Q_(f^2): 143.1692
+[0/30][500/3166][100] IPM_enum: 18.3227 IPM_denom: 9.3355 IPM_ratio: 1.9627 E_P_f: 10.2608 E_Q_f: -8.0619 E_P_(f^2): 107.3060 E_Q_(f^2): 66.9990
+[0/30][600/3166][120] IPM_enum: 16.4941 IPM_denom: 8.3050 IPM_ratio: 1.9861 E_P_f: 8.3084 E_Q_f: -8.1857 E_P_(f^2): 69.7363 E_Q_(f^2): 68.2083
+[0/30][700/3166][140] IPM_enum: 15.9131 IPM_denom: 8.0227 IPM_ratio: 1.9835 E_P_f: 7.5571 E_Q_f: -8.3560 E_P_(f^2): 57.9302 E_Q_(f^2): 70.7984
+[0/30][800/3166][160] IPM_enum: 15.5768 IPM_denom: 7.9323 IPM_ratio: 1.9637 E_P_f: 8.8904 E_Q_f: -6.6863 E_P_(f^2): 79.9680 E_Q_(f^2): 45.8743
+[0/30][900/3166][180] IPM_enum: 14.4255 IPM_denom: 7.2599 IPM_ratio: 1.9870 E_P_f: 6.8094 E_Q_f: -7.6161 E_P_(f^2): 46.7180 E_Q_(f^2): 58.6956
+[0/30][1000/3166][200] IPM_enum: 13.8211 IPM_denom: 6.9689 IPM_ratio: 1.9833 E_P_f: 6.2698 E_Q_f: -7.5513 E_P_(f^2): 39.5796 E_Q_(f^2): 57.5506
+[0/30][1100/3166][220] IPM_enum: 13.4649 IPM_denom: 6.7571 IPM_ratio: 1.9927 E_P_f: 6.7861 E_Q_f: -6.6789 E_P_(f^2): 46.4084 E_Q_(f^2): 44.9091
+[0/30][1200/3166][240] IPM_enum: 13.2498 IPM_denom: 6.6599 IPM_ratio: 1.9895 E_P_f: 6.9803 E_Q_f: -6.2694 E_P_(f^2): 49.0415 E_Q_(f^2): 39.6679
+[0/30][1300/3166][260] IPM_enum: 12.8446 IPM_denom: 6.4528 IPM_ratio: 1.9905 E_P_f: 6.7265 E_Q_f: -6.1180 E_P_(f^2): 45.4517 E_Q_(f^2): 37.8253
+[0/30][1400/3166][280] IPM_enum: 13.2642 IPM_denom: 6.6529 IPM_ratio: 1.9937 E_P_f: 6.8583 E_Q_f: -6.4058 E_P_(f^2): 47.2311 E_Q_(f^2): 41.2906
+[0/30][1500/3166][300] IPM_enum: 10.9387 IPM_denom: 5.5011 IPM_ratio: 1.9885 E_P_f: 5.6430 E_Q_f: -5.2958 E_P_(f^2): 32.0926 E_Q_(f^2): 28.4309
+[0/30][1600/3166][320] IPM_enum: 12.0272 IPM_denom: 6.0349 IPM_ratio: 1.9929 E_P_f: 6.2151 E_Q_f: -5.8121 E_P_(f^2): 38.8150 E_Q_(f^2): 34.0254
+[0/30][1700/3166][340] IPM_enum: 11.1572 IPM_denom: 5.6038 IPM_ratio: 1.9910 E_P_f: 5.8420 E_Q_f: -5.3152 E_P_(f^2): 34.3368 E_Q_(f^2): 28.4676
+[0/30][1800/3166][360] IPM_enum: 11.2817 IPM_denom: 5.6629 IPM_ratio: 1.9922 E_P_f: 5.8755 E_Q_f: -5.4062 E_P_(f^2): 34.6513 E_Q_(f^2): 29.4861
+[0/30][1900/3166][380] IPM_enum: 10.9157 IPM_denom: 5.5940 IPM_ratio: 1.9513 E_P_f: 4.3517 E_Q_f: -6.5640 E_P_(f^2): 19.1610 E_Q_(f^2): 43.4258
+[0/30][2000/3166][400] IPM_enum: 11.1843 IPM_denom: 5.6202 IPM_ratio: 1.9900 E_P_f: 5.9511 E_Q_f: -5.2332 E_P_(f^2): 35.5467 E_Q_(f^2): 27.6271
+[0/30][2100/3166][420] IPM_enum: 11.3726 IPM_denom: 5.7047 IPM_ratio: 1.9935 E_P_f: 5.9687 E_Q_f: -5.4039 E_P_(f^2): 35.7615 E_Q_(f^2): 29.3259
+[0/30][2200/3166][440] IPM_enum: 10.8153 IPM_denom: 5.4520 IPM_ratio: 1.9837 E_P_f: 5.9678 E_Q_f: -4.8474 E_P_(f^2): 35.7300 E_Q_(f^2): 23.7179
+[0/30][2300/3166][460] IPM_enum: 11.3009 IPM_denom: 5.6830 IPM_ratio: 1.9885 E_P_f: 6.0962 E_Q_f: -5.2047 E_P_(f^2): 37.2929 E_Q_(f^2): 27.3007
+[0/30][2400/3166][480] IPM_enum: 10.9130 IPM_denom: 5.4865 IPM_ratio: 1.9891 E_P_f: 5.7117 E_Q_f: -5.2014 E_P_(f^2): 32.8386 E_Q_(f^2): 27.3653
+[0/30][2500/3166][500] IPM_enum: 10.9290 IPM_denom: 5.4884 IPM_ratio: 1.9913 E_P_f: 5.2736 E_Q_f: -5.6554 E_P_(f^2): 28.0086 E_Q_(f^2): 32.2371
+[0/30][2600/3166][520] IPM_enum: 9.7297 IPM_denom: 4.9054 IPM_ratio: 1.9835 E_P_f: 5.0097 E_Q_f: -4.7200 E_P_(f^2): 25.4092 E_Q_(f^2): 22.7165
+[0/30][2700/3166][540] IPM_enum: 9.7515 IPM_denom: 4.9084 IPM_ratio: 1.9867 E_P_f: 5.1927 E_Q_f: -4.5588 E_P_(f^2): 27.1201 E_Q_(f^2): 21.0645
+[0/30][2800/3166][560] IPM_enum: 9.7656 IPM_denom: 5.0127 IPM_ratio: 1.9482 E_P_f: 5.7768 E_Q_f: -3.9888 E_P_(f^2): 33.7170 E_Q_(f^2): 16.5373
+[0/30][2900/3166][580] IPM_enum: 9.4135 IPM_denom: 4.7531 IPM_ratio: 1.9805 E_P_f: 5.0013 E_Q_f: -4.4122 E_P_(f^2): 25.3775 E_Q_(f^2): 19.8060
+[0/30][3000/3166][600] IPM_enum: 9.5937 IPM_denom: 4.8914 IPM_ratio: 1.9613 E_P_f: 5.5742 E_Q_f: -4.0196 E_P_(f^2): 31.3498 E_Q_(f^2): 16.5017
+[0/30][3100/3166][620] IPM_enum: 9.0650 IPM_denom: 4.7305 IPM_ratio: 1.9163 E_P_f: 3.2869 E_Q_f: -5.7781 E_P_(f^2): 11.1471 E_Q_(f^2): 33.6079
+[1/30][100/3166][654] IPM_enum: 9.7248 IPM_denom: 4.9174 IPM_ratio: 1.9776 E_P_f: 5.3055 E_Q_f: -4.4193 E_P_(f^2): 28.3980 E_Q_(f^2): 19.9627
+[1/30][200/3166][674] IPM_enum: 8.7557 IPM_denom: 4.4666 IPM_ratio: 1.9602 E_P_f: 3.6697 E_Q_f: -5.0860 E_P_(f^2): 13.7108 E_Q_(f^2): 26.1905
+[1/30][300/3166][694] IPM_enum: 8.6811 IPM_denom: 4.5203 IPM_ratio: 1.9205 E_P_f: 3.1892 E_Q_f: -5.4919 E_P_(f^2): 10.4646 E_Q_(f^2): 30.4022
+[1/30][400/3166][714] IPM_enum: 8.7686 IPM_denom: 4.4140 IPM_ratio: 1.9865 E_P_f: 4.5962 E_Q_f: -4.1724 E_P_(f^2): 21.3084 E_Q_(f^2): 17.6592
+[1/30][500/3166][734] IPM_enum: 8.6834 IPM_denom: 4.3847 IPM_ratio: 1.9804 E_P_f: 4.6911 E_Q_f: -3.9923 E_P_(f^2): 22.2420 E_Q_(f^2): 16.2088
+[1/30][600/3166][754] IPM_enum: 8.7871 IPM_denom: 4.4948 IPM_ratio: 1.9550 E_P_f: 3.5824 E_Q_f: -5.2048 E_P_(f^2): 13.0952 E_Q_(f^2): 27.3105
+[1/30][700/3166][774] IPM_enum: 8.8631 IPM_denom: 4.4860 IPM_ratio: 1.9757 E_P_f: 4.9715 E_Q_f: -3.8916 E_P_(f^2): 24.9231 E_Q_(f^2): 15.3250
+[1/30][800/3166][794] IPM_enum: 9.2201 IPM_denom: 4.6331 IPM_ratio: 1.9900 E_P_f: 4.4082 E_Q_f: -4.8119 E_P_(f^2): 19.6163 E_Q_(f^2): 23.3155
+[1/30][900/3166][814] IPM_enum: 8.9330 IPM_denom: 4.4880 IPM_ratio: 1.9904 E_P_f: 4.3434 E_Q_f: -4.5896 E_P_(f^2): 19.0401 E_Q_(f^2): 21.2450
+[1/30][1000/3166][834] IPM_enum: 9.0409 IPM_denom: 4.5457 IPM_ratio: 1.9889 E_P_f: 4.7758 E_Q_f: -4.2651 E_P_(f^2): 22.9440 E_Q_(f^2): 18.3822
+[1/30][1100/3166][854] IPM_enum: 8.3837 IPM_denom: 4.2165 IPM_ratio: 1.9883 E_P_f: 4.2973 E_Q_f: -4.0865 E_P_(f^2): 18.6480 E_Q_(f^2): 16.9103
+[1/30][1200/3166][874] IPM_enum: 8.4963 IPM_denom: 4.2914 IPM_ratio: 1.9798 E_P_f: 4.6538 E_Q_f: -3.8425 E_P_(f^2): 21.8779 E_Q_(f^2): 14.9546
+[1/30][1300/3166][894] IPM_enum: 8.5343 IPM_denom: 4.2916 IPM_ratio: 1.9886 E_P_f: 4.1393 E_Q_f: -4.3951 E_P_(f^2): 17.3675 E_Q_(f^2): 19.4681
+[1/30][1400/3166][914] IPM_enum: 8.7141 IPM_denom: 4.3769 IPM_ratio: 1.9909 E_P_f: 4.3373 E_Q_f: -4.3768 E_P_(f^2): 18.9888 E_Q_(f^2): 19.3257
+[1/30][1500/3166][934] IPM_enum: 8.1220 IPM_denom: 4.0845 IPM_ratio: 1.9885 E_P_f: 4.2312 E_Q_f: -3.8908 E_P_(f^2): 18.0333 E_Q_(f^2): 15.3322
+[1/30][1600/3166][954] IPM_enum: 8.2211 IPM_denom: 4.1317 IPM_ratio: 1.9897 E_P_f: 4.0713 E_Q_f: -4.1498 E_P_(f^2): 16.7418 E_Q_(f^2): 17.4008
+[1/30][1700/3166][974] IPM_enum: 8.3208 IPM_denom: 4.1746 IPM_ratio: 1.9932 E_P_f: 4.2204 E_Q_f: -4.1005 E_P_(f^2): 17.9119 E_Q_(f^2): 16.9420
+[1/30][1800/3166][994] IPM_enum: 9.1160 IPM_denom: 4.5938 IPM_ratio: 1.9844 E_P_f: 4.9645 E_Q_f: -4.1515 E_P_(f^2): 24.7587 E_Q_(f^2): 17.4474
+[1/30][1900/3166][1014] IPM_enum: 8.3059 IPM_denom: 4.1706 IPM_ratio: 1.9916 E_P_f: 4.3705 E_Q_f: -3.9354 E_P_(f^2): 19.1759 E_Q_(f^2): 15.6117
+[1/30][2000/3166][1034] IPM_enum: 8.4495 IPM_denom: 4.2491 IPM_ratio: 1.9885 E_P_f: 3.9826 E_Q_f: -4.4669 E_P_(f^2): 15.9510 E_Q_(f^2): 20.1595
+[1/30][2100/3166][1054] IPM_enum: 8.5080 IPM_denom: 4.2779 IPM_ratio: 1.9888 E_P_f: 4.0191 E_Q_f: -4.4889 E_P_(f^2): 16.2652 E_Q_(f^2): 20.3351
+[1/30][2200/3166][1074] IPM_enum: 8.5454 IPM_denom: 4.2868 IPM_ratio: 1.9934 E_P_f: 4.3506 E_Q_f: -4.1948 E_P_(f^2): 19.0544 E_Q_(f^2): 17.6992
+[1/30][2300/3166][1094] IPM_enum: 7.6049 IPM_denom: 3.8276 IPM_ratio: 1.9868 E_P_f: 4.1100 E_Q_f: -3.4950 E_P_(f^2): 16.9964 E_Q_(f^2): 12.3054
+[1/30][2400/3166][1114] IPM_enum: 7.4395 IPM_denom: 3.7908 IPM_ratio: 1.9625 E_P_f: 3.0686 E_Q_f: -4.3709 E_P_(f^2): 9.5348 E_Q_(f^2): 19.2051
+[1/30][2500/3166][1134] IPM_enum: 7.7866 IPM_denom: 3.9158 IPM_ratio: 1.9885 E_P_f: 4.0889 E_Q_f: -3.6976 E_P_(f^2): 16.8388 E_Q_(f^2): 13.8286
+[1/30][2600/3166][1154] IPM_enum: 7.9905 IPM_denom: 4.0555 IPM_ratio: 1.9703 E_P_f: 3.3912 E_Q_f: -4.5992 E_P_(f^2): 11.6327 E_Q_(f^2): 21.2610
+[1/30][2700/3166][1174] IPM_enum: 7.4312 IPM_denom: 3.7857 IPM_ratio: 1.9630 E_P_f: 4.3366 E_Q_f: -3.0946 E_P_(f^2): 18.9419 E_Q_(f^2): 9.7211
+[1/30][2800/3166][1194] IPM_enum: 8.1838 IPM_denom: 4.1063 IPM_ratio: 1.9930 E_P_f: 4.0903 E_Q_f: -4.0935 E_P_(f^2): 16.8386 E_Q_(f^2): 16.8843
+[1/30][2900/3166][1214] IPM_enum: 7.7756 IPM_denom: 3.9015 IPM_ratio: 1.9930 E_P_f: 3.8387 E_Q_f: -3.9369 E_P_(f^2): 14.8317 E_Q_(f^2): 15.6111
+[1/30][3000/3166][1234] IPM_enum: 7.7277 IPM_denom: 4.0141 IPM_ratio: 1.9251 E_P_f: 4.8775 E_Q_f: -2.8502 E_P_(f^2): 23.9061 E_Q_(f^2): 8.3205
+[1/30][3100/3166][1254] IPM_enum: 7.3997 IPM_denom: 3.7179 IPM_ratio: 1.9903 E_P_f: 3.5170 E_Q_f: -3.8827 E_P_(f^2): 12.4483 E_Q_(f^2): 15.1976
+[2/30][100/3166][1288] IPM_enum: 7.6668 IPM_denom: 3.8538 IPM_ratio: 1.9894 E_P_f: 4.0692 E_Q_f: -3.5976 E_P_(f^2): 16.6398 E_Q_(f^2): 13.0638
+[2/30][200/3166][1308] IPM_enum: 7.7079 IPM_denom: 3.9565 IPM_ratio: 1.9482 E_P_f: 4.6863 E_Q_f: -3.0216 E_P_(f^2): 22.0356 E_Q_(f^2): 9.2723
+[2/30][300/3166][1328] IPM_enum: 7.3490 IPM_denom: 3.6862 IPM_ratio: 1.9936 E_P_f: 3.5838 E_Q_f: -3.7652 E_P_(f^2): 12.9168 E_Q_(f^2): 14.2598
+[2/30][400/3166][1348] IPM_enum: 7.4194 IPM_denom: 3.7204 IPM_ratio: 1.9943 E_P_f: 3.7415 E_Q_f: -3.6779 E_P_(f^2): 14.0675 E_Q_(f^2): 13.6150
+[2/30][500/3166][1368] IPM_enum: 7.3451 IPM_denom: 3.7152 IPM_ratio: 1.9770 E_P_f: 3.2149 E_Q_f: -4.1302 E_P_(f^2): 10.4319 E_Q_(f^2): 17.1736
+[2/30][600/3166][1388] IPM_enum: 7.2389 IPM_denom: 3.6366 IPM_ratio: 1.9906 E_P_f: 3.7203 E_Q_f: -3.5186 E_P_(f^2): 13.9132 E_Q_(f^2): 12.5360
+[2/30][700/3166][1408] IPM_enum: 6.9372 IPM_denom: 3.4805 IPM_ratio: 1.9932 E_P_f: 3.5336 E_Q_f: -3.4035 E_P_(f^2): 12.5561 E_Q_(f^2): 11.6715
+[2/30][800/3166][1428] IPM_enum: 7.9594 IPM_denom: 3.9902 IPM_ratio: 1.9947 E_P_f: 4.1509 E_Q_f: -3.8085 E_P_(f^2): 17.2749 E_Q_(f^2): 14.5688
+[2/30][900/3166][1448] IPM_enum: 7.7549 IPM_denom: 3.8881 IPM_ratio: 1.9945 E_P_f: 3.8976 E_Q_f: -3.8573 E_P_(f^2): 15.2638 E_Q_(f^2): 14.9709
+[2/30][1000/3166][1468] IPM_enum: 7.2699 IPM_denom: 3.6493 IPM_ratio: 1.9921 E_P_f: 3.5079 E_Q_f: -3.7619 E_P_(f^2): 12.3940 E_Q_(f^2): 14.2408
+[2/30][1100/3166][1488] IPM_enum: 7.2481 IPM_denom: 3.6527 IPM_ratio: 1.9843 E_P_f: 4.0017 E_Q_f: -3.2464 E_P_(f^2): 16.0869 E_Q_(f^2): 10.5976
+[2/30][1200/3166][1508] IPM_enum: 7.2261 IPM_denom: 3.6246 IPM_ratio: 1.9936 E_P_f: 3.5783 E_Q_f: -3.6477 E_P_(f^2): 12.8838 E_Q_(f^2): 13.3918
+[2/30][1300/3166][1528] IPM_enum: 6.7054 IPM_denom: 3.3672 IPM_ratio: 1.9914 E_P_f: 3.2331 E_Q_f: -3.4723 E_P_(f^2): 10.5110 E_Q_(f^2): 12.1645
+[2/30][1400/3166][1548] IPM_enum: 7.3282 IPM_denom: 3.6828 IPM_ratio: 1.9898 E_P_f: 3.4063 E_Q_f: -3.9218 E_P_(f^2): 11.6653 E_Q_(f^2): 15.4603
+[2/30][1500/3166][1568] IPM_enum: 7.2746 IPM_denom: 3.6496 IPM_ratio: 1.9933 E_P_f: 3.8169 E_Q_f: -3.4577 E_P_(f^2): 14.6306 E_Q_(f^2): 12.0090
+[2/30][1600/3166][1588] IPM_enum: 6.9546 IPM_denom: 3.5149 IPM_ratio: 1.9786 E_P_f: 3.8815 E_Q_f: -3.0731 E_P_(f^2): 15.1591 E_Q_(f^2): 9.5497
+[2/30][1700/3166][1608] IPM_enum: 7.0769 IPM_denom: 3.5494 IPM_ratio: 1.9938 E_P_f: 3.3492 E_Q_f: -3.7277 E_P_(f^2): 11.2573 E_Q_(f^2): 13.9399
+[2/30][1800/3166][1628] IPM_enum: 7.0341 IPM_denom: 3.5211 IPM_ratio: 1.9977 E_P_f: 3.4512 E_Q_f: -3.5829 E_P_(f^2): 11.9356 E_Q_(f^2): 12.8610
+[2/30][1900/3166][1648] IPM_enum: 7.0499 IPM_denom: 3.5338 IPM_ratio: 1.9950 E_P_f: 3.7134 E_Q_f: -3.3365 E_P_(f^2): 13.8162 E_Q_(f^2): 11.1592
+[2/30][2000/3166][1668] IPM_enum: 6.9361 IPM_denom: 3.4857 IPM_ratio: 1.9899 E_P_f: 3.1781 E_Q_f: -3.7580 E_P_(f^2): 10.1317 E_Q_(f^2): 14.1681
+[2/30][2100/3166][1688] IPM_enum: 7.1513 IPM_denom: 3.5782 IPM_ratio: 1.9986 E_P_f: 3.5275 E_Q_f: -3.6237 E_P_(f^2): 12.4584 E_Q_(f^2): 13.1483
+[2/30][2200/3166][1708] IPM_enum: 7.0880 IPM_denom: 3.5487 IPM_ratio: 1.9974 E_P_f: 3.6631 E_Q_f: -3.4250 E_P_(f^2): 13.4369 E_Q_(f^2): 11.7494
+[2/30][2300/3166][1728] IPM_enum: 6.9623 IPM_denom: 3.4835 IPM_ratio: 1.9987 E_P_f: 3.4618 E_Q_f: -3.5004 E_P_(f^2): 11.9964 E_Q_(f^2): 12.2730
+[2/30][2400/3166][1748] IPM_enum: 7.3732 IPM_denom: 3.7106 IPM_ratio: 1.9871 E_P_f: 3.3016 E_Q_f: -4.0716 E_P_(f^2): 10.9299 E_Q_(f^2): 16.6068
+[2/30][2500/3166][1768] IPM_enum: 6.8603 IPM_denom: 3.4351 IPM_ratio: 1.9971 E_P_f: 3.3122 E_Q_f: -3.5481 E_P_(f^2): 10.9853 E_Q_(f^2): 12.6143
+[2/30][2600/3166][1788] IPM_enum: 6.7967 IPM_denom: 3.4140 IPM_ratio: 1.9908 E_P_f: 3.1543 E_Q_f: -3.6423 E_P_(f^2): 10.0141 E_Q_(f^2): 13.2962
+[2/30][2700/3166][1808] IPM_enum: 6.2653 IPM_denom: 3.2652 IPM_ratio: 1.9188 E_P_f: 4.0303 E_Q_f: -2.2350 E_P_(f^2): 16.2899 E_Q_(f^2): 5.0337
+[2/30][2800/3166][1828] IPM_enum: 6.7084 IPM_denom: 3.3906 IPM_ratio: 1.9785 E_P_f: 3.7981 E_Q_f: -2.9103 E_P_(f^2): 14.4584 E_Q_(f^2): 8.5346
+[2/30][2900/3166][1848] IPM_enum: 6.5944 IPM_denom: 3.3154 IPM_ratio: 1.9890 E_P_f: 3.5674 E_Q_f: -3.0271 E_P_(f^2): 12.7784 E_Q_(f^2): 9.2055
+[2/30][3000/3166][1868] IPM_enum: 6.7024 IPM_denom: 3.3613 IPM_ratio: 1.9940 E_P_f: 3.2460 E_Q_f: -3.4564 E_P_(f^2): 10.5810 E_Q_(f^2): 12.0159
+[2/30][3100/3166][1888] IPM_enum: 6.5121 IPM_denom: 3.2930 IPM_ratio: 1.9776 E_P_f: 3.6739 E_Q_f: -2.8382 E_P_(f^2): 13.5416 E_Q_(f^2): 8.1457
+[3/30][100/3166][1922] IPM_enum: 6.8995 IPM_denom: 3.4583 IPM_ratio: 1.9950 E_P_f: 3.5107 E_Q_f: -3.3888 E_P_(f^2): 12.3753 E_Q_(f^2): 11.5450
+[3/30][200/3166][1942] IPM_enum: 6.9132 IPM_denom: 3.4642 IPM_ratio: 1.9956 E_P_f: 3.4687 E_Q_f: -3.4445 E_P_(f^2): 12.0707 E_Q_(f^2): 11.9307
+[3/30][300/3166][1962] IPM_enum: 6.6316 IPM_denom: 3.3254 IPM_ratio: 1.9942 E_P_f: 3.1835 E_Q_f: -3.4481 E_P_(f^2): 10.1769 E_Q_(f^2): 11.9393
+[3/30][400/3166][1982] IPM_enum: 6.6302 IPM_denom: 3.3224 IPM_ratio: 1.9956 E_P_f: 3.4037 E_Q_f: -3.2265 E_P_(f^2): 11.6271 E_Q_(f^2): 10.4501
+[3/30][500/3166][2002] IPM_enum: 6.7869 IPM_denom: 3.4119 IPM_ratio: 1.9892 E_P_f: 3.0964 E_Q_f: -3.6906 E_P_(f^2): 9.6254 E_Q_(f^2): 13.6562
+[3/30][600/3166][2022] IPM_enum: 6.9660 IPM_denom: 3.4869 IPM_ratio: 1.9978 E_P_f: 3.4490 E_Q_f: -3.5170 E_P_(f^2): 11.9197 E_Q_(f^2): 12.3969
+[3/30][700/3166][2042] IPM_enum: 6.6856 IPM_denom: 3.3559 IPM_ratio: 1.9922 E_P_f: 3.1033 E_Q_f: -3.5823 E_P_(f^2): 9.6579 E_Q_(f^2): 12.8658
+[3/30][800/3166][2062] IPM_enum: 6.7801 IPM_denom: 3.4122 IPM_ratio: 1.9870 E_P_f: 3.0512 E_Q_f: -3.7289 E_P_(f^2): 9.3382 E_Q_(f^2): 13.9477
+[3/30][900/3166][2082] IPM_enum: 6.3308 IPM_denom: 3.1725 IPM_ratio: 1.9955 E_P_f: 3.0948 E_Q_f: -3.2360 E_P_(f^2): 9.6180 E_Q_(f^2): 10.5110
+[3/30][1000/3166][2102] IPM_enum: 6.6626 IPM_denom: 3.3395 IPM_ratio: 1.9951 E_P_f: 3.4603 E_Q_f: -3.2023 E_P_(f^2): 12.0150 E_Q_(f^2): 10.2897
+[3/30][1100/3166][2122] IPM_enum: 6.3992 IPM_denom: 3.2079 IPM_ratio: 1.9949 E_P_f: 3.0826 E_Q_f: -3.3166 E_P_(f^2): 9.5434 E_Q_(f^2): 11.0373
+[3/30][1200/3166][2142] IPM_enum: 6.6536 IPM_denom: 3.3331 IPM_ratio: 1.9962 E_P_f: 3.3495 E_Q_f: -3.3041 E_P_(f^2): 11.2550 E_Q_(f^2): 10.9647
+[3/30][1300/3166][2162] IPM_enum: 5.9952 IPM_denom: 3.0416 IPM_ratio: 1.9710 E_P_f: 3.4717 E_Q_f: -2.5235 E_P_(f^2): 12.0879 E_Q_(f^2): 6.4152
+[3/30][1400/3166][2182] IPM_enum: 6.8109 IPM_denom: 3.4188 IPM_ratio: 1.9922 E_P_f: 3.6138 E_Q_f: -3.1971 E_P_(f^2): 13.1031 E_Q_(f^2): 10.2731
+[3/30][1500/3166][2202] IPM_enum: 6.5787 IPM_denom: 3.2944 IPM_ratio: 1.9969 E_P_f: 3.2343 E_Q_f: -3.3444 E_P_(f^2): 10.4829 E_Q_(f^2): 11.2228
+[3/30][1600/3166][2222] IPM_enum: 6.3128 IPM_denom: 3.1856 IPM_ratio: 1.9817 E_P_f: 3.5387 E_Q_f: -2.7741 E_P_(f^2): 12.5637 E_Q_(f^2): 7.7323
+[3/30][1700/3166][2242] IPM_enum: 6.4248 IPM_denom: 3.2177 IPM_ratio: 1.9967 E_P_f: 3.2981 E_Q_f: -3.1267 E_P_(f^2): 10.8977 E_Q_(f^2): 9.8090
+[3/30][1800/3166][2262] IPM_enum: 6.7639 IPM_denom: 3.3853 IPM_ratio: 1.9980 E_P_f: 3.3317 E_Q_f: -3.4321 E_P_(f^2): 11.1213 E_Q_(f^2): 11.7986
+[3/30][1900/3166][2282] IPM_enum: 6.6509 IPM_denom: 3.3299 IPM_ratio: 1.9973 E_P_f: 3.4294 E_Q_f: -3.2215 E_P_(f^2): 11.7783 E_Q_(f^2): 10.3979
+[3/30][2000/3166][2302] IPM_enum: 6.3971 IPM_denom: 3.2064 IPM_ratio: 1.9951 E_P_f: 3.0453 E_Q_f: -3.3518 E_P_(f^2): 9.2963 E_Q_(f^2): 11.2653
+[3/30][2100/3166][2322] IPM_enum: 5.9613 IPM_denom: 2.9873 IPM_ratio: 1.9955 E_P_f: 2.9435 E_Q_f: -3.0178 E_P_(f^2): 8.7008 E_Q_(f^2): 9.1470
+[3/30][2200/3166][2342] IPM_enum: 6.2160 IPM_denom: 3.1138 IPM_ratio: 1.9963 E_P_f: 2.9783 E_Q_f: -3.2377 E_P_(f^2): 8.8920 E_Q_(f^2): 10.4995
+[3/30][2300/3166][2362] IPM_enum: 6.5690 IPM_denom: 3.2873 IPM_ratio: 1.9983 E_P_f: 3.2767 E_Q_f: -3.2923 E_P_(f^2): 10.7564 E_Q_(f^2): 10.8556
+[3/30][2400/3166][2382] IPM_enum: 6.1537 IPM_denom: 3.0848 IPM_ratio: 1.9948 E_P_f: 3.2387 E_Q_f: -2.9150 E_P_(f^2): 10.5163 E_Q_(f^2): 8.5161
+[3/30][2500/3166][2402] IPM_enum: 6.1012 IPM_denom: 3.0594 IPM_ratio: 1.9942 E_P_f: 2.8732 E_Q_f: -3.2281 E_P_(f^2): 8.2765 E_Q_(f^2): 10.4436
+[3/30][2600/3166][2422] IPM_enum: 5.7632 IPM_denom: 2.8859 IPM_ratio: 1.9970 E_P_f: 2.8091 E_Q_f: -2.9541 E_P_(f^2): 7.9156 E_Q_(f^2): 8.7410
+[3/30][2700/3166][2442] IPM_enum: 6.4502 IPM_denom: 3.2409 IPM_ratio: 1.9902 E_P_f: 2.9402 E_Q_f: -3.5100 E_P_(f^2): 8.6674 E_Q_(f^2): 12.3395
+[3/30][2800/3166][2462] IPM_enum: 5.9544 IPM_denom: 2.9812 IPM_ratio: 1.9973 E_P_f: 2.9130 E_Q_f: -3.0414 E_P_(f^2): 8.5065 E_Q_(f^2): 9.2688
+[3/30][2900/3166][2482] IPM_enum: 5.9279 IPM_denom: 2.9771 IPM_ratio: 1.9912 E_P_f: 3.1726 E_Q_f: -2.7552 E_P_(f^2): 10.0993 E_Q_(f^2): 7.6264
+[3/30][3000/3166][2502] IPM_enum: 5.9404 IPM_denom: 3.0123 IPM_ratio: 1.9721 E_P_f: 2.5024 E_Q_f: -3.4380 E_P_(f^2): 6.2983 E_Q_(f^2): 11.8495
+[3/30][3100/3166][2522] IPM_enum: 5.9233 IPM_denom: 2.9706 IPM_ratio: 1.9939 E_P_f: 2.8557 E_Q_f: -3.0676 E_P_(f^2): 8.1972 E_Q_(f^2): 9.4522
+[4/30][100/3166][2556] IPM_enum: 6.1525 IPM_denom: 3.0838 IPM_ratio: 1.9951 E_P_f: 3.0179 E_Q_f: -3.1346 E_P_(f^2): 9.1488 E_Q_(f^2): 9.8711
+[4/30][200/3166][2576] IPM_enum: 6.1408 IPM_denom: 3.0772 IPM_ratio: 1.9956 E_P_f: 2.9582 E_Q_f: -3.1826 E_P_(f^2): 8.7797 E_Q_(f^2): 10.1582
+[4/30][300/3166][2596] IPM_enum: 6.0981 IPM_denom: 3.0568 IPM_ratio: 1.9949 E_P_f: 3.2028 E_Q_f: -2.8953 E_P_(f^2): 10.2788 E_Q_(f^2): 8.4090
+[4/30][400/3166][2616] IPM_enum: 5.9587 IPM_denom: 2.9874 IPM_ratio: 1.9946 E_P_f: 2.9114 E_Q_f: -3.0473 E_P_(f^2): 8.5245 E_Q_(f^2): 9.3251
+[4/30][500/3166][2636] IPM_enum: 6.0492 IPM_denom: 3.0291 IPM_ratio: 1.9970 E_P_f: 3.1076 E_Q_f: -2.9416 E_P_(f^2): 9.6820 E_Q_(f^2): 8.6686
+[4/30][600/3166][2656] IPM_enum: 5.6546 IPM_denom: 2.8349 IPM_ratio: 1.9947 E_P_f: 2.9712 E_Q_f: -2.6834 E_P_(f^2): 8.8579 E_Q_(f^2): 7.2151
+[4/30][700/3166][2676] IPM_enum: 5.9591 IPM_denom: 2.9823 IPM_ratio: 1.9981 E_P_f: 2.9532 E_Q_f: -3.0058 E_P_(f^2): 8.7328 E_Q_(f^2): 9.0557
+[4/30][800/3166][2696] IPM_enum: 5.9277 IPM_denom: 2.9740 IPM_ratio: 1.9931 E_P_f: 2.7549 E_Q_f: -3.1728 E_P_(f^2): 7.6048 E_Q_(f^2): 10.0852
+[4/30][900/3166][2716] IPM_enum: 6.1130 IPM_denom: 3.0589 IPM_ratio: 1.9984 E_P_f: 3.0920 E_Q_f: -3.0210 E_P_(f^2): 9.5723 E_Q_(f^2): 9.1414
+[4/30][1000/3166][2736] IPM_enum: 5.7381 IPM_denom: 2.8708 IPM_ratio: 1.9988 E_P_f: 2.8631 E_Q_f: -2.8750 E_P_(f^2): 8.2079 E_Q_(f^2): 8.2750
+[4/30][1100/3166][2756] IPM_enum: 5.7890 IPM_denom: 2.9000 IPM_ratio: 1.9962 E_P_f: 2.7505 E_Q_f: -3.0384 E_P_(f^2): 7.5799 E_Q_(f^2): 9.2400
+[4/30][1200/3166][2776] IPM_enum: 6.1178 IPM_denom: 3.0684 IPM_ratio: 1.9938 E_P_f: 2.8373 E_Q_f: -3.2806 E_P_(f^2): 8.0588 E_Q_(f^2): 10.7709
+[4/30][1300/3166][2796] IPM_enum: 5.9182 IPM_denom: 2.9619 IPM_ratio: 1.9981 E_P_f: 2.8761 E_Q_f: -3.0421 E_P_(f^2): 8.2812 E_Q_(f^2): 9.2644
+[4/30][1400/3166][2816] IPM_enum: 5.9455 IPM_denom: 2.9828 IPM_ratio: 1.9933 E_P_f: 2.7515 E_Q_f: -3.1940 E_P_(f^2): 7.5807 E_Q_(f^2): 10.2133
+[4/30][1500/3166][2836] IPM_enum: 5.8089 IPM_denom: 2.9091 IPM_ratio: 1.9968 E_P_f: 3.0126 E_Q_f: -2.7963 E_P_(f^2): 9.0927 E_Q_(f^2): 7.8329
+[4/30][1600/3166][2856] IPM_enum: 5.7823 IPM_denom: 2.9062 IPM_ratio: 1.9896 E_P_f: 2.6280 E_Q_f: -3.1543 E_P_(f^2): 6.9260 E_Q_(f^2): 9.9660
+[4/30][1700/3166][2876] IPM_enum: 5.7207 IPM_denom: 2.8638 IPM_ratio: 1.9976 E_P_f: 2.8025 E_Q_f: -2.9182 E_P_(f^2): 7.8698 E_Q_(f^2): 8.5329
+[4/30][1800/3166][2896] IPM_enum: 6.0152 IPM_denom: 3.0194 IPM_ratio: 1.9922 E_P_f: 2.7864 E_Q_f: -3.2288 E_P_(f^2): 7.7914 E_Q_(f^2): 10.4421
+[4/30][1900/3166][2916] IPM_enum: 5.8767 IPM_denom: 2.9715 IPM_ratio: 1.9777 E_P_f: 3.3503 E_Q_f: -2.5264 E_P_(f^2): 11.2452 E_Q_(f^2): 6.4148
+[4/30][2000/3166][2936] IPM_enum: 5.5145 IPM_denom: 2.7617 IPM_ratio: 1.9968 E_P_f: 2.7277 E_Q_f: -2.7867 E_P_(f^2): 7.4692 E_Q_(f^2): 7.7846
+[4/30][2100/3166][2956] IPM_enum: 5.8475 IPM_denom: 2.9412 IPM_ratio: 1.9881 E_P_f: 3.2001 E_Q_f: -2.6474 E_P_(f^2): 10.2662 E_Q_(f^2): 7.0349
+[4/30][2200/3166][2976] IPM_enum: 5.8392 IPM_denom: 2.9233 IPM_ratio: 1.9974 E_P_f: 2.8523 E_Q_f: -2.9869 E_P_(f^2): 8.1549 E_Q_(f^2): 8.9370
+[4/30][2300/3166][2996] IPM_enum: 5.7213 IPM_denom: 2.8645 IPM_ratio: 1.9973 E_P_f: 2.9168 E_Q_f: -2.8045 E_P_(f^2): 8.5315 E_Q_(f^2): 7.8795
+[4/30][2400/3166][3016] IPM_enum: 5.6194 IPM_denom: 2.8146 IPM_ratio: 1.9965 E_P_f: 2.6950 E_Q_f: -2.9244 E_P_(f^2): 7.2808 E_Q_(f^2): 8.5634
+[4/30][2500/3166][3036] IPM_enum: 5.9390 IPM_denom: 2.9727 IPM_ratio: 1.9978 E_P_f: 3.0080 E_Q_f: -2.9309 E_P_(f^2): 9.0641 E_Q_(f^2): 8.6100
+[4/30][2600/3166][3056] IPM_enum: 5.8018 IPM_denom: 2.9253 IPM_ratio: 1.9833 E_P_f: 3.2338 E_Q_f: -2.5679 E_P_(f^2): 10.4794 E_Q_(f^2): 6.6354
+[4/30][2700/3166][3076] IPM_enum: 5.9120 IPM_denom: 2.9605 IPM_ratio: 1.9970 E_P_f: 2.9932 E_Q_f: -2.9189 E_P_(f^2): 8.9921 E_Q_(f^2): 8.5371
+[4/30][2800/3166][3096] IPM_enum: 5.8249 IPM_denom: 2.9251 IPM_ratio: 1.9914 E_P_f: 3.1314 E_Q_f: -2.6935 E_P_(f^2): 9.8278 E_Q_(f^2): 7.2842
+[4/30][2900/3166][3116] IPM_enum: 5.4160 IPM_denom: 2.7190 IPM_ratio: 1.9919 E_P_f: 2.8803 E_Q_f: -2.5357 E_P_(f^2): 8.3231 E_Q_(f^2): 6.4632
+[4/30][3000/3166][3136] IPM_enum: 5.7304 IPM_denom: 2.8718 IPM_ratio: 1.9954 E_P_f: 2.8050 E_Q_f: -2.9254 E_P_(f^2): 7.8989 E_Q_(f^2): 8.5957
+[4/30][3100/3166][3156] IPM_enum: 5.6744 IPM_denom: 2.8446 IPM_ratio: 1.9948 E_P_f: 2.6866 E_Q_f: -2.9878 E_P_(f^2): 7.2396 E_Q_(f^2): 8.9439
+[5/30][100/3166][3190] IPM_enum: 6.0711 IPM_denom: 3.0407 IPM_ratio: 1.9966 E_P_f: 2.9161 E_Q_f: -3.1550 E_P_(f^2): 8.5206 E_Q_(f^2): 9.9711
+[5/30][200/3166][3210] IPM_enum: 5.3082 IPM_denom: 2.6642 IPM_ratio: 1.9924 E_P_f: 2.8464 E_Q_f: -2.4618 E_P_(f^2): 8.1186 E_Q_(f^2): 6.0773
+[5/30][300/3166][3230] IPM_enum: 5.8716 IPM_denom: 2.9635 IPM_ratio: 1.9813 E_P_f: 3.3137 E_Q_f: -2.5579 E_P_(f^2): 11.0032 E_Q_(f^2): 6.5616
+[5/30][400/3166][3250] IPM_enum: 5.6790 IPM_denom: 2.8475 IPM_ratio: 1.9944 E_P_f: 2.6859 E_Q_f: -2.9932 E_P_(f^2): 7.2327 E_Q_(f^2): 8.9836
+[5/30][500/3166][3270] IPM_enum: 5.6618 IPM_denom: 2.8345 IPM_ratio: 1.9974 E_P_f: 2.9037 E_Q_f: -2.7581 E_P_(f^2): 8.4506 E_Q_(f^2): 7.6185
+[5/30][600/3166][3290] IPM_enum: 5.5800 IPM_denom: 2.7953 IPM_ratio: 1.9962 E_P_f: 2.7202 E_Q_f: -2.8598 E_P_(f^2): 7.4304 E_Q_(f^2): 8.1967
+[5/30][700/3166][3310] IPM_enum: 5.6048 IPM_denom: 2.9012 IPM_ratio: 1.9319 E_P_f: 2.0864 E_Q_f: -3.5184 E_P_(f^2): 4.4275 E_Q_(f^2): 12.4061
+[5/30][800/3166][3330] IPM_enum: 5.9515 IPM_denom: 2.9812 IPM_ratio: 1.9963 E_P_f: 2.9305 E_Q_f: -3.0210 E_P_(f^2): 8.6179 E_Q_(f^2): 9.1573
+[5/30][900/3166][3350] IPM_enum: 5.7190 IPM_denom: 2.8639 IPM_ratio: 1.9969 E_P_f: 2.8875 E_Q_f: -2.8315 E_P_(f^2): 8.3685 E_Q_(f^2): 8.0352
+[5/30][1000/3166][3370] IPM_enum: 5.1063 IPM_denom: 2.5592 IPM_ratio: 1.9953 E_P_f: 2.6465 E_Q_f: -2.4599 E_P_(f^2): 7.0298 E_Q_(f^2): 6.0694
+[5/30][1100/3166][3390] IPM_enum: 5.7664 IPM_denom: 2.8946 IPM_ratio: 1.9921 E_P_f: 2.6721 E_Q_f: -3.0943 E_P_(f^2): 7.1626 E_Q_(f^2): 9.5950
+[5/30][1200/3166][3410] IPM_enum: 5.2618 IPM_denom: 2.6446 IPM_ratio: 1.9896 E_P_f: 2.8092 E_Q_f: -2.4526 E_P_(f^2): 7.9511 E_Q_(f^2): 6.0366
+[5/30][1300/3166][3430] IPM_enum: 5.5031 IPM_denom: 2.7629 IPM_ratio: 1.9918 E_P_f: 2.5781 E_Q_f: -2.9250 E_P_(f^2): 6.6894 E_Q_(f^2): 8.5777
+[5/30][1400/3166][3450] IPM_enum: 5.4555 IPM_denom: 2.7441 IPM_ratio: 1.9881 E_P_f: 2.4937 E_Q_f: -2.9617 E_P_(f^2): 6.2731 E_Q_(f^2): 8.7873
+[5/30][1500/3166][3470] IPM_enum: 5.6995 IPM_denom: 2.8526 IPM_ratio: 1.9980 E_P_f: 2.7962 E_Q_f: -2.9033 E_P_(f^2): 7.8373 E_Q_(f^2): 8.4375
+[5/30][1600/3166][3490] IPM_enum: 5.4889 IPM_denom: 2.7463 IPM_ratio: 1.9986 E_P_f: 2.7100 E_Q_f: -2.7789 E_P_(f^2): 7.3523 E_Q_(f^2): 7.7323
+[5/30][1700/3166][3510] IPM_enum: 5.5654 IPM_denom: 2.7844 IPM_ratio: 1.9988 E_P_f: 2.7611 E_Q_f: -2.8042 E_P_(f^2): 7.6355 E_Q_(f^2): 7.8699
+[5/30][1800/3166][3530] IPM_enum: 5.7488 IPM_denom: 2.8780 IPM_ratio: 1.9975 E_P_f: 2.8182 E_Q_f: -2.9306 E_P_(f^2): 7.9527 E_Q_(f^2): 8.6135
+[5/30][1900/3166][3550] IPM_enum: 5.4744 IPM_denom: 2.7407 IPM_ratio: 1.9975 E_P_f: 2.7837 E_Q_f: -2.6907 E_P_(f^2): 7.7649 E_Q_(f^2): 7.2575
+[5/30][2000/3166][3570] IPM_enum: 5.5131 IPM_denom: 2.7589 IPM_ratio: 1.9983 E_P_f: 2.7520 E_Q_f: -2.7612 E_P_(f^2): 7.5844 E_Q_(f^2): 7.6384
+[5/30][2100/3166][3590] IPM_enum: 5.3357 IPM_denom: 2.6898 IPM_ratio: 1.9837 E_P_f: 2.9956 E_Q_f: -2.3401 E_P_(f^2): 8.9849 E_Q_(f^2): 5.4849
+[5/30][2200/3166][3610] IPM_enum: 5.1029 IPM_denom: 2.5624 IPM_ratio: 1.9915 E_P_f: 2.3692 E_Q_f: -2.7337 E_P_(f^2): 5.6457 E_Q_(f^2): 7.4859
+[5/30][2300/3166][3630] IPM_enum: 5.3390 IPM_denom: 2.6765 IPM_ratio: 1.9948 E_P_f: 2.5618 E_Q_f: -2.7772 E_P_(f^2): 6.5926 E_Q_(f^2): 7.7344
+[5/30][2400/3166][3650] IPM_enum: 6.0484 IPM_denom: 3.0381 IPM_ratio: 1.9909 E_P_f: 3.2698 E_Q_f: -2.7786 E_P_(f^2): 10.7180 E_Q_(f^2): 7.7422
+[5/30][2500/3166][3670] IPM_enum: 5.5562 IPM_denom: 2.8075 IPM_ratio: 1.9790 E_P_f: 3.1366 E_Q_f: -2.4196 E_P_(f^2): 9.8674 E_Q_(f^2): 5.8969
+[5/30][2600/3166][3690] IPM_enum: 5.6557 IPM_denom: 2.8346 IPM_ratio: 1.9953 E_P_f: 2.7107 E_Q_f: -2.9450 E_P_(f^2): 7.3730 E_Q_(f^2): 8.6965
+[5/30][2700/3166][3710] IPM_enum: 5.3167 IPM_denom: 2.6637 IPM_ratio: 1.9960 E_P_f: 2.5927 E_Q_f: -2.7240 E_P_(f^2): 6.7514 E_Q_(f^2): 7.4389
+[5/30][2800/3166][3730] IPM_enum: 5.7615 IPM_denom: 2.9026 IPM_ratio: 1.9850 E_P_f: 2.5682 E_Q_f: -3.1933 E_P_(f^2): 6.6207 E_Q_(f^2): 10.2290
+[5/30][2900/3166][3750] IPM_enum: 5.5344 IPM_denom: 2.7737 IPM_ratio: 1.9953 E_P_f: 2.6536 E_Q_f: -2.8808 E_P_(f^2): 7.0583 E_Q_(f^2): 8.3283
+[5/30][3000/3166][3770] IPM_enum: 5.3817 IPM_denom: 2.7007 IPM_ratio: 1.9927 E_P_f: 2.8538 E_Q_f: -2.5279 E_P_(f^2): 8.1735 E_Q_(f^2): 6.4136
+[5/30][3100/3166][3790] IPM_enum: 5.3256 IPM_denom: 2.6715 IPM_ratio: 1.9935 E_P_f: 2.8262 E_Q_f: -2.4994 E_P_(f^2): 8.0050 E_Q_(f^2): 6.2684
+[6/30][100/3166][3824] IPM_enum: 5.4501 IPM_denom: 2.7376 IPM_ratio: 1.9908 E_P_f: 2.9626 E_Q_f: -2.4876 E_P_(f^2): 8.7904 E_Q_(f^2): 6.1989
+[6/30][200/3166][3844] IPM_enum: 5.2974 IPM_denom: 2.6510 IPM_ratio: 1.9983 E_P_f: 2.6649 E_Q_f: -2.6325 E_P_(f^2): 7.1152 E_Q_(f^2): 6.9403
+[6/30][300/3166][3864] IPM_enum: 5.2965 IPM_denom: 2.6507 IPM_ratio: 1.9982 E_P_f: 2.6664 E_Q_f: -2.6301 E_P_(f^2): 7.1233 E_Q_(f^2): 6.9290
+[6/30][400/3166][3884] IPM_enum: 5.2904 IPM_denom: 2.6478 IPM_ratio: 1.9980 E_P_f: 2.7196 E_Q_f: -2.5708 E_P_(f^2): 7.4043 E_Q_(f^2): 6.6175
+[6/30][500/3166][3904] IPM_enum: 5.5206 IPM_denom: 2.7635 IPM_ratio: 1.9977 E_P_f: 2.6685 E_Q_f: -2.8521 E_P_(f^2): 7.1286 E_Q_(f^2): 8.1447
+[6/30][600/3166][3924] IPM_enum: 5.2436 IPM_denom: 2.6370 IPM_ratio: 1.9884 E_P_f: 2.8742 E_Q_f: -2.3694 E_P_(f^2): 8.2764 E_Q_(f^2): 5.6314
+[6/30][700/3166][3944] IPM_enum: 5.1117 IPM_denom: 2.5591 IPM_ratio: 1.9975 E_P_f: 2.5219 E_Q_f: -2.5898 E_P_(f^2): 6.3766 E_Q_(f^2): 6.7209
+[6/30][800/3166][3964] IPM_enum: 5.3197 IPM_denom: 2.6634 IPM_ratio: 1.9974 E_P_f: 2.7173 E_Q_f: -2.6024 E_P_(f^2): 7.4031 E_Q_(f^2): 6.7842
+[6/30][900/3166][3984] IPM_enum: 5.1019 IPM_denom: 2.5552 IPM_ratio: 1.9967 E_P_f: 2.5801 E_Q_f: -2.5218 E_P_(f^2): 6.6860 E_Q_(f^2): 6.3718
+[6/30][1000/3166][4004] IPM_enum: 5.0480 IPM_denom: 2.5300 IPM_ratio: 1.9953 E_P_f: 2.6389 E_Q_f: -2.4092 E_P_(f^2): 6.9793 E_Q_(f^2): 5.8224
+[6/30][1100/3166][4024] IPM_enum: 5.1937 IPM_denom: 2.6012 IPM_ratio: 1.9967 E_P_f: 2.6578 E_Q_f: -2.5359 E_P_(f^2): 7.0896 E_Q_(f^2): 6.4424
+[6/30][1200/3166][4044] IPM_enum: 5.2540 IPM_denom: 2.6317 IPM_ratio: 1.9964 E_P_f: 2.6131 E_Q_f: -2.6409 E_P_(f^2): 6.8608 E_Q_(f^2): 6.9911
+[6/30][1300/3166][4064] IPM_enum: 5.1356 IPM_denom: 2.5718 IPM_ratio: 1.9969 E_P_f: 2.5154 E_Q_f: -2.6202 E_P_(f^2): 6.3471 E_Q_(f^2): 6.8811
+[6/30][1400/3166][4084] IPM_enum: 4.9537 IPM_denom: 2.4846 IPM_ratio: 1.9938 E_P_f: 2.4126 E_Q_f: -2.5412 E_P_(f^2): 5.8622 E_Q_(f^2): 6.4840
+[6/30][1500/3166][4104] IPM_enum: 5.5301 IPM_denom: 2.7699 IPM_ratio: 1.9965 E_P_f: 2.7858 E_Q_f: -2.7443 E_P_(f^2): 7.7871 E_Q_(f^2): 7.5578
+[6/30][1600/3166][4124] IPM_enum: 5.2871 IPM_denom: 2.6488 IPM_ratio: 1.9960 E_P_f: 2.7006 E_Q_f: -2.5865 E_P_(f^2): 7.3161 E_Q_(f^2): 6.7165
+[6/30][1700/3166][4144] IPM_enum: 5.3971 IPM_denom: 2.7211 IPM_ratio: 1.9834 E_P_f: 3.0030 E_Q_f: -2.3941 E_P_(f^2): 9.0491 E_Q_(f^2): 5.7601
+[6/30][1800/3166][4164] IPM_enum: 5.0741 IPM_denom: 2.6138 IPM_ratio: 1.9413 E_P_f: 1.9361 E_Q_f: -3.1379 E_P_(f^2): 3.7839 E_Q_(f^2): 9.8800
+[6/30][1900/3166][4184] IPM_enum: 5.2385 IPM_denom: 2.6308 IPM_ratio: 1.9912 E_P_f: 2.7846 E_Q_f: -2.4539 E_P_(f^2): 7.7953 E_Q_(f^2): 6.0464
+[6/30][2000/3166][4204] IPM_enum: 5.4091 IPM_denom: 2.7159 IPM_ratio: 1.9917 E_P_f: 2.8549 E_Q_f: -2.5542 E_P_(f^2): 8.1958 E_Q_(f^2): 6.5559
+[6/30][2100/3166][4224] IPM_enum: 5.2984 IPM_denom: 2.6536 IPM_ratio: 1.9967 E_P_f: 2.5631 E_Q_f: -2.7353 E_P_(f^2): 6.5877 E_Q_(f^2): 7.4951
+[6/30][2200/3166][4244] IPM_enum: 5.1020 IPM_denom: 2.5611 IPM_ratio: 1.9921 E_P_f: 2.3763 E_Q_f: -2.7257 E_P_(f^2): 5.6687 E_Q_(f^2): 7.4499
+[6/30][2300/3166][4264] IPM_enum: 5.0580 IPM_denom: 2.5387 IPM_ratio: 1.9924 E_P_f: 2.7224 E_Q_f: -2.3356 E_P_(f^2): 7.4277 E_Q_(f^2): 5.4624
+[6/30][2400/3166][4284] IPM_enum: 5.4081 IPM_denom: 2.7064 IPM_ratio: 1.9983 E_P_f: 2.7157 E_Q_f: -2.6925 E_P_(f^2): 7.3852 E_Q_(f^2): 7.2635
+[6/30][2500/3166][4304] IPM_enum: 5.4541 IPM_denom: 2.7325 IPM_ratio: 1.9960 E_P_f: 2.8364 E_Q_f: -2.6176 E_P_(f^2): 8.0517 E_Q_(f^2): 6.8812
+[6/30][2600/3166][4324] IPM_enum: 5.2519 IPM_denom: 2.6289 IPM_ratio: 1.9978 E_P_f: 2.5503 E_Q_f: -2.7016 E_P_(f^2): 6.5122 E_Q_(f^2): 7.3099
+[6/30][2700/3166][4344] IPM_enum: 5.2186 IPM_denom: 2.6130 IPM_ratio: 1.9972 E_P_f: 2.7036 E_Q_f: -2.5150 E_P_(f^2): 7.3227 E_Q_(f^2): 6.3332
+[6/30][2800/3166][4364] IPM_enum: 5.1517 IPM_denom: 2.5843 IPM_ratio: 1.9935 E_P_f: 2.7509 E_Q_f: -2.4008 E_P_(f^2): 7.5796 E_Q_(f^2): 5.7776
+[6/30][2900/3166][4384] IPM_enum: 5.0956 IPM_denom: 2.5497 IPM_ratio: 1.9985 E_P_f: 2.5148 E_Q_f: -2.5808 E_P_(f^2): 6.3320 E_Q_(f^2): 6.6700
+[6/30][3000/3166][4404] IPM_enum: 5.2052 IPM_denom: 2.6056 IPM_ratio: 1.9977 E_P_f: 2.5277 E_Q_f: -2.6775 E_P_(f^2): 6.3984 E_Q_(f^2): 7.1801
+[6/30][3100/3166][4424] IPM_enum: 5.0937 IPM_denom: 2.5545 IPM_ratio: 1.9940 E_P_f: 2.7221 E_Q_f: -2.3716 E_P_(f^2): 7.4154 E_Q_(f^2): 5.6356
+[7/30][100/3166][4458] IPM_enum: 4.8604 IPM_denom: 2.4318 IPM_ratio: 1.9986 E_P_f: 2.4476 E_Q_f: -2.4127 E_P_(f^2): 5.9993 E_Q_(f^2): 5.8285
+[7/30][200/3166][4478] IPM_enum: 4.9534 IPM_denom: 2.4803 IPM_ratio: 1.9971 E_P_f: 2.3977 E_Q_f: -2.5557 E_P_(f^2): 5.7629 E_Q_(f^2): 6.5413
+[7/30][300/3166][4498] IPM_enum: 4.9158 IPM_denom: 2.4627 IPM_ratio: 1.9961 E_P_f: 2.3479 E_Q_f: -2.5679 E_P_(f^2): 5.5256 E_Q_(f^2): 6.6046
+[7/30][400/3166][4518] IPM_enum: 4.8410 IPM_denom: 2.4235 IPM_ratio: 1.9975 E_P_f: 2.3644 E_Q_f: -2.4766 E_P_(f^2): 5.6064 E_Q_(f^2): 6.1401
+[7/30][500/3166][4538] IPM_enum: 5.0926 IPM_denom: 2.5488 IPM_ratio: 1.9981 E_P_f: 2.5788 E_Q_f: -2.5138 E_P_(f^2): 6.6621 E_Q_(f^2): 6.3305
+[7/30][600/3166][4558] IPM_enum: 4.9096 IPM_denom: 2.4573 IPM_ratio: 1.9979 E_P_f: 2.4198 E_Q_f: -2.4898 E_P_(f^2): 5.8695 E_Q_(f^2): 6.2076
+[7/30][700/3166][4578] IPM_enum: 5.1586 IPM_denom: 2.5830 IPM_ratio: 1.9972 E_P_f: 2.5605 E_Q_f: -2.5981 E_P_(f^2): 6.5757 E_Q_(f^2): 6.7676
+[7/30][800/3166][4598] IPM_enum: 5.2584 IPM_denom: 2.6317 IPM_ratio: 1.9981 E_P_f: 2.5988 E_Q_f: -2.6596 E_P_(f^2): 6.7688 E_Q_(f^2): 7.0826
+[7/30][900/3166][4618] IPM_enum: 5.4724 IPM_denom: 2.7442 IPM_ratio: 1.9941 E_P_f: 2.5617 E_Q_f: -2.9107 E_P_(f^2): 6.5770 E_Q_(f^2): 8.4846
+[7/30][1000/3166][4638] IPM_enum: 4.9537 IPM_denom: 2.4811 IPM_ratio: 1.9966 E_P_f: 2.3742 E_Q_f: -2.5795 E_P_(f^2): 5.6505 E_Q_(f^2): 6.6610
+[7/30][1100/3166][4658] IPM_enum: 4.8633 IPM_denom: 2.4427 IPM_ratio: 1.9909 E_P_f: 2.6318 E_Q_f: -2.2315 E_P_(f^2): 6.9357 E_Q_(f^2): 4.9983
+[7/30][1200/3166][4678] IPM_enum: 4.4717 IPM_denom: 2.2398 IPM_ratio: 1.9965 E_P_f: 2.2812 E_Q_f: -2.1905 E_P_(f^2): 5.2112 E_Q_(f^2): 4.8222
+[7/30][1300/3166][4698] IPM_enum: 5.0537 IPM_denom: 2.5356 IPM_ratio: 1.9931 E_P_f: 2.3690 E_Q_f: -2.6847 E_P_(f^2): 5.6384 E_Q_(f^2): 7.2204
+[7/30][1400/3166][4718] IPM_enum: 4.8899 IPM_denom: 2.4712 IPM_ratio: 1.9788 E_P_f: 2.7822 E_Q_f: -2.1077 E_P_(f^2): 7.7596 E_Q_(f^2): 4.4539
+[7/30][1500/3166][4738] IPM_enum: 5.1699 IPM_denom: 2.5969 IPM_ratio: 1.9908 E_P_f: 2.3997 E_Q_f: -2.7702 E_P_(f^2): 5.7868 E_Q_(f^2): 7.7010
+[7/30][1600/3166][4758] IPM_enum: 5.1056 IPM_denom: 2.5599 IPM_ratio: 1.9945 E_P_f: 2.6747 E_Q_f: -2.4309 E_P_(f^2): 7.1761 E_Q_(f^2): 5.9301
+[7/30][1700/3166][4778] IPM_enum: 4.8154 IPM_denom: 2.4190 IPM_ratio: 1.9907 E_P_f: 2.5810 E_Q_f: -2.2344 E_P_(f^2): 6.6941 E_Q_(f^2): 5.0088
+[7/30][1800/3166][4798] IPM_enum: 4.9262 IPM_denom: 2.4782 IPM_ratio: 1.9878 E_P_f: 2.6632 E_Q_f: -2.2629 E_P_(f^2): 7.1446 E_Q_(f^2): 5.1388
+[7/30][1900/3166][4818] IPM_enum: 5.1398 IPM_denom: 2.5779 IPM_ratio: 1.9938 E_P_f: 2.7151 E_Q_f: -2.4246 E_P_(f^2): 7.3956 E_Q_(f^2): 5.8950
+[7/30][2000/3166][4838] IPM_enum: 5.3391 IPM_denom: 2.6731 IPM_ratio: 1.9973 E_P_f: 2.7625 E_Q_f: -2.5767 E_P_(f^2): 7.6431 E_Q_(f^2): 6.6483
+[7/30][2100/3166][4858] IPM_enum: 5.1064 IPM_denom: 2.5562 IPM_ratio: 1.9977 E_P_f: 2.5739 E_Q_f: -2.5325 E_P_(f^2): 6.6398 E_Q_(f^2): 6.4283
+[7/30][2200/3166][4878] IPM_enum: 5.1133 IPM_denom: 2.5590 IPM_ratio: 1.9981 E_P_f: 2.5245 E_Q_f: -2.5888 E_P_(f^2): 6.3860 E_Q_(f^2): 6.7112
+[7/30][2300/3166][4898] IPM_enum: 5.1924 IPM_denom: 2.6006 IPM_ratio: 1.9966 E_P_f: 2.4998 E_Q_f: -2.6926 E_P_(f^2): 6.2680 E_Q_(f^2): 7.2580
+[7/30][2400/3166][4918] IPM_enum: 5.1417 IPM_denom: 2.5752 IPM_ratio: 1.9967 E_P_f: 2.4845 E_Q_f: -2.6573 E_P_(f^2): 6.1827 E_Q_(f^2): 7.0803
+[7/30][2500/3166][4938] IPM_enum: 4.8600 IPM_denom: 2.4326 IPM_ratio: 1.9979 E_P_f: 2.4256 E_Q_f: -2.4345 E_P_(f^2): 5.9020 E_Q_(f^2): 5.9329
+[7/30][2600/3166][4958] IPM_enum: 4.7615 IPM_denom: 2.3928 IPM_ratio: 1.9900 E_P_f: 2.6007 E_Q_f: -2.1608 E_P_(f^2): 6.7742 E_Q_(f^2): 4.6764
+[7/30][2700/3166][4978] IPM_enum: 4.7473 IPM_denom: 2.3761 IPM_ratio: 1.9980 E_P_f: 2.3671 E_Q_f: -2.3802 E_P_(f^2): 5.6180 E_Q_(f^2): 5.6736
+[7/30][2800/3166][4998] IPM_enum: 5.4902 IPM_denom: 2.7512 IPM_ratio: 1.9955 E_P_f: 2.8661 E_Q_f: -2.6241 E_P_(f^2): 8.2401 E_Q_(f^2): 6.8983
+[7/30][2900/3166][5018] IPM_enum: 5.0904 IPM_denom: 2.5500 IPM_ratio: 1.9962 E_P_f: 2.5994 E_Q_f: -2.4910 E_P_(f^2): 6.7839 E_Q_(f^2): 6.2215
+[7/30][3000/3166][5038] IPM_enum: 4.4641 IPM_denom: 2.2600 IPM_ratio: 1.9752 E_P_f: 2.5621 E_Q_f: -1.9020 E_P_(f^2): 6.5840 E_Q_(f^2): 3.6315
+[7/30][3100/3166][5058] IPM_enum: 5.0123 IPM_denom: 2.5145 IPM_ratio: 1.9934 E_P_f: 2.3545 E_Q_f: -2.6578 E_P_(f^2): 5.5631 E_Q_(f^2): 7.0822
+[8/30][100/3166][5092] IPM_enum: 4.7991 IPM_denom: 2.4059 IPM_ratio: 1.9947 E_P_f: 2.2847 E_Q_f: -2.5144 E_P_(f^2): 5.2429 E_Q_(f^2): 6.3339
+[8/30][200/3166][5112] IPM_enum: 4.8085 IPM_denom: 2.4121 IPM_ratio: 1.9935 E_P_f: 2.4014 E_Q_f: -2.4071 E_P_(f^2): 5.8123 E_Q_(f^2): 5.8238
+[8/30][300/3166][5132] IPM_enum: 4.9217 IPM_denom: 2.4666 IPM_ratio: 1.9954 E_P_f: 2.3560 E_Q_f: -2.5657 E_P_(f^2): 5.5682 E_Q_(f^2): 6.5997
+[8/30][400/3166][5152] IPM_enum: 4.9648 IPM_denom: 2.4890 IPM_ratio: 1.9947 E_P_f: 2.3812 E_Q_f: -2.5836 E_P_(f^2): 5.6948 E_Q_(f^2): 6.6952
+[8/30][500/3166][5172] IPM_enum: 5.0906 IPM_denom: 2.5668 IPM_ratio: 1.9833 E_P_f: 2.2569 E_Q_f: -2.8338 E_P_(f^2): 5.1315 E_Q_(f^2): 8.0452
+[8/30][600/3166][5192] IPM_enum: 4.9080 IPM_denom: 2.4607 IPM_ratio: 1.9946 E_P_f: 2.5529 E_Q_f: -2.3550 E_P_(f^2): 6.5463 E_Q_(f^2): 5.5633
+[8/30][700/3166][5212] IPM_enum: 5.3922 IPM_denom: 2.7149 IPM_ratio: 1.9861 E_P_f: 2.4036 E_Q_f: -2.9886 E_P_(f^2): 5.7974 E_Q_(f^2): 8.9439
+[8/30][800/3166][5232] IPM_enum: 4.9621 IPM_denom: 2.4894 IPM_ratio: 1.9933 E_P_f: 2.4347 E_Q_f: -2.5274 E_P_(f^2): 5.9946 E_Q_(f^2): 6.3998
+[8/30][900/3166][5252] IPM_enum: 4.5294 IPM_denom: 2.2968 IPM_ratio: 1.9721 E_P_f: 2.5949 E_Q_f: -1.9345 E_P_(f^2): 6.7810 E_Q_(f^2): 3.7696
+[8/30][1000/3166][5272] IPM_enum: 4.6310 IPM_denom: 2.3232 IPM_ratio: 1.9934 E_P_f: 2.3441 E_Q_f: -2.2869 E_P_(f^2): 5.5368 E_Q_(f^2): 5.2576
+[8/30][1100/3166][5292] IPM_enum: 4.6626 IPM_denom: 2.3521 IPM_ratio: 1.9823 E_P_f: 2.0783 E_Q_f: -2.5844 E_P_(f^2): 4.3653 E_Q_(f^2): 6.6992
+[8/30][1200/3166][5312] IPM_enum: 4.7961 IPM_denom: 2.4045 IPM_ratio: 1.9946 E_P_f: 2.4758 E_Q_f: -2.3203 E_P_(f^2): 6.1589 E_Q_(f^2): 5.4047
+[8/30][1300/3166][5332] IPM_enum: 5.0117 IPM_denom: 2.5100 IPM_ratio: 1.9967 E_P_f: 2.4859 E_Q_f: -2.5258 E_P_(f^2): 6.2028 E_Q_(f^2): 6.3977
+[8/30][1400/3166][5352] IPM_enum: 5.0090 IPM_denom: 2.5139 IPM_ratio: 1.9925 E_P_f: 2.6236 E_Q_f: -2.3854 E_P_(f^2): 6.9305 E_Q_(f^2): 5.7091
+[8/30][1500/3166][5372] IPM_enum: 4.8854 IPM_denom: 2.4608 IPM_ratio: 1.9853 E_P_f: 2.6801 E_Q_f: -2.2053 E_P_(f^2): 7.2193 E_Q_(f^2): 4.8919
+[8/30][1600/3166][5392] IPM_enum: 4.6983 IPM_denom: 2.3826 IPM_ratio: 1.9720 E_P_f: 2.0035 E_Q_f: -2.6949 E_P_(f^2): 4.0636 E_Q_(f^2): 7.2898
+[8/30][1700/3166][5412] IPM_enum: 4.7389 IPM_denom: 2.4238 IPM_ratio: 1.9551 E_P_f: 2.8250 E_Q_f: -1.9139 E_P_(f^2): 8.0426 E_Q_(f^2): 3.7075
+[8/30][1800/3166][5432] IPM_enum: 4.9178 IPM_denom: 2.4717 IPM_ratio: 1.9896 E_P_f: 2.6145 E_Q_f: -2.3033 E_P_(f^2): 6.8895 E_Q_(f^2): 5.3295
+[8/30][1900/3166][5452] IPM_enum: 4.6219 IPM_denom: 2.3259 IPM_ratio: 1.9871 E_P_f: 2.4864 E_Q_f: -2.1354 E_P_(f^2): 6.2301 E_Q_(f^2): 4.5900
+[8/30][2000/3166][5472] IPM_enum: 4.5334 IPM_denom: 2.2883 IPM_ratio: 1.9812 E_P_f: 2.0185 E_Q_f: -2.5149 E_P_(f^2): 4.1084 E_Q_(f^2): 6.3639
+[8/30][2100/3166][5492] IPM_enum: 4.5829 IPM_denom: 2.3056 IPM_ratio: 1.9878 E_P_f: 2.1207 E_Q_f: -2.4622 E_P_(f^2): 4.5433 E_Q_(f^2): 6.0879
+[8/30][2200/3166][5512] IPM_enum: 4.6028 IPM_denom: 2.3760 IPM_ratio: 1.9372 E_P_f: 2.8480 E_Q_f: -1.7548 E_P_(f^2): 8.1697 E_Q_(f^2): 3.1207
+[8/30][2300/3166][5532] IPM_enum: 5.0586 IPM_denom: 2.5621 IPM_ratio: 1.9744 E_P_f: 2.8943 E_Q_f: -2.1643 E_P_(f^2): 8.4177 E_Q_(f^2): 4.7108
+[8/30][2400/3166][5552] IPM_enum: 4.7050 IPM_denom: 2.3600 IPM_ratio: 1.9937 E_P_f: 2.3497 E_Q_f: -2.3554 E_P_(f^2): 5.5578 E_Q_(f^2): 5.5814
+[8/30][2500/3166][5572] IPM_enum: 4.7769 IPM_denom: 2.3939 IPM_ratio: 1.9954 E_P_f: 2.4450 E_Q_f: -2.3319 E_P_(f^2): 6.0022 E_Q_(f^2): 5.4598
+[8/30][2600/3166][5592] IPM_enum: 4.4902 IPM_denom: 2.2526 IPM_ratio: 1.9934 E_P_f: 2.2818 E_Q_f: -2.2084 E_P_(f^2): 5.2415 E_Q_(f^2): 4.9067
+[8/30][2700/3166][5612] IPM_enum: 4.5339 IPM_denom: 2.2736 IPM_ratio: 1.9941 E_P_f: 2.2828 E_Q_f: -2.2511 E_P_(f^2): 5.2460 E_Q_(f^2): 5.0925
+[8/30][2800/3166][5632] IPM_enum: 4.5163 IPM_denom: 2.2660 IPM_ratio: 1.9931 E_P_f: 2.3540 E_Q_f: -2.1623 E_P_(f^2): 5.5713 E_Q_(f^2): 4.6981
+[8/30][2900/3166][5652] IPM_enum: 4.8541 IPM_denom: 2.4333 IPM_ratio: 1.9949 E_P_f: 2.4635 E_Q_f: -2.3905 E_P_(f^2): 6.1058 E_Q_(f^2): 5.7359
+[8/30][3000/3166][5672] IPM_enum: 4.4050 IPM_denom: 2.2116 IPM_ratio: 1.9918 E_P_f: 2.0666 E_Q_f: -2.3384 E_P_(f^2): 4.2962 E_Q_(f^2): 5.4860
+[8/30][3100/3166][5692] IPM_enum: 4.8176 IPM_denom: 2.4187 IPM_ratio: 1.9918 E_P_f: 2.5549 E_Q_f: -2.2627 E_P_(f^2): 6.5596 E_Q_(f^2): 5.1405
+[9/30][100/3166][5726] IPM_enum: 4.6369 IPM_denom: 2.3314 IPM_ratio: 1.9889 E_P_f: 2.5257 E_Q_f: -2.1112 E_P_(f^2): 6.3970 E_Q_(f^2): 4.4736
+[9/30][200/3166][5746] IPM_enum: 4.7132 IPM_denom: 2.3610 IPM_ratio: 1.9963 E_P_f: 2.3823 E_Q_f: -2.3309 E_P_(f^2): 5.6986 E_Q_(f^2): 5.4497
+[9/30][300/3166][5766] IPM_enum: 4.6539 IPM_denom: 2.3330 IPM_ratio: 1.9948 E_P_f: 2.2322 E_Q_f: -2.4216 E_P_(f^2): 5.0060 E_Q_(f^2): 5.8800
+[9/30][400/3166][5786] IPM_enum: 4.3577 IPM_denom: 2.1863 IPM_ratio: 1.9932 E_P_f: 2.2926 E_Q_f: -2.0651 E_P_(f^2): 5.2832 E_Q_(f^2): 4.2769
+[9/30][500/3166][5806] IPM_enum: 4.9937 IPM_denom: 2.5451 IPM_ratio: 1.9621 E_P_f: 2.0472 E_Q_f: -2.9465 E_P_(f^2): 4.2386 E_Q_(f^2): 8.7165
+[9/30][600/3166][5826] IPM_enum: 4.6386 IPM_denom: 2.3255 IPM_ratio: 1.9947 E_P_f: 2.2368 E_Q_f: -2.4018 E_P_(f^2): 5.0314 E_Q_(f^2): 5.7845
+[9/30][700/3166][5846] IPM_enum: 4.4745 IPM_denom: 2.2917 IPM_ratio: 1.9524 E_P_f: 2.6998 E_Q_f: -1.7747 E_P_(f^2): 7.3343 E_Q_(f^2): 3.1697
+[9/30][800/3166][5866] IPM_enum: 4.5504 IPM_denom: 2.2822 IPM_ratio: 1.9939 E_P_f: 2.1685 E_Q_f: -2.3819 E_P_(f^2): 4.7301 E_Q_(f^2): 5.6864
+[9/30][900/3166][5886] IPM_enum: 4.5734 IPM_denom: 2.2912 IPM_ratio: 1.9961 E_P_f: 2.3367 E_Q_f: -2.2367 E_P_(f^2): 5.4764 E_Q_(f^2): 5.0226
+[9/30][1000/3166][5906] IPM_enum: 4.7132 IPM_denom: 2.3657 IPM_ratio: 1.9923 E_P_f: 2.4803 E_Q_f: -2.2330 E_P_(f^2): 6.1822 E_Q_(f^2): 5.0111
+[9/30][1100/3166][5926] IPM_enum: 4.3685 IPM_denom: 2.1921 IPM_ratio: 1.9928 E_P_f: 2.3257 E_Q_f: -2.0428 E_P_(f^2): 5.4242 E_Q_(f^2): 4.1866
+[9/30][1200/3166][5946] IPM_enum: 4.8399 IPM_denom: 2.4896 IPM_ratio: 1.9441 E_P_f: 2.9764 E_Q_f: -1.8635 E_P_(f^2): 8.8916 E_Q_(f^2): 3.5043
+[9/30][1300/3166][5966] IPM_enum: 4.2681 IPM_denom: 2.1595 IPM_ratio: 1.9765 E_P_f: 2.4256 E_Q_f: -1.8425 E_P_(f^2): 5.9093 E_Q_(f^2): 3.4174
+[9/30][1400/3166][5986] IPM_enum: 4.1387 IPM_denom: 2.1065 IPM_ratio: 1.9647 E_P_f: 2.4208 E_Q_f: -1.7179 E_P_(f^2): 5.9019 E_Q_(f^2): 2.9729
+[9/30][1500/3166][6006] IPM_enum: 4.3201 IPM_denom: 2.1899 IPM_ratio: 1.9727 E_P_f: 2.4676 E_Q_f: -1.8525 E_P_(f^2): 6.1350 E_Q_(f^2): 3.4563
+[9/30][1600/3166][6026] IPM_enum: 4.3232 IPM_denom: 2.1925 IPM_ratio: 1.9719 E_P_f: 2.4625 E_Q_f: -1.8607 E_P_(f^2): 6.1096 E_Q_(f^2): 3.5043
+[9/30][1700/3166][6046] IPM_enum: 4.4620 IPM_denom: 2.2435 IPM_ratio: 1.9889 E_P_f: 2.3724 E_Q_f: -2.0896 E_P_(f^2): 5.6775 E_Q_(f^2): 4.3889
+[9/30][1800/3166][6066] IPM_enum: 4.2269 IPM_denom: 2.1550 IPM_ratio: 1.9615 E_P_f: 2.4780 E_Q_f: -1.7489 E_P_(f^2): 6.1856 E_Q_(f^2): 3.1021
+[9/30][1900/3166][6086] IPM_enum: 4.4770 IPM_denom: 2.2539 IPM_ratio: 1.9863 E_P_f: 2.4024 E_Q_f: -2.0746 E_P_(f^2): 5.8249 E_Q_(f^2): 4.3350
+[9/30][2000/3166][6106] IPM_enum: 4.8475 IPM_denom: 2.4497 IPM_ratio: 1.9788 E_P_f: 2.7296 E_Q_f: -2.1179 E_P_(f^2): 7.4959 E_Q_(f^2): 4.5065
+[9/30][2100/3166][6126] IPM_enum: 4.6289 IPM_denom: 2.3538 IPM_ratio: 1.9665 E_P_f: 1.9251 E_Q_f: -2.7038 E_P_(f^2): 3.7403 E_Q_(f^2): 7.3405
+[9/30][2200/3166][6146] IPM_enum: 4.6722 IPM_denom: 2.3448 IPM_ratio: 1.9926 E_P_f: 2.3634 E_Q_f: -2.3088 E_P_(f^2): 5.6455 E_Q_(f^2): 5.3511
+[9/30][2300/3166][6166] IPM_enum: 4.5771 IPM_denom: 2.2980 IPM_ratio: 1.9918 E_P_f: 2.3946 E_Q_f: -2.1825 E_P_(f^2): 5.7741 E_Q_(f^2): 4.7878
+[9/30][2400/3166][6186] IPM_enum: 4.6312 IPM_denom: 2.3236 IPM_ratio: 1.9931 E_P_f: 2.4143 E_Q_f: -2.2169 E_P_(f^2): 5.8540 E_Q_(f^2): 4.9441
+[9/30][2500/3166][6206] IPM_enum: 4.6552 IPM_denom: 2.3434 IPM_ratio: 1.9865 E_P_f: 2.5248 E_Q_f: -2.1303 E_P_(f^2): 6.4166 E_Q_(f^2): 4.5669
+[9/30][2600/3166][6226] IPM_enum: 4.3397 IPM_denom: 2.1835 IPM_ratio: 1.9875 E_P_f: 2.0120 E_Q_f: -2.3277 E_P_(f^2): 4.0860 E_Q_(f^2): 5.4496
+[9/30][2700/3166][6246] IPM_enum: 4.6174 IPM_denom: 2.3214 IPM_ratio: 1.9891 E_P_f: 2.4451 E_Q_f: -2.1723 E_P_(f^2): 6.0299 E_Q_(f^2): 4.7480
+[9/30][2800/3166][6266] IPM_enum: 4.4326 IPM_denom: 2.2228 IPM_ratio: 1.9941 E_P_f: 2.2361 E_Q_f: -2.1965 E_P_(f^2): 5.0380 E_Q_(f^2): 4.8437
+[9/30][2900/3166][6286] IPM_enum: 4.3625 IPM_denom: 2.1890 IPM_ratio: 1.9930 E_P_f: 2.0862 E_Q_f: -2.2763 E_P_(f^2): 4.3832 E_Q_(f^2): 5.1999
+[9/30][3000/3166][6306] IPM_enum: 4.5095 IPM_denom: 2.2955 IPM_ratio: 1.9645 E_P_f: 2.6457 E_Q_f: -1.8638 E_P_(f^2): 7.0240 E_Q_(f^2): 3.5150
+[9/30][3100/3166][6326] IPM_enum: 4.5368 IPM_denom: 2.2760 IPM_ratio: 1.9934 E_P_f: 2.3770 E_Q_f: -2.1598 E_P_(f^2): 5.6765 E_Q_(f^2): 4.6835
+[10/30][100/3166][6360] IPM_enum: 4.8887 IPM_denom: 2.4486 IPM_ratio: 1.9965 E_P_f: 2.4886 E_Q_f: -2.4001 E_P_(f^2): 6.2165 E_Q_(f^2): 5.7748
+[10/30][200/3166][6380] IPM_enum: 4.3122 IPM_denom: 2.1624 IPM_ratio: 1.9941 E_P_f: 2.0613 E_Q_f: -2.2509 E_P_(f^2): 4.2727 E_Q_(f^2): 5.0795
+[10/30][300/3166][6400] IPM_enum: 4.6548 IPM_denom: 2.3311 IPM_ratio: 1.9969 E_P_f: 2.2882 E_Q_f: -2.3667 E_P_(f^2): 5.2557 E_Q_(f^2): 5.6120
+[10/30][400/3166][6420] IPM_enum: 4.6366 IPM_denom: 2.3237 IPM_ratio: 1.9953 E_P_f: 2.3868 E_Q_f: -2.2497 E_P_(f^2): 5.7238 E_Q_(f^2): 5.0758
+[10/30][500/3166][6440] IPM_enum: 4.5206 IPM_denom: 2.2679 IPM_ratio: 1.9933 E_P_f: 2.1368 E_Q_f: -2.3838 E_P_(f^2): 4.5847 E_Q_(f^2): 5.7021
+[10/30][600/3166][6460] IPM_enum: 4.6211 IPM_denom: 2.3196 IPM_ratio: 1.9922 E_P_f: 2.1610 E_Q_f: -2.4600 E_P_(f^2): 4.6895 E_Q_(f^2): 6.0714
+[10/30][700/3166][6480] IPM_enum: 4.5335 IPM_denom: 2.2718 IPM_ratio: 1.9956 E_P_f: 2.3045 E_Q_f: -2.2290 E_P_(f^2): 5.3344 E_Q_(f^2): 4.9878
+[10/30][800/3166][6500] IPM_enum: 4.2635 IPM_denom: 2.1452 IPM_ratio: 1.9875 E_P_f: 1.9875 E_Q_f: -2.2760 E_P_(f^2): 4.0018 E_Q_(f^2): 5.2016
+[10/30][900/3166][6520] IPM_enum: 4.8363 IPM_denom: 2.4225 IPM_ratio: 1.9964 E_P_f: 2.4199 E_Q_f: -2.4164 E_P_(f^2): 5.8793 E_Q_(f^2): 5.8576
+[10/30][1000/3166][6540] IPM_enum: 4.0905 IPM_denom: 2.0545 IPM_ratio: 1.9910 E_P_f: 2.1230 E_Q_f: -1.9674 E_P_(f^2): 4.5502 E_Q_(f^2): 3.8915
+[10/30][1100/3166][6560] IPM_enum: 4.7093 IPM_denom: 2.3762 IPM_ratio: 1.9819 E_P_f: 2.0779 E_Q_f: -2.6315 E_P_(f^2): 4.3467 E_Q_(f^2): 6.9459
+[10/30][1200/3166][6580] IPM_enum: 4.6764 IPM_denom: 2.3587 IPM_ratio: 1.9826 E_P_f: 2.5839 E_Q_f: -2.0925 E_P_(f^2): 6.7089 E_Q_(f^2): 4.4177
+[10/30][1300/3166][6600] IPM_enum: 4.6963 IPM_denom: 2.3552 IPM_ratio: 1.9940 E_P_f: 2.4641 E_Q_f: -2.2322 E_P_(f^2): 6.1003 E_Q_(f^2): 4.9932
+[10/30][1400/3166][6620] IPM_enum: 4.0815 IPM_denom: 2.0490 IPM_ratio: 1.9919 E_P_f: 1.9459 E_Q_f: -2.1356 E_P_(f^2): 3.8114 E_Q_(f^2): 4.5855
+[10/30][1500/3166][6640] IPM_enum: 4.5620 IPM_denom: 2.2860 IPM_ratio: 1.9956 E_P_f: 2.2338 E_Q_f: -2.3282 E_P_(f^2): 5.0147 E_Q_(f^2): 5.4373
+[10/30][1600/3166][6660] IPM_enum: 4.4426 IPM_denom: 2.2417 IPM_ratio: 1.9818 E_P_f: 1.9605 E_Q_f: -2.4821 E_P_(f^2): 3.8737 E_Q_(f^2): 6.1764
+[10/30][1700/3166][6680] IPM_enum: 4.4748 IPM_denom: 2.2664 IPM_ratio: 1.9744 E_P_f: 2.5675 E_Q_f: -1.9073 E_P_(f^2): 6.6170 E_Q_(f^2): 3.6564
+[10/30][1800/3166][6700] IPM_enum: 4.8021 IPM_denom: 2.4094 IPM_ratio: 1.9930 E_P_f: 2.5011 E_Q_f: -2.3010 E_P_(f^2): 6.2974 E_Q_(f^2): 5.3134
+[10/30][1900/3166][6720] IPM_enum: 4.2761 IPM_denom: 2.1659 IPM_ratio: 1.9742 E_P_f: 2.4486 E_Q_f: -1.8275 E_P_(f^2): 6.0212 E_Q_(f^2): 3.3614
+[10/30][2000/3166][6740] IPM_enum: 4.6807 IPM_denom: 2.3556 IPM_ratio: 1.9871 E_P_f: 2.5317 E_Q_f: -2.1489 E_P_(f^2): 6.4383 E_Q_(f^2): 4.6592
+[10/30][2100/3166][6760] IPM_enum: 4.2028 IPM_denom: 2.1112 IPM_ratio: 1.9907 E_P_f: 2.0274 E_Q_f: -2.1754 E_P_(f^2): 4.1649 E_Q_(f^2): 4.7498
+[10/30][2200/3166][6780] IPM_enum: 4.1625 IPM_denom: 2.1102 IPM_ratio: 1.9725 E_P_f: 2.3875 E_Q_f: -1.7750 E_P_(f^2): 5.7289 E_Q_(f^2): 3.1771
+[10/30][2300/3166][6800] IPM_enum: 4.6404 IPM_denom: 2.3287 IPM_ratio: 1.9927 E_P_f: 2.4295 E_Q_f: -2.2110 E_P_(f^2): 5.9365 E_Q_(f^2): 4.9092
+[10/30][2400/3166][6820] IPM_enum: 4.3737 IPM_denom: 2.1953 IPM_ratio: 1.9923 E_P_f: 2.2794 E_Q_f: -2.0943 E_P_(f^2): 5.2307 E_Q_(f^2): 4.4077
+[10/30][2500/3166][6840] IPM_enum: 4.1453 IPM_denom: 2.1056 IPM_ratio: 1.9687 E_P_f: 2.4100 E_Q_f: -1.7353 E_P_(f^2): 5.8380 E_Q_(f^2): 3.0288
+[10/30][2600/3166][6860] IPM_enum: 4.2438 IPM_denom: 2.1382 IPM_ratio: 1.9847 E_P_f: 1.9103 E_Q_f: -2.3334 E_P_(f^2): 3.6824 E_Q_(f^2): 5.4616
+[10/30][2700/3166][6880] IPM_enum: 4.6196 IPM_denom: 2.3158 IPM_ratio: 1.9948 E_P_f: 2.3546 E_Q_f: -2.2649 E_P_(f^2): 5.5698 E_Q_(f^2): 5.1565
+[10/30][2800/3166][6900] IPM_enum: 4.7375 IPM_denom: 2.4003 IPM_ratio: 1.9737 E_P_f: 2.0310 E_Q_f: -2.7064 E_P_(f^2): 4.1721 E_Q_(f^2): 7.3506
+[10/30][2900/3166][6920] IPM_enum: 4.6323 IPM_denom: 2.3382 IPM_ratio: 1.9811 E_P_f: 2.5852 E_Q_f: -2.0471 E_P_(f^2): 6.7189 E_Q_(f^2): 4.2159
+[10/30][3000/3166][6940] IPM_enum: 4.6668 IPM_denom: 2.3618 IPM_ratio: 1.9760 E_P_f: 2.0239 E_Q_f: -2.6429 E_P_(f^2): 4.1424 E_Q_(f^2): 7.0139
+[10/30][3100/3166][6960] IPM_enum: 4.4151 IPM_denom: 2.2231 IPM_ratio: 1.9860 E_P_f: 2.3413 E_Q_f: -2.0738 E_P_(f^2): 5.5401 E_Q_(f^2): 4.3442
+[11/30][100/3166][6994] IPM_enum: 4.1749 IPM_denom: 2.0944 IPM_ratio: 1.9933 E_P_f: 2.1259 E_Q_f: -2.0490 E_P_(f^2): 4.5531 E_Q_(f^2): 4.2202
+[11/30][200/3166][7014] IPM_enum: 4.1553 IPM_denom: 2.0868 IPM_ratio: 1.9912 E_P_f: 1.9609 E_Q_f: -2.1944 E_P_(f^2): 3.8759 E_Q_(f^2): 4.8336
+[11/30][300/3166][7034] IPM_enum: 4.6080 IPM_denom: 2.3103 IPM_ratio: 1.9945 E_P_f: 2.3519 E_Q_f: -2.2562 E_P_(f^2): 5.5649 E_Q_(f^2): 5.1103
+[11/30][400/3166][7054] IPM_enum: 4.3670 IPM_denom: 2.2075 IPM_ratio: 1.9783 E_P_f: 1.9241 E_Q_f: -2.4428 E_P_(f^2): 3.7452 E_Q_(f^2): 6.0006
+[11/30][500/3166][7074] IPM_enum: 4.6609 IPM_denom: 2.3388 IPM_ratio: 1.9929 E_P_f: 2.4123 E_Q_f: -2.2486 E_P_(f^2): 5.8664 E_Q_(f^2): 5.0732
+[11/30][600/3166][7094] IPM_enum: 4.1594 IPM_denom: 2.0918 IPM_ratio: 1.9884 E_P_f: 2.2315 E_Q_f: -1.9279 E_P_(f^2): 5.0234 E_Q_(f^2): 3.7280
+[11/30][700/3166][7114] IPM_enum: 4.4618 IPM_denom: 2.2392 IPM_ratio: 1.9926 E_P_f: 2.2884 E_Q_f: -2.1734 E_P_(f^2): 5.2814 E_Q_(f^2): 4.7467
+[11/30][800/3166][7134] IPM_enum: 4.4712 IPM_denom: 2.2481 IPM_ratio: 1.9889 E_P_f: 2.3954 E_Q_f: -2.0758 E_P_(f^2): 5.7728 E_Q_(f^2): 4.3351
+[11/30][900/3166][7154] IPM_enum: 3.8722 IPM_denom: 1.9895 IPM_ratio: 1.9464 E_P_f: 2.3506 E_Q_f: -1.5216 E_P_(f^2): 5.5761 E_Q_(f^2): 2.3398
+[11/30][1000/3166][7174] IPM_enum: 3.8394 IPM_denom: 2.0312 IPM_ratio: 1.8903 E_P_f: 2.5497 E_Q_f: -1.2897 E_P_(f^2): 6.5501 E_Q_(f^2): 1.7011
+[11/30][1100/3166][7194] IPM_enum: 4.2421 IPM_denom: 2.1316 IPM_ratio: 1.9901 E_P_f: 2.2286 E_Q_f: -2.0135 E_P_(f^2): 5.0124 E_Q_(f^2): 4.0752
+[11/30][1200/3166][7214] IPM_enum: 4.2896 IPM_denom: 2.1649 IPM_ratio: 1.9814 E_P_f: 1.9342 E_Q_f: -2.3554 E_P_(f^2): 3.7993 E_Q_(f^2): 5.5743
+[11/30][1300/3166][7234] IPM_enum: 4.6588 IPM_denom: 2.3367 IPM_ratio: 1.9937 E_P_f: 2.2796 E_Q_f: -2.3792 E_P_(f^2): 5.2411 E_Q_(f^2): 5.6794
+[11/30][1400/3166][7254] IPM_enum: 4.1068 IPM_denom: 2.0625 IPM_ratio: 1.9912 E_P_f: 1.9595 E_Q_f: -2.1474 E_P_(f^2): 3.8769 E_Q_(f^2): 4.6306
+[11/30][1500/3166][7274] IPM_enum: 4.4049 IPM_denom: 2.2289 IPM_ratio: 1.9763 E_P_f: 1.9003 E_Q_f: -2.5046 E_P_(f^2): 3.6425 E_Q_(f^2): 6.2932
+[11/30][1600/3166][7294] IPM_enum: 4.0357 IPM_denom: 2.1124 IPM_ratio: 1.9105 E_P_f: 2.6213 E_Q_f: -1.4145 E_P_(f^2): 6.9007 E_Q_(f^2): 2.0240
+[11/30][1700/3166][7314] IPM_enum: 4.4511 IPM_denom: 2.2370 IPM_ratio: 1.9898 E_P_f: 2.0630 E_Q_f: -2.3881 E_P_(f^2): 4.2898 E_Q_(f^2): 5.7183
+[11/30][1800/3166][7334] IPM_enum: 4.6391 IPM_denom: 2.3328 IPM_ratio: 1.9886 E_P_f: 2.1287 E_Q_f: -2.5104 E_P_(f^2): 4.5647 E_Q_(f^2): 6.3192
+[11/30][1900/3166][7354] IPM_enum: 4.5539 IPM_denom: 2.2829 IPM_ratio: 1.9948 E_P_f: 2.2320 E_Q_f: -2.3219 E_P_(f^2): 5.0168 E_Q_(f^2): 5.4066
+[11/30][2000/3166][7374] IPM_enum: 4.6581 IPM_denom: 2.3422 IPM_ratio: 1.9887 E_P_f: 2.1538 E_Q_f: -2.5043 E_P_(f^2): 4.6809 E_Q_(f^2): 6.2910
+[11/30][2100/3166][7394] IPM_enum: 4.0508 IPM_denom: 2.0421 IPM_ratio: 1.9836 E_P_f: 1.8121 E_Q_f: -2.2387 E_P_(f^2): 3.3130 E_Q_(f^2): 5.0273
+[11/30][2200/3166][7414] IPM_enum: 4.4880 IPM_denom: 2.2497 IPM_ratio: 1.9949 E_P_f: 2.3328 E_Q_f: -2.1552 E_P_(f^2): 5.4629 E_Q_(f^2): 4.6595
+[11/30][2300/3166][7434] IPM_enum: 4.3736 IPM_denom: 2.1961 IPM_ratio: 1.9915 E_P_f: 2.3414 E_Q_f: -2.0322 E_P_(f^2): 5.5009 E_Q_(f^2): 4.1450
+[11/30][2400/3166][7454] IPM_enum: 4.5551 IPM_denom: 2.2850 IPM_ratio: 1.9935 E_P_f: 2.3874 E_Q_f: -2.1677 E_P_(f^2): 5.7258 E_Q_(f^2): 4.7167
+[11/30][2500/3166][7474] IPM_enum: 4.1530 IPM_denom: 2.1121 IPM_ratio: 1.9663 E_P_f: 2.4356 E_Q_f: -1.7173 E_P_(f^2): 5.9537 E_Q_(f^2): 2.9678
+[11/30][2600/3166][7494] IPM_enum: 4.1004 IPM_denom: 2.0543 IPM_ratio: 1.9960 E_P_f: 2.0651 E_Q_f: -2.0353 E_P_(f^2): 4.2863 E_Q_(f^2): 4.1537
+[11/30][2700/3166][7514] IPM_enum: 4.4621 IPM_denom: 2.2361 IPM_ratio: 1.9955 E_P_f: 2.2917 E_Q_f: -2.1704 E_P_(f^2): 5.2726 E_Q_(f^2): 4.7280
+[11/30][2800/3166][7534] IPM_enum: 4.2114 IPM_denom: 2.1304 IPM_ratio: 1.9768 E_P_f: 2.3927 E_Q_f: -1.8187 E_P_(f^2): 5.7550 E_Q_(f^2): 3.3224
+[11/30][2900/3166][7554] IPM_enum: 4.0010 IPM_denom: 2.0320 IPM_ratio: 1.9690 E_P_f: 2.3225 E_Q_f: -1.6785 E_P_(f^2): 5.4290 E_Q_(f^2): 2.8289
+[11/30][3000/3166][7574] IPM_enum: 4.2790 IPM_denom: 2.1529 IPM_ratio: 1.9876 E_P_f: 1.9443 E_Q_f: -2.3347 E_P_(f^2): 3.8071 E_Q_(f^2): 5.4624
+[11/30][3100/3166][7594] IPM_enum: 3.9917 IPM_denom: 2.0041 IPM_ratio: 1.9917 E_P_f: 1.9015 E_Q_f: -2.0902 E_P_(f^2): 3.6470 E_Q_(f^2): 4.3862
+[12/30][100/3166][7628] IPM_enum: 4.3275 IPM_denom: 2.1694 IPM_ratio: 1.9948 E_P_f: 2.1126 E_Q_f: -2.2149 E_P_(f^2): 4.4873 E_Q_(f^2): 4.9254
+[12/30][200/3166][7648] IPM_enum: 4.0923 IPM_denom: 2.0560 IPM_ratio: 1.9904 E_P_f: 2.0837 E_Q_f: -2.0086 E_P_(f^2): 4.3829 E_Q_(f^2): 4.0718
+[12/30][300/3166][7668] IPM_enum: 4.3963 IPM_denom: 2.2095 IPM_ratio: 1.9897 E_P_f: 2.3471 E_Q_f: -2.0491 E_P_(f^2): 5.5416 E_Q_(f^2): 4.2220
+[12/30][400/3166][7688] IPM_enum: 4.1955 IPM_denom: 2.1079 IPM_ratio: 1.9904 E_P_f: 2.0132 E_Q_f: -2.1823 E_P_(f^2): 4.1065 E_Q_(f^2): 4.7798
+[12/30][500/3166][7708] IPM_enum: 4.4724 IPM_denom: 2.2473 IPM_ratio: 1.9901 E_P_f: 2.1052 E_Q_f: -2.3672 E_P_(f^2): 4.4782 E_Q_(f^2): 5.6223
+[12/30][600/3166][7728] IPM_enum: 4.5907 IPM_denom: 2.3227 IPM_ratio: 1.9765 E_P_f: 2.5925 E_Q_f: -1.9982 E_P_(f^2): 6.7703 E_Q_(f^2): 4.0196
+[12/30][700/3166][7748] IPM_enum: 4.2286 IPM_denom: 2.1391 IPM_ratio: 1.9768 E_P_f: 1.8531 E_Q_f: -2.3754 E_P_(f^2): 3.4823 E_Q_(f^2): 5.6693
+[12/30][800/3166][7768] IPM_enum: 3.8973 IPM_denom: 1.9587 IPM_ratio: 1.9897 E_P_f: 2.0387 E_Q_f: -1.8586 E_P_(f^2): 4.1986 E_Q_(f^2): 3.4743
+[12/30][900/3166][7788] IPM_enum: 4.2515 IPM_denom: 2.1406 IPM_ratio: 1.9861 E_P_f: 2.3025 E_Q_f: -1.9490 E_P_(f^2): 5.3475 E_Q_(f^2): 3.8169
+[12/30][1000/3166][7808] IPM_enum: 4.2540 IPM_denom: 2.1415 IPM_ratio: 1.9865 E_P_f: 2.3005 E_Q_f: -1.9535 E_P_(f^2): 5.3339 E_Q_(f^2): 3.8381
+[12/30][1100/3166][7828] IPM_enum: 3.7197 IPM_denom: 1.8965 IPM_ratio: 1.9613 E_P_f: 2.1823 E_Q_f: -1.5374 E_P_(f^2): 4.8050 E_Q_(f^2): 2.3887
+[12/30][1200/3166][7848] IPM_enum: 4.2928 IPM_denom: 2.1703 IPM_ratio: 1.9780 E_P_f: 1.9071 E_Q_f: -2.3857 E_P_(f^2): 3.7049 E_Q_(f^2): 5.7153
+[12/30][1300/3166][7868] IPM_enum: 4.6846 IPM_denom: 2.3525 IPM_ratio: 1.9913 E_P_f: 2.4954 E_Q_f: -2.1892 E_P_(f^2): 6.2574 E_Q_(f^2): 4.8114
+[12/30][1400/3166][7888] IPM_enum: 3.6965 IPM_denom: 1.8577 IPM_ratio: 1.9899 E_P_f: 1.8087 E_Q_f: -1.8878 E_P_(f^2): 3.3210 E_Q_(f^2): 3.5809
+[12/30][1500/3166][7908] IPM_enum: 4.2854 IPM_denom: 2.1740 IPM_ratio: 1.9712 E_P_f: 1.8315 E_Q_f: -2.4539 E_P_(f^2): 3.4074 E_Q_(f^2): 6.0456
+[12/30][1600/3166][7928] IPM_enum: 4.2154 IPM_denom: 2.1232 IPM_ratio: 1.9854 E_P_f: 2.2902 E_Q_f: -1.9253 E_P_(f^2): 5.2841 E_Q_(f^2): 3.7321
+[12/30][1700/3166][7948] IPM_enum: 3.8549 IPM_denom: 1.9362 IPM_ratio: 1.9910 E_P_f: 1.9991 E_Q_f: -1.8558 E_P_(f^2): 4.0312 E_Q_(f^2): 3.4662
+[12/30][1800/3166][7968] IPM_enum: 4.2752 IPM_denom: 2.1429 IPM_ratio: 1.9950 E_P_f: 2.1284 E_Q_f: -2.1468 E_P_(f^2): 4.5557 E_Q_(f^2): 4.6285
+[12/30][1900/3166][7988] IPM_enum: 4.1518 IPM_denom: 2.1017 IPM_ratio: 1.9755 E_P_f: 1.7804 E_Q_f: -2.3713 E_P_(f^2): 3.1983 E_Q_(f^2): 5.6357
+[12/30][2000/3166][8008] IPM_enum: 4.3857 IPM_denom: 2.2017 IPM_ratio: 1.9919 E_P_f: 2.0616 E_Q_f: -2.3241 E_P_(f^2): 4.2721 E_Q_(f^2): 5.4230
+[12/30][2100/3166][8028] IPM_enum: 4.3306 IPM_denom: 2.1783 IPM_ratio: 1.9881 E_P_f: 2.0096 E_Q_f: -2.3210 E_P_(f^2): 4.0800 E_Q_(f^2): 5.4098
+[12/30][2200/3166][8048] IPM_enum: 4.4347 IPM_denom: 2.2252 IPM_ratio: 1.9930 E_P_f: 2.1481 E_Q_f: -2.2866 E_P_(f^2): 4.6433 E_Q_(f^2): 5.2593
+[12/30][2300/3166][8068] IPM_enum: 3.9639 IPM_denom: 2.0344 IPM_ratio: 1.9484 E_P_f: 2.4159 E_Q_f: -1.5481 E_P_(f^2): 5.8663 E_Q_(f^2): 2.4116
+[12/30][2400/3166][8088] IPM_enum: 4.3306 IPM_denom: 2.1787 IPM_ratio: 1.9877 E_P_f: 2.3398 E_Q_f: -1.9907 E_P_(f^2): 5.5047 E_Q_(f^2): 3.9885
+[12/30][2500/3166][8108] IPM_enum: 4.0400 IPM_denom: 2.0272 IPM_ratio: 1.9929 E_P_f: 2.1082 E_Q_f: -1.9318 E_P_(f^2): 4.4681 E_Q_(f^2): 3.7512
+[12/30][2600/3166][8128] IPM_enum: 4.2411 IPM_denom: 2.1365 IPM_ratio: 1.9851 E_P_f: 1.9286 E_Q_f: -2.3125 E_P_(f^2): 3.7591 E_Q_(f^2): 5.3704
+[12/30][2700/3166][8148] IPM_enum: 3.7667 IPM_denom: 1.8940 IPM_ratio: 1.9888 E_P_f: 1.7666 E_Q_f: -2.0001 E_P_(f^2): 3.1514 E_Q_(f^2): 4.0231
+[12/30][2800/3166][8168] IPM_enum: 4.1437 IPM_denom: 2.1016 IPM_ratio: 1.9716 E_P_f: 2.3687 E_Q_f: -1.7750 E_P_(f^2): 5.6509 E_Q_(f^2): 3.1828
+[12/30][2900/3166][8188] IPM_enum: 3.5782 IPM_denom: 1.7990 IPM_ratio: 1.9890 E_P_f: 1.7753 E_Q_f: -1.8030 E_P_(f^2): 3.2020 E_Q_(f^2): 3.2707
+[12/30][3000/3166][8208] IPM_enum: 4.2178 IPM_denom: 2.1173 IPM_ratio: 1.9921 E_P_f: 2.0394 E_Q_f: -2.1783 E_P_(f^2): 4.2033 E_Q_(f^2): 4.7625
+[12/30][3100/3166][8228] IPM_enum: 4.1495 IPM_denom: 2.0923 IPM_ratio: 1.9832 E_P_f: 2.2682 E_Q_f: -1.8813 E_P_(f^2): 5.1884 E_Q_(f^2): 3.5670
+[13/30][100/3166][8262] IPM_enum: 3.9735 IPM_denom: 2.0113 IPM_ratio: 1.9755 E_P_f: 1.7273 E_Q_f: -2.2461 E_P_(f^2): 3.0257 E_Q_(f^2): 5.0653
+[13/30][200/3166][8282] IPM_enum: 4.2865 IPM_denom: 2.1512 IPM_ratio: 1.9926 E_P_f: 2.0836 E_Q_f: -2.2029 E_P_(f^2): 4.3744 E_Q_(f^2): 4.8813
+[13/30][300/3166][8302] IPM_enum: 4.4181 IPM_denom: 2.2393 IPM_ratio: 1.9729 E_P_f: 1.9043 E_Q_f: -2.5138 E_P_(f^2): 3.6856 E_Q_(f^2): 6.3435
+[13/30][400/3166][8322] IPM_enum: 4.3743 IPM_denom: 2.2597 IPM_ratio: 1.9358 E_P_f: 1.6569 E_Q_f: -2.7173 E_P_(f^2): 2.7869 E_Q_(f^2): 7.4254
+[13/30][500/3166][8342] IPM_enum: 4.1173 IPM_denom: 2.0668 IPM_ratio: 1.9921 E_P_f: 1.9672 E_Q_f: -2.1501 E_P_(f^2): 3.9008 E_Q_(f^2): 4.6425
+[13/30][600/3166][8362] IPM_enum: 3.9422 IPM_denom: 1.9800 IPM_ratio: 1.9910 E_P_f: 1.8666 E_Q_f: -2.0756 E_P_(f^2): 3.5153 E_Q_(f^2): 4.3257
+[13/30][700/3166][8382] IPM_enum: 3.7936 IPM_denom: 1.9120 IPM_ratio: 1.9841 E_P_f: 2.0524 E_Q_f: -1.7412 E_P_(f^2): 4.2530 E_Q_(f^2): 3.0586
+[13/30][800/3166][8402] IPM_enum: 4.2863 IPM_denom: 2.1510 IPM_ratio: 1.9926 E_P_f: 2.0559 E_Q_f: -2.2304 E_P_(f^2): 4.2597 E_Q_(f^2): 4.9943
+[13/30][900/3166][8422] IPM_enum: 4.2676 IPM_denom: 2.1580 IPM_ratio: 1.9776 E_P_f: 2.4002 E_Q_f: -1.8674 E_P_(f^2): 5.8017 E_Q_(f^2): 3.5121
+[13/30][1000/3166][8442] IPM_enum: 4.2801 IPM_denom: 2.1450 IPM_ratio: 1.9954 E_P_f: 2.1292 E_Q_f: -2.1509 E_P_(f^2): 4.5598 E_Q_(f^2): 4.6420
+[13/30][1100/3166][8462] IPM_enum: 4.2358 IPM_denom: 2.1325 IPM_ratio: 1.9863 E_P_f: 1.9306 E_Q_f: -2.3052 E_P_(f^2): 3.7600 E_Q_(f^2): 5.3353
+[13/30][1200/3166][8482] IPM_enum: 4.4364 IPM_denom: 2.2284 IPM_ratio: 1.9909 E_P_f: 2.0581 E_Q_f: -2.3783 E_P_(f^2): 4.2592 E_Q_(f^2): 5.6721
+[13/30][1300/3166][8502] IPM_enum: 4.3224 IPM_denom: 2.1694 IPM_ratio: 1.9924 E_P_f: 2.1552 E_Q_f: -2.1672 E_P_(f^2): 4.6902 E_Q_(f^2): 4.7227
+[13/30][1400/3166][8522] IPM_enum: 4.3310 IPM_denom: 2.1714 IPM_ratio: 1.9946 E_P_f: 2.1874 E_Q_f: -2.1435 E_P_(f^2): 4.8141 E_Q_(f^2): 4.6156
+[13/30][1500/3166][8542] IPM_enum: 3.9829 IPM_denom: 2.0090 IPM_ratio: 1.9825 E_P_f: 1.8007 E_Q_f: -2.1822 E_P_(f^2): 3.2793 E_Q_(f^2): 4.7932
+[13/30][1600/3166][8562] IPM_enum: 3.9897 IPM_denom: 2.0048 IPM_ratio: 1.9901 E_P_f: 2.0589 E_Q_f: -1.9308 E_P_(f^2): 4.2897 E_Q_(f^2): 3.7485
+[13/30][1700/3166][8582] IPM_enum: 3.7567 IPM_denom: 1.9118 IPM_ratio: 1.9650 E_P_f: 2.2032 E_Q_f: -1.5535 E_P_(f^2): 4.8833 E_Q_(f^2): 2.4268
+[13/30][1800/3166][8602] IPM_enum: 4.4403 IPM_denom: 2.2448 IPM_ratio: 1.9781 E_P_f: 1.9371 E_Q_f: -2.5032 E_P_(f^2): 3.7927 E_Q_(f^2): 6.2853
+[13/30][1900/3166][8622] IPM_enum: 4.1075 IPM_denom: 2.0819 IPM_ratio: 1.9730 E_P_f: 2.3470 E_Q_f: -1.7604 E_P_(f^2): 5.5447 E_Q_(f^2): 3.1235
+[13/30][2000/3166][8642] IPM_enum: 4.0798 IPM_denom: 2.0625 IPM_ratio: 1.9781 E_P_f: 2.2807 E_Q_f: -1.7991 E_P_(f^2): 5.2454 E_Q_(f^2): 3.2624
+[13/30][2100/3166][8662] IPM_enum: 3.7874 IPM_denom: 1.9151 IPM_ratio: 1.9777 E_P_f: 2.1308 E_Q_f: -1.6566 E_P_(f^2): 4.5724 E_Q_(f^2): 2.7627
+[13/30][2200/3166][8682] IPM_enum: 4.2637 IPM_denom: 2.1439 IPM_ratio: 1.9887 E_P_f: 2.2344 E_Q_f: -2.0293 E_P_(f^2): 5.0378 E_Q_(f^2): 4.1552
+[13/30][2300/3166][8702] IPM_enum: 4.0643 IPM_denom: 2.0405 IPM_ratio: 1.9919 E_P_f: 2.0182 E_Q_f: -2.0461 E_P_(f^2): 4.1292 E_Q_(f^2): 4.1979
+[13/30][2400/3166][8722] IPM_enum: 4.1334 IPM_denom: 2.0989 IPM_ratio: 1.9693 E_P_f: 1.7375 E_Q_f: -2.3959 E_P_(f^2): 3.0517 E_Q_(f^2): 5.7593
+[13/30][2500/3166][8742] IPM_enum: 3.9751 IPM_denom: 1.9963 IPM_ratio: 1.9912 E_P_f: 2.0651 E_Q_f: -1.9100 E_P_(f^2): 4.2995 E_Q_(f^2): 3.6711
+[13/30][2600/3166][8762] IPM_enum: 4.0507 IPM_denom: 2.0337 IPM_ratio: 1.9918 E_P_f: 2.0911 E_Q_f: -1.9596 E_P_(f^2): 4.4214 E_Q_(f^2): 3.8504
+[13/30][2700/3166][8782] IPM_enum: 4.4119 IPM_denom: 2.2190 IPM_ratio: 1.9883 E_P_f: 2.3818 E_Q_f: -2.0301 E_P_(f^2): 5.7161 E_Q_(f^2): 4.1316
+[13/30][2800/3166][8802] IPM_enum: 3.7690 IPM_denom: 1.8944 IPM_ratio: 1.9896 E_P_f: 1.9083 E_Q_f: -1.8608 E_P_(f^2): 3.6906 E_Q_(f^2): 3.4868
+[13/30][2900/3166][8822] IPM_enum: 4.5670 IPM_denom: 2.2904 IPM_ratio: 1.9940 E_P_f: 2.3219 E_Q_f: -2.2451 E_P_(f^2): 5.4343 E_Q_(f^2): 5.0575
+[13/30][3000/3166][8842] IPM_enum: 3.8774 IPM_denom: 1.9492 IPM_ratio: 1.9893 E_P_f: 1.9529 E_Q_f: -1.9245 E_P_(f^2): 3.8725 E_Q_(f^2): 3.7259
+[13/30][3100/3166][8862] IPM_enum: 3.9732 IPM_denom: 2.0133 IPM_ratio: 1.9735 E_P_f: 2.2446 E_Q_f: -1.7286 E_P_(f^2): 5.0895 E_Q_(f^2): 3.0175
+[14/30][100/3166][8896] IPM_enum: 4.1613 IPM_denom: 2.0886 IPM_ratio: 1.9924 E_P_f: 2.1245 E_Q_f: -2.0368 E_P_(f^2): 4.5573 E_Q_(f^2): 4.1673
+[14/30][200/3166][8916] IPM_enum: 3.8925 IPM_denom: 1.9538 IPM_ratio: 1.9922 E_P_f: 1.9635 E_Q_f: -1.9290 E_P_(f^2): 3.8967 E_Q_(f^2): 3.7383
+[14/30][300/3166][8936] IPM_enum: 4.4604 IPM_denom: 2.2450 IPM_ratio: 1.9868 E_P_f: 2.0294 E_Q_f: -2.4310 E_P_(f^2): 4.1500 E_Q_(f^2): 5.9296
+[14/30][400/3166][8956] IPM_enum: 4.1793 IPM_denom: 2.0995 IPM_ratio: 1.9906 E_P_f: 2.2049 E_Q_f: -1.9744 E_P_(f^2): 4.8941 E_Q_(f^2): 3.9218
+[14/30][500/3166][8976] IPM_enum: 4.1435 IPM_denom: 2.0798 IPM_ratio: 1.9923 E_P_f: 2.0542 E_Q_f: -2.0892 E_P_(f^2): 4.2716 E_Q_(f^2): 4.3792
+[14/30][600/3166][8996] IPM_enum: 3.9779 IPM_denom: 2.0010 IPM_ratio: 1.9880 E_P_f: 2.1208 E_Q_f: -1.8570 E_P_(f^2): 4.5425 E_Q_(f^2): 3.4653
+[14/30][700/3166][9016] IPM_enum: 4.0730 IPM_denom: 2.0580 IPM_ratio: 1.9791 E_P_f: 1.8425 E_Q_f: -2.2305 E_P_(f^2): 3.4592 E_Q_(f^2): 5.0114
+[14/30][800/3166][9036] IPM_enum: 4.0078 IPM_denom: 2.0166 IPM_ratio: 1.9874 E_P_f: 2.0371 E_Q_f: -1.9707 E_P_(f^2): 4.2125 E_Q_(f^2): 3.9207
+[14/30][900/3166][9056] IPM_enum: 4.3711 IPM_denom: 2.2543 IPM_ratio: 1.9390 E_P_f: 1.6755 E_Q_f: -2.6955 E_P_(f^2): 2.8674 E_Q_(f^2): 7.2962
+[14/30][1000/3166][9076] IPM_enum: 4.0605 IPM_denom: 2.0391 IPM_ratio: 1.9913 E_P_f: 2.0090 E_Q_f: -2.0515 E_P_(f^2): 4.0855 E_Q_(f^2): 4.2306
+[14/30][1100/3166][9096] IPM_enum: 3.9219 IPM_denom: 1.9741 IPM_ratio: 1.9867 E_P_f: 1.8020 E_Q_f: -2.1199 E_P_(f^2): 3.2816 E_Q_(f^2): 4.5122
+[14/30][1200/3166][9116] IPM_enum: 3.9680 IPM_denom: 1.9967 IPM_ratio: 1.9873 E_P_f: 1.8423 E_Q_f: -2.1257 E_P_(f^2): 3.4317 E_Q_(f^2): 4.5422
+[14/30][1300/3166][9136] IPM_enum: 4.3579 IPM_denom: 2.1856 IPM_ratio: 1.9939 E_P_f: 2.2111 E_Q_f: -2.1468 E_P_(f^2): 4.9195 E_Q_(f^2): 4.6341
+[14/30][1400/3166][9156] IPM_enum: 4.4353 IPM_denom: 2.2234 IPM_ratio: 1.9948 E_P_f: 2.2318 E_Q_f: -2.2035 E_P_(f^2): 5.0178 E_Q_(f^2): 4.8695
+[14/30][1500/3166][9176] IPM_enum: 4.1982 IPM_denom: 2.1372 IPM_ratio: 1.9643 E_P_f: 2.4729 E_Q_f: -1.7253 E_P_(f^2): 6.1410 E_Q_(f^2): 2.9941
+[14/30][1600/3166][9196] IPM_enum: 4.3640 IPM_denom: 2.2159 IPM_ratio: 1.9694 E_P_f: 1.8379 E_Q_f: -2.5262 E_P_(f^2): 3.4152 E_Q_(f^2): 6.4051
+[14/30][1700/3166][9216] IPM_enum: 4.1005 IPM_denom: 2.0568 IPM_ratio: 1.9936 E_P_f: 2.1397 E_Q_f: -1.9608 E_P_(f^2): 4.6062 E_Q_(f^2): 3.8549
+[14/30][1800/3166][9236] IPM_enum: 3.9877 IPM_denom: 2.0325 IPM_ratio: 1.9620 E_P_f: 2.3611 E_Q_f: -1.6267 E_P_(f^2): 5.5997 E_Q_(f^2): 2.6627
+[14/30][1900/3166][9256] IPM_enum: 4.0836 IPM_denom: 2.0591 IPM_ratio: 1.9832 E_P_f: 2.2516 E_Q_f: -1.8320 E_P_(f^2): 5.1089 E_Q_(f^2): 3.3706
+[14/30][2000/3166][9276] IPM_enum: 3.8239 IPM_denom: 1.9189 IPM_ratio: 1.9927 E_P_f: 1.9692 E_Q_f: -1.8547 E_P_(f^2): 3.9098 E_Q_(f^2): 3.4548
+[14/30][2100/3166][9296] IPM_enum: 4.0504 IPM_denom: 2.0353 IPM_ratio: 1.9901 E_P_f: 2.1131 E_Q_f: -1.9372 E_P_(f^2): 4.4961 E_Q_(f^2): 3.7888
+[14/30][2200/3166][9316] IPM_enum: 4.4624 IPM_denom: 2.2758 IPM_ratio: 1.9608 E_P_f: 1.8246 E_Q_f: -2.6378 E_P_(f^2): 3.3692 E_Q_(f^2): 6.9890
+[14/30][2300/3166][9336] IPM_enum: 3.8064 IPM_denom: 1.9307 IPM_ratio: 1.9715 E_P_f: 2.1732 E_Q_f: -1.6332 E_P_(f^2): 4.7673 E_Q_(f^2): 2.6879
+[14/30][2400/3166][9356] IPM_enum: 3.8029 IPM_denom: 1.9144 IPM_ratio: 1.9864 E_P_f: 1.9814 E_Q_f: -1.8215 E_P_(f^2): 3.9877 E_Q_(f^2): 3.3424
+[14/30][2500/3166][9376] IPM_enum: 4.4273 IPM_denom: 2.2201 IPM_ratio: 1.9942 E_P_f: 2.1946 E_Q_f: -2.2327 E_P_(f^2): 4.8508 E_Q_(f^2): 5.0065
+[14/30][2600/3166][9396] IPM_enum: 3.9346 IPM_denom: 1.9924 IPM_ratio: 1.9748 E_P_f: 1.7347 E_Q_f: -2.1999 E_P_(f^2): 3.0648 E_Q_(f^2): 4.8747
+[14/30][2700/3166][9416] IPM_enum: 4.3222 IPM_denom: 2.1773 IPM_ratio: 1.9851 E_P_f: 2.3634 E_Q_f: -1.9587 E_P_(f^2): 5.6240 E_Q_(f^2): 3.8577
+[14/30][2800/3166][9436] IPM_enum: 4.3257 IPM_denom: 2.1917 IPM_ratio: 1.9736 E_P_f: 1.8604 E_Q_f: -2.4653 E_P_(f^2): 3.5057 E_Q_(f^2): 6.1017
+[14/30][2900/3166][9456] IPM_enum: 4.1636 IPM_denom: 2.1236 IPM_ratio: 1.9606 E_P_f: 2.4499 E_Q_f: -1.7137 E_P_(f^2): 6.0532 E_Q_(f^2): 2.9660
+[14/30][3000/3166][9476] IPM_enum: 4.0379 IPM_denom: 2.0277 IPM_ratio: 1.9914 E_P_f: 1.9683 E_Q_f: -2.0697 E_P_(f^2): 3.9180 E_Q_(f^2): 4.3050
+[14/30][3100/3166][9496] IPM_enum: 3.8111 IPM_denom: 1.9275 IPM_ratio: 1.9772 E_P_f: 1.6921 E_Q_f: -2.1190 E_P_(f^2): 2.9064 E_Q_(f^2): 4.5245
+[15/30][100/3166][9530] IPM_enum: 4.0267 IPM_denom: 2.0713 IPM_ratio: 1.9441 E_P_f: 1.5767 E_Q_f: -2.4500 E_P_(f^2): 2.5445 E_Q_(f^2): 6.0358
+[15/30][200/3166][9550] IPM_enum: 3.9932 IPM_denom: 2.0059 IPM_ratio: 1.9907 E_P_f: 1.9765 E_Q_f: -2.0167 E_P_(f^2): 3.9534 E_Q_(f^2): 4.0941
+[15/30][300/3166][9570] IPM_enum: 3.9008 IPM_denom: 1.9681 IPM_ratio: 1.9820 E_P_f: 2.1336 E_Q_f: -1.7672 E_P_(f^2): 4.6044 E_Q_(f^2): 3.1423
+[15/30][400/3166][9590] IPM_enum: 4.0609 IPM_denom: 2.0420 IPM_ratio: 1.9887 E_P_f: 1.9022 E_Q_f: -2.1587 E_P_(f^2): 3.6535 E_Q_(f^2): 4.6858
+[15/30][500/3166][9610] IPM_enum: 3.6021 IPM_denom: 1.8266 IPM_ratio: 1.9720 E_P_f: 2.0285 E_Q_f: -1.5736 E_P_(f^2): 4.1644 E_Q_(f^2): 2.5087
+[15/30][600/3166][9630] IPM_enum: 3.8968 IPM_denom: 1.9825 IPM_ratio: 1.9656 E_P_f: 2.2302 E_Q_f: -1.6666 E_P_(f^2): 5.0544 E_Q_(f^2): 2.8065
+[15/30][700/3166][9650] IPM_enum: 3.6622 IPM_denom: 1.9645 IPM_ratio: 1.8642 E_P_f: 2.5190 E_Q_f: -1.1432 E_P_(f^2): 6.3880 E_Q_(f^2): 1.3303
+[15/30][800/3166][9670] IPM_enum: 3.9184 IPM_denom: 1.9804 IPM_ratio: 1.9786 E_P_f: 1.7622 E_Q_f: -2.1562 E_P_(f^2): 3.1676 E_Q_(f^2): 4.6764
+[15/30][900/3166][9690] IPM_enum: 3.5508 IPM_denom: 1.7906 IPM_ratio: 1.9831 E_P_f: 1.8789 E_Q_f: -1.6719 E_P_(f^2): 3.5938 E_Q_(f^2): 2.8184
+[15/30][1000/3166][9710] IPM_enum: 3.9540 IPM_denom: 1.9895 IPM_ratio: 1.9874 E_P_f: 2.0112 E_Q_f: -1.9428 E_P_(f^2): 4.1166 E_Q_(f^2): 3.7999
+[15/30][1100/3166][9730] IPM_enum: 3.7961 IPM_denom: 1.9126 IPM_ratio: 1.9848 E_P_f: 1.7675 E_Q_f: -2.0286 E_P_(f^2): 3.1754 E_Q_(f^2): 4.1404
+[15/30][1200/3166][9750] IPM_enum: 3.9304 IPM_denom: 1.9977 IPM_ratio: 1.9674 E_P_f: 1.6780 E_Q_f: -2.2524 E_P_(f^2): 2.8786 E_Q_(f^2): 5.1033
+[15/30][1300/3166][9770] IPM_enum: 4.0702 IPM_denom: 2.0568 IPM_ratio: 1.9789 E_P_f: 2.2059 E_Q_f: -1.8643 E_P_(f^2): 4.9345 E_Q_(f^2): 3.5262
+[15/30][1400/3166][9790] IPM_enum: 3.6162 IPM_denom: 1.9471 IPM_ratio: 1.8572 E_P_f: 2.5026 E_Q_f: -1.1136 E_P_(f^2): 6.3182 E_Q_(f^2): 1.2642
+[15/30][1500/3166][9810] IPM_enum: 3.8340 IPM_denom: 1.9340 IPM_ratio: 1.9824 E_P_f: 1.7512 E_Q_f: -2.0828 E_P_(f^2): 3.1197 E_Q_(f^2): 4.3613
+[15/30][1600/3166][9830] IPM_enum: 3.8379 IPM_denom: 1.9485 IPM_ratio: 1.9696 E_P_f: 1.6439 E_Q_f: -2.1939 E_P_(f^2): 2.7507 E_Q_(f^2): 4.8428
+[15/30][1700/3166][9850] IPM_enum: 3.8972 IPM_denom: 1.9818 IPM_ratio: 1.9666 E_P_f: 1.6300 E_Q_f: -2.2672 E_P_(f^2): 2.6938 E_Q_(f^2): 5.1609
+[15/30][1800/3166][9870] IPM_enum: 3.7307 IPM_denom: 1.8802 IPM_ratio: 1.9842 E_P_f: 1.7036 E_Q_f: -2.0271 E_P_(f^2): 2.9401 E_Q_(f^2): 4.1300
+[15/30][1900/3166][9890] IPM_enum: 3.8802 IPM_denom: 1.9485 IPM_ratio: 1.9914 E_P_f: 1.8685 E_Q_f: -2.0117 E_P_(f^2): 3.5303 E_Q_(f^2): 4.0630
+[15/30][2000/3166][9910] IPM_enum: 3.9400 IPM_denom: 1.9793 IPM_ratio: 1.9906 E_P_f: 2.0045 E_Q_f: -1.9355 E_P_(f^2): 4.0647 E_Q_(f^2): 3.7708
+[15/30][2100/3166][9930] IPM_enum: 3.9101 IPM_denom: 1.9845 IPM_ratio: 1.9703 E_P_f: 2.2383 E_Q_f: -1.6718 E_P_(f^2): 5.0568 E_Q_(f^2): 2.8201
+[15/30][2200/3166][9950] IPM_enum: 4.1975 IPM_denom: 2.1316 IPM_ratio: 1.9692 E_P_f: 2.4187 E_Q_f: -1.7788 E_P_(f^2): 5.9037 E_Q_(f^2): 3.1835
+[15/30][2300/3166][9970] IPM_enum: 4.2787 IPM_denom: 2.1455 IPM_ratio: 1.9943 E_P_f: 2.1926 E_Q_f: -2.0861 E_P_(f^2): 4.8413 E_Q_(f^2): 4.3648
+[15/30][2400/3166][9990] IPM_enum: 3.9222 IPM_denom: 1.9877 IPM_ratio: 1.9733 E_P_f: 2.2478 E_Q_f: -1.6744 E_P_(f^2): 5.0788 E_Q_(f^2): 2.8227
+[15/30][2500/3166][10010] IPM_enum: 4.0647 IPM_denom: 2.0706 IPM_ratio: 1.9631 E_P_f: 2.4034 E_Q_f: -1.6612 E_P_(f^2): 5.7987 E_Q_(f^2): 2.7757
+[15/30][2600/3166][10030] IPM_enum: 4.2278 IPM_denom: 2.1360 IPM_ratio: 1.9793 E_P_f: 2.3567 E_Q_f: -1.8711 E_P_(f^2): 5.5920 E_Q_(f^2): 3.5334
+[15/30][2700/3166][10050] IPM_enum: 3.6210 IPM_denom: 1.8194 IPM_ratio: 1.9902 E_P_f: 1.8117 E_Q_f: -1.8092 E_P_(f^2): 3.3286 E_Q_(f^2): 3.2921
+[15/30][2800/3166][10070] IPM_enum: 3.9281 IPM_denom: 1.9716 IPM_ratio: 1.9923 E_P_f: 1.8928 E_Q_f: -2.0353 E_P_(f^2): 3.6152 E_Q_(f^2): 4.1595
+[15/30][2900/3166][10090] IPM_enum: 3.5656 IPM_denom: 1.8646 IPM_ratio: 1.9122 E_P_f: 2.2958 E_Q_f: -1.2698 E_P_(f^2): 5.3106 E_Q_(f^2): 1.6431
+[15/30][3000/3166][10110] IPM_enum: 3.7413 IPM_denom: 1.8944 IPM_ratio: 1.9749 E_P_f: 2.1123 E_Q_f: -1.6290 E_P_(f^2): 4.5079 E_Q_(f^2): 2.6696
+[15/30][3100/3166][10130] IPM_enum: 3.8835 IPM_denom: 1.9505 IPM_ratio: 1.9911 E_P_f: 1.9794 E_Q_f: -1.9041 E_P_(f^2): 3.9615 E_Q_(f^2): 3.6473
+[16/30][100/3166][10164] IPM_enum: 4.1959 IPM_denom: 2.1050 IPM_ratio: 1.9933 E_P_f: 2.0167 E_Q_f: -2.1792 E_P_(f^2): 4.0965 E_Q_(f^2): 4.7653
+[16/30][200/3166][10184] IPM_enum: 4.0662 IPM_denom: 2.0458 IPM_ratio: 1.9876 E_P_f: 1.8759 E_Q_f: -2.1903 E_P_(f^2): 3.5490 E_Q_(f^2): 4.8218
+[16/30][300/3166][10204] IPM_enum: 3.6680 IPM_denom: 1.8441 IPM_ratio: 1.9890 E_P_f: 1.7353 E_Q_f: -1.9327 E_P_(f^2): 3.0404 E_Q_(f^2): 3.7611
+[16/30][400/3166][10224] IPM_enum: 3.9589 IPM_denom: 2.0080 IPM_ratio: 1.9716 E_P_f: 2.2639 E_Q_f: -1.6951 E_P_(f^2): 5.1583 E_Q_(f^2): 2.9056
+[16/30][500/3166][10244] IPM_enum: 4.0671 IPM_denom: 2.0448 IPM_ratio: 1.9890 E_P_f: 1.9152 E_Q_f: -2.1518 E_P_(f^2): 3.7119 E_Q_(f^2): 4.6503
+[16/30][600/3166][10264] IPM_enum: 4.1703 IPM_denom: 2.1023 IPM_ratio: 1.9837 E_P_f: 1.8614 E_Q_f: -2.3089 E_P_(f^2): 3.4894 E_Q_(f^2): 5.3501
+[16/30][700/3166][10284] IPM_enum: 3.9526 IPM_denom: 1.9835 IPM_ratio: 1.9928 E_P_f: 1.9416 E_Q_f: -2.0110 E_P_(f^2): 3.8072 E_Q_(f^2): 4.0610
+[16/30][800/3166][10304] IPM_enum: 3.8612 IPM_denom: 1.9483 IPM_ratio: 1.9819 E_P_f: 2.1232 E_Q_f: -1.7381 E_P_(f^2): 4.5389 E_Q_(f^2): 3.0528
+[16/30][900/3166][10324] IPM_enum: 3.8871 IPM_denom: 1.9494 IPM_ratio: 1.9940 E_P_f: 2.0048 E_Q_f: -1.8823 E_P_(f^2): 4.0414 E_Q_(f^2): 3.5592
+[16/30][1000/3166][10344] IPM_enum: 3.8899 IPM_denom: 1.9515 IPM_ratio: 1.9933 E_P_f: 2.0119 E_Q_f: -1.8780 E_P_(f^2): 4.0702 E_Q_(f^2): 3.5462
+[16/30][1100/3166][10364] IPM_enum: 3.7134 IPM_denom: 1.9109 IPM_ratio: 1.9433 E_P_f: 2.2791 E_Q_f: -1.4343 E_P_(f^2): 5.2307 E_Q_(f^2): 2.0724
+[16/30][1200/3166][10384] IPM_enum: 4.1179 IPM_denom: 2.0675 IPM_ratio: 1.9918 E_P_f: 1.9730 E_Q_f: -2.1449 E_P_(f^2): 3.9270 E_Q_(f^2): 4.6217
+[16/30][1300/3166][10404] IPM_enum: 4.2607 IPM_denom: 2.1367 IPM_ratio: 1.9941 E_P_f: 2.1072 E_Q_f: -2.1535 E_P_(f^2): 4.4739 E_Q_(f^2): 4.6566
+[16/30][1400/3166][10424] IPM_enum: 3.6898 IPM_denom: 1.8662 IPM_ratio: 1.9772 E_P_f: 2.0830 E_Q_f: -1.6068 E_P_(f^2): 4.3639 E_Q_(f^2): 2.6017
+[16/30][1500/3166][10444] IPM_enum: 3.9404 IPM_denom: 1.9806 IPM_ratio: 1.9895 E_P_f: 2.0671 E_Q_f: -1.8733 E_P_(f^2): 4.3138 E_Q_(f^2): 3.5314
+[16/30][1600/3166][10464] IPM_enum: 4.1227 IPM_denom: 2.0877 IPM_ratio: 1.9748 E_P_f: 1.7788 E_Q_f: -2.3440 E_P_(f^2): 3.2038 E_Q_(f^2): 5.5129
+[16/30][1700/3166][10484] IPM_enum: 3.9188 IPM_denom: 1.9651 IPM_ratio: 1.9942 E_P_f: 1.9924 E_Q_f: -1.9264 E_P_(f^2): 3.9988 E_Q_(f^2): 3.7244
+[16/30][1800/3166][10504] IPM_enum: 4.1352 IPM_denom: 2.0733 IPM_ratio: 1.9945 E_P_f: 1.9854 E_Q_f: -2.1498 E_P_(f^2): 3.9658 E_Q_(f^2): 4.6316
+[16/30][1900/3166][10524] IPM_enum: 3.7899 IPM_denom: 1.9022 IPM_ratio: 1.9924 E_P_f: 1.8959 E_Q_f: -1.8939 E_P_(f^2): 3.6380 E_Q_(f^2): 3.5987
+[16/30][2000/3166][10544] IPM_enum: 3.8676 IPM_denom: 1.9451 IPM_ratio: 1.9884 E_P_f: 2.0886 E_Q_f: -1.7790 E_P_(f^2): 4.3920 E_Q_(f^2): 3.1751
+[16/30][2100/3166][10564] IPM_enum: 3.7923 IPM_denom: 1.9049 IPM_ratio: 1.9908 E_P_f: 1.9909 E_Q_f: -1.8013 E_P_(f^2): 4.0000 E_Q_(f^2): 3.2575
+[16/30][2200/3166][10584] IPM_enum: 3.7676 IPM_denom: 1.9025 IPM_ratio: 1.9803 E_P_f: 2.0895 E_Q_f: -1.6781 E_P_(f^2): 4.4034 E_Q_(f^2): 2.8357
+[16/30][2300/3166][10604] IPM_enum: 3.9731 IPM_denom: 2.0217 IPM_ratio: 1.9653 E_P_f: 2.3205 E_Q_f: -1.6526 E_P_(f^2): 5.4287 E_Q_(f^2): 2.7456
+[16/30][2400/3166][10624] IPM_enum: 4.2339 IPM_denom: 2.1243 IPM_ratio: 1.9930 E_P_f: 2.1071 E_Q_f: -2.1268 E_P_(f^2): 4.4798 E_Q_(f^2): 4.5458
+[16/30][2500/3166][10644] IPM_enum: 3.8460 IPM_denom: 1.9503 IPM_ratio: 1.9720 E_P_f: 2.1815 E_Q_f: -1.6645 E_P_(f^2): 4.8100 E_Q_(f^2): 2.7976
+[16/30][2600/3166][10664] IPM_enum: 4.1988 IPM_denom: 2.1177 IPM_ratio: 1.9827 E_P_f: 1.8856 E_Q_f: -2.3132 E_P_(f^2): 3.5976 E_Q_(f^2): 5.3716
+[16/30][2700/3166][10684] IPM_enum: 3.7862 IPM_denom: 1.9494 IPM_ratio: 1.9422 E_P_f: 1.4682 E_Q_f: -2.3180 E_P_(f^2): 2.2088 E_Q_(f^2): 5.3913
+[16/30][2800/3166][10704] IPM_enum: 4.0074 IPM_denom: 2.0330 IPM_ratio: 1.9712 E_P_f: 1.7082 E_Q_f: -2.2992 E_P_(f^2): 2.9642 E_Q_(f^2): 5.3017
+[16/30][2900/3166][10724] IPM_enum: 3.5564 IPM_denom: 1.8034 IPM_ratio: 1.9720 E_P_f: 2.0129 E_Q_f: -1.5435 E_P_(f^2): 4.1035 E_Q_(f^2): 2.4012
+[16/30][3000/3166][10744] IPM_enum: 3.2767 IPM_denom: 1.6868 IPM_ratio: 1.9425 E_P_f: 1.9907 E_Q_f: -1.2860 E_P_(f^2): 4.0067 E_Q_(f^2): 1.6838
+[16/30][3100/3166][10764] IPM_enum: 3.6311 IPM_denom: 1.8631 IPM_ratio: 1.9489 E_P_f: 2.2022 E_Q_f: -1.4289 E_P_(f^2): 4.8843 E_Q_(f^2): 2.0581
+[17/30][100/3166][10798] IPM_enum: 3.8471 IPM_denom: 1.9379 IPM_ratio: 1.9852 E_P_f: 1.7664 E_Q_f: -2.0806 E_P_(f^2): 3.1613 E_Q_(f^2): 4.3497
+[17/30][200/3166][10818] IPM_enum: 4.1139 IPM_denom: 2.0840 IPM_ratio: 1.9740 E_P_f: 1.7646 E_Q_f: -2.3492 E_P_(f^2): 3.1520 E_Q_(f^2): 5.5339
+[17/30][300/3166][10838] IPM_enum: 3.9291 IPM_denom: 1.9735 IPM_ratio: 1.9909 E_P_f: 2.0870 E_Q_f: -1.8422 E_P_(f^2): 4.3848 E_Q_(f^2): 3.4049
+[17/30][400/3166][10858] IPM_enum: 3.8086 IPM_denom: 1.9110 IPM_ratio: 1.9930 E_P_f: 1.9889 E_Q_f: -1.8197 E_P_(f^2): 3.9759 E_Q_(f^2): 3.3280
+[17/30][500/3166][10878] IPM_enum: 4.0662 IPM_denom: 2.0423 IPM_ratio: 1.9910 E_P_f: 2.0885 E_Q_f: -1.9777 E_P_(f^2): 4.4109 E_Q_(f^2): 3.9310
+[17/30][600/3166][10898] IPM_enum: 3.9983 IPM_denom: 2.0059 IPM_ratio: 1.9932 E_P_f: 2.0351 E_Q_f: -1.9632 E_P_(f^2): 4.1777 E_Q_(f^2): 3.8697
+[17/30][700/3166][10918] IPM_enum: 3.9022 IPM_denom: 1.9623 IPM_ratio: 1.9885 E_P_f: 1.8324 E_Q_f: -2.0697 E_P_(f^2): 3.3969 E_Q_(f^2): 4.3045
+[17/30][800/3166][10938] IPM_enum: 3.5148 IPM_denom: 1.7709 IPM_ratio: 1.9847 E_P_f: 1.9075 E_Q_f: -1.6073 E_P_(f^2): 3.6711 E_Q_(f^2): 2.6014
+[17/30][900/3166][10958] IPM_enum: 3.9746 IPM_denom: 1.9952 IPM_ratio: 1.9921 E_P_f: 1.9782 E_Q_f: -1.9964 E_P_(f^2): 3.9585 E_Q_(f^2): 4.0032
+[17/30][1000/3166][10978] IPM_enum: 4.2008 IPM_denom: 2.1193 IPM_ratio: 1.9822 E_P_f: 2.2993 E_Q_f: -1.9015 E_P_(f^2): 5.3313 E_Q_(f^2): 3.6512
+[17/30][1100/3166][10998] IPM_enum: 3.4018 IPM_denom: 1.7323 IPM_ratio: 1.9638 E_P_f: 1.4349 E_Q_f: -1.9670 E_P_(f^2): 2.1057 E_Q_(f^2): 3.8958
+[17/30][1200/3166][11018] IPM_enum: 3.9108 IPM_denom: 2.0315 IPM_ratio: 1.9251 E_P_f: 2.4725 E_Q_f: -1.4382 E_P_(f^2): 6.1611 E_Q_(f^2): 2.0928
+[17/30][1300/3166][11038] IPM_enum: 3.1964 IPM_denom: 1.6084 IPM_ratio: 1.9874 E_P_f: 1.6796 E_Q_f: -1.5168 E_P_(f^2): 2.8562 E_Q_(f^2): 2.3175
+[17/30][1400/3166][11058] IPM_enum: 3.8791 IPM_denom: 1.9691 IPM_ratio: 1.9700 E_P_f: 2.2226 E_Q_f: -1.6566 E_P_(f^2): 4.9886 E_Q_(f^2): 2.7664
+[17/30][1500/3166][11078] IPM_enum: 3.8116 IPM_denom: 1.9187 IPM_ratio: 1.9865 E_P_f: 2.0411 E_Q_f: -1.7706 E_P_(f^2): 4.2072 E_Q_(f^2): 3.1558
+[17/30][1600/3166][11098] IPM_enum: 3.9605 IPM_denom: 1.9866 IPM_ratio: 1.9936 E_P_f: 2.0132 E_Q_f: -1.9473 E_P_(f^2): 4.0847 E_Q_(f^2): 3.8088
+[17/30][1700/3166][11118] IPM_enum: 3.8453 IPM_denom: 1.9343 IPM_ratio: 1.9879 E_P_f: 1.7708 E_Q_f: -2.0745 E_P_(f^2): 3.1608 E_Q_(f^2): 4.3225
+[17/30][1800/3166][11138] IPM_enum: 4.1902 IPM_denom: 2.0994 IPM_ratio: 1.9959 E_P_f: 2.1121 E_Q_f: -2.0781 E_P_(f^2): 4.4837 E_Q_(f^2): 4.3312
+[17/30][1900/3166][11158] IPM_enum: 3.5268 IPM_denom: 1.7780 IPM_ratio: 1.9836 E_P_f: 1.9590 E_Q_f: -1.5678 E_P_(f^2): 3.8486 E_Q_(f^2): 2.4742
+[17/30][2000/3166][11178] IPM_enum: 3.6492 IPM_denom: 1.8777 IPM_ratio: 1.9435 E_P_f: 1.4205 E_Q_f: -2.2288 E_P_(f^2): 2.0479 E_Q_(f^2): 5.0033
+[17/30][2100/3166][11198] IPM_enum: 3.5742 IPM_denom: 1.8058 IPM_ratio: 1.9793 E_P_f: 1.9936 E_Q_f: -1.5806 E_P_(f^2): 4.0020 E_Q_(f^2): 2.5197
+[17/30][2200/3166][11218] IPM_enum: 3.4065 IPM_denom: 1.7193 IPM_ratio: 1.9813 E_P_f: 1.7828 E_Q_f: -1.6237 E_P_(f^2): 3.2459 E_Q_(f^2): 2.6659
+[17/30][2300/3166][11238] IPM_enum: 3.5961 IPM_denom: 1.8180 IPM_ratio: 1.9781 E_P_f: 1.9480 E_Q_f: -1.6481 E_P_(f^2): 3.8717 E_Q_(f^2): 2.7383
+[17/30][2400/3166][11258] IPM_enum: 3.8540 IPM_denom: 1.9726 IPM_ratio: 1.9538 E_P_f: 1.5585 E_Q_f: -2.2956 E_P_(f^2): 2.4810 E_Q_(f^2): 5.3012
+[17/30][2500/3166][11278] IPM_enum: 3.9951 IPM_denom: 2.0109 IPM_ratio: 1.9867 E_P_f: 2.0931 E_Q_f: -1.9020 E_P_(f^2): 4.4401 E_Q_(f^2): 3.6477
+[17/30][2600/3166][11298] IPM_enum: 3.7271 IPM_denom: 1.8765 IPM_ratio: 1.9863 E_P_f: 1.7295 E_Q_f: -1.9977 E_P_(f^2): 3.0338 E_Q_(f^2): 4.0085
+[17/30][2700/3166][11318] IPM_enum: 3.6940 IPM_denom: 1.8557 IPM_ratio: 1.9906 E_P_f: 1.8839 E_Q_f: -1.8101 E_P_(f^2): 3.5917 E_Q_(f^2): 3.2956
+[17/30][2800/3166][11338] IPM_enum: 3.7543 IPM_denom: 1.8831 IPM_ratio: 1.9937 E_P_f: 1.8948 E_Q_f: -1.8595 E_P_(f^2): 3.6230 E_Q_(f^2): 3.4691
+[17/30][2900/3166][11358] IPM_enum: 3.8220 IPM_denom: 1.9377 IPM_ratio: 1.9725 E_P_f: 2.1904 E_Q_f: -1.6316 E_P_(f^2): 4.8283 E_Q_(f^2): 2.6807
+[17/30][3000/3166][11378] IPM_enum: 3.3739 IPM_denom: 1.7486 IPM_ratio: 1.9295 E_P_f: 2.1176 E_Q_f: -1.2563 E_P_(f^2): 4.5202 E_Q_(f^2): 1.5951
+[17/30][3100/3166][11398] IPM_enum: 3.8341 IPM_denom: 1.9241 IPM_ratio: 1.9927 E_P_f: 1.9963 E_Q_f: -1.8378 E_P_(f^2): 4.0112 E_Q_(f^2): 3.3929
+[18/30][100/3166][11432] IPM_enum: 3.6727 IPM_denom: 1.8657 IPM_ratio: 1.9685 E_P_f: 1.5649 E_Q_f: -2.1079 E_P_(f^2): 2.5064 E_Q_(f^2): 4.4556
+[18/30][200/3166][11452] IPM_enum: 3.5879 IPM_denom: 1.8049 IPM_ratio: 1.9879 E_P_f: 1.8245 E_Q_f: -1.7634 E_P_(f^2): 3.3824 E_Q_(f^2): 3.1331
+[18/30][300/3166][11472] IPM_enum: 3.7866 IPM_denom: 1.9363 IPM_ratio: 1.9556 E_P_f: 2.2636 E_Q_f: -1.5230 E_P_(f^2): 5.1546 E_Q_(f^2): 2.3436
+[18/30][400/3166][11492] IPM_enum: 3.7386 IPM_denom: 1.8767 IPM_ratio: 1.9921 E_P_f: 1.7926 E_Q_f: -1.9460 E_P_(f^2): 3.2447 E_Q_(f^2): 3.7996
+[18/30][500/3166][11512] IPM_enum: 3.7446 IPM_denom: 1.9499 IPM_ratio: 1.9205 E_P_f: 2.3770 E_Q_f: -1.3676 E_P_(f^2): 5.6937 E_Q_(f^2): 1.9102
+[18/30][600/3166][11532] IPM_enum: 3.7529 IPM_denom: 1.8866 IPM_ratio: 1.9893 E_P_f: 1.9814 E_Q_f: -1.7715 E_P_(f^2): 3.9641 E_Q_(f^2): 3.1544
+[18/30][700/3166][11552] IPM_enum: 4.1108 IPM_denom: 2.0648 IPM_ratio: 1.9909 E_P_f: 1.9483 E_Q_f: -2.1626 E_P_(f^2): 3.8310 E_Q_(f^2): 4.6957
+[18/30][800/3166][11572] IPM_enum: 3.8165 IPM_denom: 1.9165 IPM_ratio: 1.9914 E_P_f: 2.0231 E_Q_f: -1.7934 E_P_(f^2): 4.1156 E_Q_(f^2): 3.2301
+[18/30][900/3166][11592] IPM_enum: 3.4756 IPM_denom: 1.7466 IPM_ratio: 1.9899 E_P_f: 1.8247 E_Q_f: -1.6508 E_P_(f^2): 3.3537 E_Q_(f^2): 2.7476
+[18/30][1000/3166][11612] IPM_enum: 3.3794 IPM_denom: 1.7359 IPM_ratio: 1.9468 E_P_f: 2.0558 E_Q_f: -1.3236 E_P_(f^2): 4.2545 E_Q_(f^2): 1.7720
+[18/30][1100/3166][11632] IPM_enum: 3.7567 IPM_denom: 1.8996 IPM_ratio: 1.9776 E_P_f: 2.0925 E_Q_f: -1.6642 E_P_(f^2): 4.4210 E_Q_(f^2): 2.7958
+[18/30][1200/3166][11652] IPM_enum: 3.3035 IPM_denom: 1.6628 IPM_ratio: 1.9867 E_P_f: 1.7366 E_Q_f: -1.5669 E_P_(f^2): 3.0515 E_Q_(f^2): 2.4783
+[18/30][1300/3166][11672] IPM_enum: 3.8787 IPM_denom: 1.9465 IPM_ratio: 1.9927 E_P_f: 1.9360 E_Q_f: -1.9427 E_P_(f^2): 3.7848 E_Q_(f^2): 3.7929
+[18/30][1400/3166][11692] IPM_enum: 3.9244 IPM_denom: 1.9682 IPM_ratio: 1.9939 E_P_f: 1.9063 E_Q_f: -2.0181 E_P_(f^2): 3.6633 E_Q_(f^2): 4.0846
+[18/30][1500/3166][11712] IPM_enum: 3.7620 IPM_denom: 1.8868 IPM_ratio: 1.9938 E_P_f: 1.8823 E_Q_f: -1.8796 E_P_(f^2): 3.5693 E_Q_(f^2): 3.5510
+[18/30][1600/3166][11732] IPM_enum: 3.7057 IPM_denom: 1.8707 IPM_ratio: 1.9809 E_P_f: 2.0437 E_Q_f: -1.6620 E_P_(f^2): 4.2218 E_Q_(f^2): 2.7771
+[18/30][1700/3166][11752] IPM_enum: 3.9014 IPM_denom: 1.9669 IPM_ratio: 1.9835 E_P_f: 2.0764 E_Q_f: -1.8249 E_P_(f^2): 4.3727 E_Q_(f^2): 3.3647
+[18/30][1800/3166][11772] IPM_enum: 3.8529 IPM_denom: 1.9411 IPM_ratio: 1.9849 E_P_f: 2.0875 E_Q_f: -1.7654 E_P_(f^2): 4.3902 E_Q_(f^2): 3.1459
+[18/30][1900/3166][11792] IPM_enum: 3.5529 IPM_denom: 1.8004 IPM_ratio: 1.9734 E_P_f: 1.9950 E_Q_f: -1.5579 E_P_(f^2): 4.0299 E_Q_(f^2): 2.4529
+[18/30][2000/3166][11812] IPM_enum: 3.6715 IPM_denom: 1.8496 IPM_ratio: 1.9850 E_P_f: 1.7125 E_Q_f: -1.9590 E_P_(f^2): 2.9737 E_Q_(f^2): 3.8681
+[18/30][2100/3166][11832] IPM_enum: 4.0216 IPM_denom: 2.0447 IPM_ratio: 1.9669 E_P_f: 1.6783 E_Q_f: -2.3433 E_P_(f^2): 2.8511 E_Q_(f^2): 5.5105
+[18/30][2200/3166][11852] IPM_enum: 3.9705 IPM_denom: 1.9971 IPM_ratio: 1.9881 E_P_f: 2.1450 E_Q_f: -1.8255 E_P_(f^2): 4.6300 E_Q_(f^2): 3.3472
+[18/30][2300/3166][11872] IPM_enum: 3.9339 IPM_denom: 1.9801 IPM_ratio: 1.9867 E_P_f: 1.8012 E_Q_f: -2.1327 E_P_(f^2): 3.2760 E_Q_(f^2): 4.5657
+[18/30][2400/3166][11892] IPM_enum: 3.6508 IPM_denom: 1.8328 IPM_ratio: 1.9920 E_P_f: 1.8010 E_Q_f: -1.8498 E_P_(f^2): 3.2767 E_Q_(f^2): 3.4413
+[18/30][2500/3166][11912] IPM_enum: 3.8454 IPM_denom: 1.9338 IPM_ratio: 1.9885 E_P_f: 2.0124 E_Q_f: -1.8329 E_P_(f^2): 4.0977 E_Q_(f^2): 3.3811
+[18/30][2600/3166][11932] IPM_enum: 3.6680 IPM_denom: 1.8442 IPM_ratio: 1.9889 E_P_f: 1.8347 E_Q_f: -1.8333 E_P_(f^2): 3.4212 E_Q_(f^2): 3.3812
+[18/30][2700/3166][11952] IPM_enum: 3.7414 IPM_denom: 1.9017 IPM_ratio: 1.9674 E_P_f: 2.1518 E_Q_f: -1.5896 E_P_(f^2): 4.6848 E_Q_(f^2): 2.5481
+[18/30][2800/3166][11972] IPM_enum: 3.8685 IPM_denom: 1.9702 IPM_ratio: 1.9635 E_P_f: 2.2576 E_Q_f: -1.6109 E_P_(f^2): 5.1473 E_Q_(f^2): 2.6164
+[18/30][2900/3166][11992] IPM_enum: 3.8133 IPM_denom: 1.9369 IPM_ratio: 1.9688 E_P_f: 2.2017 E_Q_f: -1.6116 E_P_(f^2): 4.8824 E_Q_(f^2): 2.6205
+[18/30][3000/3166][12012] IPM_enum: 3.6709 IPM_denom: 1.8449 IPM_ratio: 1.9898 E_P_f: 1.9535 E_Q_f: -1.7174 E_P_(f^2): 3.8460 E_Q_(f^2): 2.9614
+[18/30][3100/3166][12032] IPM_enum: 3.6058 IPM_denom: 1.8186 IPM_ratio: 1.9827 E_P_f: 1.9599 E_Q_f: -1.6460 E_P_(f^2): 3.8795 E_Q_(f^2): 2.7351
+[19/30][100/3166][12066] IPM_enum: 3.8435 IPM_denom: 1.9322 IPM_ratio: 1.9892 E_P_f: 1.9920 E_Q_f: -1.8516 E_P_(f^2): 4.0107 E_Q_(f^2): 3.4559
+[19/30][200/3166][12086] IPM_enum: 3.9005 IPM_denom: 1.9593 IPM_ratio: 1.9908 E_P_f: 1.8506 E_Q_f: -2.0499 E_P_(f^2): 3.4521 E_Q_(f^2): 4.2253
+[19/30][300/3166][12106] IPM_enum: 3.6333 IPM_denom: 1.8533 IPM_ratio: 1.9604 E_P_f: 2.1485 E_Q_f: -1.4848 E_P_(f^2): 4.6484 E_Q_(f^2): 2.2213
+[19/30][400/3166][12126] IPM_enum: 3.7880 IPM_denom: 1.9211 IPM_ratio: 1.9718 E_P_f: 2.1729 E_Q_f: -1.6152 E_P_(f^2): 4.7589 E_Q_(f^2): 2.6220
+[19/30][500/3166][12146] IPM_enum: 3.5737 IPM_denom: 1.8001 IPM_ratio: 1.9853 E_P_f: 1.6707 E_Q_f: -1.9030 E_P_(f^2): 2.8431 E_Q_(f^2): 3.6374
+[19/30][600/3166][12166] IPM_enum: 3.9511 IPM_denom: 2.0098 IPM_ratio: 1.9659 E_P_f: 1.6426 E_Q_f: -2.3085 E_P_(f^2): 2.7349 E_Q_(f^2): 5.3437
+[19/30][700/3166][12186] IPM_enum: 4.0750 IPM_denom: 2.0455 IPM_ratio: 1.9922 E_P_f: 1.9741 E_Q_f: -2.1009 E_P_(f^2): 3.9391 E_Q_(f^2): 4.4290
+[19/30][800/3166][12206] IPM_enum: 3.4375 IPM_denom: 1.7670 IPM_ratio: 1.9454 E_P_f: 2.0807 E_Q_f: -1.3568 E_P_(f^2): 4.3780 E_Q_(f^2): 1.8666
+[19/30][900/3166][12226] IPM_enum: 3.8936 IPM_denom: 1.9821 IPM_ratio: 1.9644 E_P_f: 2.2722 E_Q_f: -1.6215 E_P_(f^2): 5.2020 E_Q_(f^2): 2.6557
+[19/30][1000/3166][12246] IPM_enum: 3.8276 IPM_denom: 1.9238 IPM_ratio: 1.9896 E_P_f: 1.9783 E_Q_f: -1.8493 E_P_(f^2): 3.9566 E_Q_(f^2): 3.4450
+[19/30][1100/3166][12266] IPM_enum: 3.3787 IPM_denom: 1.7269 IPM_ratio: 1.9566 E_P_f: 1.9910 E_Q_f: -1.3878 E_P_(f^2): 4.0088 E_Q_(f^2): 1.9554
+[19/30][1200/3166][12286] IPM_enum: 3.7571 IPM_denom: 1.8876 IPM_ratio: 1.9905 E_P_f: 1.8673 E_Q_f: -1.8899 E_P_(f^2): 3.5382 E_Q_(f^2): 3.5875
+[19/30][1300/3166][12306] IPM_enum: 3.6195 IPM_denom: 1.8302 IPM_ratio: 1.9776 E_P_f: 1.6001 E_Q_f: -2.0193 E_P_(f^2): 2.6025 E_Q_(f^2): 4.0968
+[19/30][1400/3166][12326] IPM_enum: 3.3996 IPM_denom: 1.7544 IPM_ratio: 1.9378 E_P_f: 1.3026 E_Q_f: -2.0970 E_P_(f^2): 1.7413 E_Q_(f^2): 4.4144
+[19/30][1500/3166][12346] IPM_enum: 4.0223 IPM_denom: 2.0402 IPM_ratio: 1.9715 E_P_f: 1.7081 E_Q_f: -2.3142 E_P_(f^2): 2.9513 E_Q_(f^2): 5.3736
+[19/30][1600/3166][12366] IPM_enum: 3.2864 IPM_denom: 1.6565 IPM_ratio: 1.9840 E_P_f: 1.4975 E_Q_f: -1.7890 E_P_(f^2): 2.2731 E_Q_(f^2): 3.2145
+[19/30][1700/3166][12386] IPM_enum: 3.8886 IPM_denom: 1.9557 IPM_ratio: 1.9883 E_P_f: 1.8501 E_Q_f: -2.0385 E_P_(f^2): 3.4714 E_Q_(f^2): 4.1784
+[19/30][1800/3166][12406] IPM_enum: 3.7591 IPM_denom: 1.8887 IPM_ratio: 1.9903 E_P_f: 1.8463 E_Q_f: -1.9128 E_P_(f^2): 3.4611 E_Q_(f^2): 3.6730
+[19/30][1900/3166][12426] IPM_enum: 3.5941 IPM_denom: 1.8190 IPM_ratio: 1.9759 E_P_f: 1.5770 E_Q_f: -2.0172 E_P_(f^2): 2.5303 E_Q_(f^2): 4.0874
+[19/30][2000/3166][12446] IPM_enum: 3.8813 IPM_denom: 1.9679 IPM_ratio: 1.9723 E_P_f: 2.2057 E_Q_f: -1.6756 E_P_(f^2): 4.9140 E_Q_(f^2): 2.8312
+[19/30][2100/3166][12466] IPM_enum: 3.7513 IPM_denom: 1.9084 IPM_ratio: 1.9656 E_P_f: 2.1651 E_Q_f: -1.5861 E_P_(f^2): 4.7312 E_Q_(f^2): 2.5530
+[19/30][2200/3166][12486] IPM_enum: 3.7918 IPM_denom: 1.9102 IPM_ratio: 1.9850 E_P_f: 1.7579 E_Q_f: -2.0338 E_P_(f^2): 3.1419 E_Q_(f^2): 4.1556
+[19/30][2300/3166][12506] IPM_enum: 3.5073 IPM_denom: 1.8084 IPM_ratio: 1.9394 E_P_f: 2.1636 E_Q_f: -1.3437 E_P_(f^2): 4.7178 E_Q_(f^2): 1.8228
+[19/30][2400/3166][12526] IPM_enum: 3.6812 IPM_denom: 1.8529 IPM_ratio: 1.9868 E_P_f: 1.9796 E_Q_f: -1.7016 E_P_(f^2): 3.9561 E_Q_(f^2): 2.9100
+[19/30][2500/3166][12546] IPM_enum: 3.6260 IPM_denom: 1.8204 IPM_ratio: 1.9918 E_P_f: 1.7768 E_Q_f: -1.8492 E_P_(f^2): 3.1928 E_Q_(f^2): 3.4352
+[19/30][2600/3166][12566] IPM_enum: 3.6576 IPM_denom: 1.8358 IPM_ratio: 1.9924 E_P_f: 1.9010 E_Q_f: -1.7566 E_P_(f^2): 3.6394 E_Q_(f^2): 3.1008
+[19/30][2700/3166][12586] IPM_enum: 3.6236 IPM_denom: 1.8280 IPM_ratio: 1.9822 E_P_f: 1.6348 E_Q_f: -1.9888 E_P_(f^2): 2.7169 E_Q_(f^2): 3.9666
+[19/30][2800/3166][12606] IPM_enum: 3.6994 IPM_denom: 1.8648 IPM_ratio: 1.9839 E_P_f: 2.0065 E_Q_f: -1.6930 E_P_(f^2): 4.0696 E_Q_(f^2): 2.8851
+[19/30][2900/3166][12626] IPM_enum: 3.6407 IPM_denom: 1.8315 IPM_ratio: 1.9878 E_P_f: 1.8544 E_Q_f: -1.7863 E_P_(f^2): 3.5019 E_Q_(f^2): 3.2071
+[19/30][3000/3166][12646] IPM_enum: 3.8701 IPM_denom: 1.9820 IPM_ratio: 1.9526 E_P_f: 1.5575 E_Q_f: -2.3126 E_P_(f^2): 2.4858 E_Q_(f^2): 5.3711
+[19/30][3100/3166][12666] IPM_enum: 3.5704 IPM_denom: 1.8195 IPM_ratio: 1.9623 E_P_f: 2.0920 E_Q_f: -1.4783 E_P_(f^2): 4.4198 E_Q_(f^2): 2.2013
+[20/30][100/3166][12700] IPM_enum: 3.9170 IPM_denom: 1.9767 IPM_ratio: 1.9816 E_P_f: 1.7535 E_Q_f: -2.1635 E_P_(f^2): 3.1103 E_Q_(f^2): 4.7042
+[20/30][200/3166][12720] IPM_enum: 3.6384 IPM_denom: 1.8283 IPM_ratio: 1.9901 E_P_f: 1.9027 E_Q_f: -1.7358 E_P_(f^2): 3.6538 E_Q_(f^2): 3.0314
+[20/30][300/3166][12740] IPM_enum: 3.8248 IPM_denom: 1.9201 IPM_ratio: 1.9920 E_P_f: 1.9025 E_Q_f: -1.9223 E_P_(f^2): 3.6619 E_Q_(f^2): 3.7114
+[20/30][400/3166][12760] IPM_enum: 3.7484 IPM_denom: 1.8938 IPM_ratio: 1.9794 E_P_f: 1.6820 E_Q_f: -2.0664 E_P_(f^2): 2.8803 E_Q_(f^2): 4.2923
+[20/30][500/3166][12780] IPM_enum: 3.7083 IPM_denom: 1.8615 IPM_ratio: 1.9922 E_P_f: 1.9219 E_Q_f: -1.7864 E_P_(f^2): 3.7258 E_Q_(f^2): 3.2043
+[20/30][600/3166][12800] IPM_enum: 3.7027 IPM_denom: 1.8605 IPM_ratio: 1.9902 E_P_f: 1.7619 E_Q_f: -1.9408 E_P_(f^2): 3.1378 E_Q_(f^2): 3.7848
+[20/30][700/3166][12820] IPM_enum: 3.8077 IPM_denom: 1.9134 IPM_ratio: 1.9901 E_P_f: 2.0112 E_Q_f: -1.7965 E_P_(f^2): 4.0837 E_Q_(f^2): 3.2384
+[20/30][800/3166][12840] IPM_enum: 3.7260 IPM_denom: 1.8782 IPM_ratio: 1.9838 E_P_f: 1.7055 E_Q_f: -2.0205 E_P_(f^2): 2.9583 E_Q_(f^2): 4.0973
+[20/30][900/3166][12860] IPM_enum: 3.7177 IPM_denom: 1.8938 IPM_ratio: 1.9631 E_P_f: 2.1855 E_Q_f: -1.5322 E_P_(f^2): 4.8119 E_Q_(f^2): 2.3610
+[20/30][1000/3166][12880] IPM_enum: 3.9375 IPM_denom: 1.9888 IPM_ratio: 1.9798 E_P_f: 1.7383 E_Q_f: -2.1992 E_P_(f^2): 3.0512 E_Q_(f^2): 4.8592
+[20/30][1100/3166][12900] IPM_enum: 3.6502 IPM_denom: 1.8563 IPM_ratio: 1.9663 E_P_f: 2.1234 E_Q_f: -1.5268 E_P_(f^2): 4.5421 E_Q_(f^2): 2.3499
+[20/30][1200/3166][12920] IPM_enum: 3.2987 IPM_denom: 1.6573 IPM_ratio: 1.9904 E_P_f: 1.6330 E_Q_f: -1.6658 E_P_(f^2): 2.7103 E_Q_(f^2): 2.7831
+[20/30][1300/3166][12940] IPM_enum: 3.8146 IPM_denom: 1.9183 IPM_ratio: 1.9885 E_P_f: 2.0405 E_Q_f: -1.7741 E_P_(f^2): 4.2007 E_Q_(f^2): 3.1592
+[20/30][1400/3166][12960] IPM_enum: 3.7309 IPM_denom: 1.8850 IPM_ratio: 1.9793 E_P_f: 2.0762 E_Q_f: -1.6547 E_P_(f^2): 4.3364 E_Q_(f^2): 2.7699
+[20/30][1500/3166][12980] IPM_enum: 3.6675 IPM_denom: 1.8683 IPM_ratio: 1.9630 E_P_f: 2.1512 E_Q_f: -1.5163 E_P_(f^2): 4.6635 E_Q_(f^2): 2.3176
+[20/30][1600/3166][13000] IPM_enum: 3.5298 IPM_denom: 1.7904 IPM_ratio: 1.9715 E_P_f: 1.5018 E_Q_f: -2.0281 E_P_(f^2): 2.2856 E_Q_(f^2): 4.1256
+[20/30][1700/3166][13020] IPM_enum: 3.6292 IPM_denom: 1.8290 IPM_ratio: 1.9843 E_P_f: 1.9739 E_Q_f: -1.6553 E_P_(f^2): 3.9382 E_Q_(f^2): 2.7520
+[20/30][1800/3166][13040] IPM_enum: 3.5918 IPM_denom: 1.8110 IPM_ratio: 1.9833 E_P_f: 1.9312 E_Q_f: -1.6606 E_P_(f^2): 3.7765 E_Q_(f^2): 2.7832
+[20/30][1900/3166][13060] IPM_enum: 3.6355 IPM_denom: 1.8231 IPM_ratio: 1.9941 E_P_f: 1.8124 E_Q_f: -1.8231 E_P_(f^2): 3.3077 E_Q_(f^2): 3.3398
+[20/30][2000/3166][13080] IPM_enum: 3.6690 IPM_denom: 1.8829 IPM_ratio: 1.9486 E_P_f: 2.2233 E_Q_f: -1.4457 E_P_(f^2): 4.9777 E_Q_(f^2): 2.1129
+[20/30][2100/3166][13100] IPM_enum: 3.7441 IPM_denom: 1.8820 IPM_ratio: 1.9894 E_P_f: 1.9101 E_Q_f: -1.8340 E_P_(f^2): 3.6787 E_Q_(f^2): 3.4053
+[20/30][2200/3166][13120] IPM_enum: 4.0981 IPM_denom: 2.0579 IPM_ratio: 1.9914 E_P_f: 1.9858 E_Q_f: -2.1124 E_P_(f^2): 3.9879 E_Q_(f^2): 4.4819
+[20/30][2300/3166][13140] IPM_enum: 3.4470 IPM_denom: 1.7334 IPM_ratio: 1.9886 E_P_f: 1.6452 E_Q_f: -1.8018 E_P_(f^2): 2.7433 E_Q_(f^2): 3.2662
+[20/30][2400/3166][13160] IPM_enum: 3.5134 IPM_denom: 1.7642 IPM_ratio: 1.9915 E_P_f: 1.8015 E_Q_f: -1.7119 E_P_(f^2): 3.2716 E_Q_(f^2): 2.9532
+[20/30][2500/3166][13180] IPM_enum: 3.7558 IPM_denom: 1.8907 IPM_ratio: 1.9865 E_P_f: 1.7411 E_Q_f: -2.0148 E_P_(f^2): 3.0687 E_Q_(f^2): 4.0810
+[20/30][2600/3166][13200] IPM_enum: 3.7452 IPM_denom: 1.8794 IPM_ratio: 1.9928 E_P_f: 1.9188 E_Q_f: -1.8264 E_P_(f^2): 3.7104 E_Q_(f^2): 3.3538
+[20/30][2700/3166][13220] IPM_enum: 3.3560 IPM_denom: 1.6944 IPM_ratio: 1.9807 E_P_f: 1.8489 E_Q_f: -1.5071 E_P_(f^2): 3.4554 E_Q_(f^2): 2.2864
+[20/30][2800/3166][13240] IPM_enum: 3.5673 IPM_denom: 1.7910 IPM_ratio: 1.9918 E_P_f: 1.7989 E_Q_f: -1.7684 E_P_(f^2): 3.2670 E_Q_(f^2): 3.1482
+[20/30][2900/3166][13260] IPM_enum: 4.3197 IPM_denom: 2.1756 IPM_ratio: 1.9855 E_P_f: 1.9764 E_Q_f: -2.3433 E_P_(f^2): 3.9495 E_Q_(f^2): 5.5170
+[20/30][3000/3166][13280] IPM_enum: 3.4882 IPM_denom: 1.7597 IPM_ratio: 1.9823 E_P_f: 1.6287 E_Q_f: -1.8596 E_P_(f^2): 2.7064 E_Q_(f^2): 3.4864
+[20/30][3100/3166][13300] IPM_enum: 3.2666 IPM_denom: 1.6955 IPM_ratio: 1.9267 E_P_f: 2.0514 E_Q_f: -1.2153 E_P_(f^2): 4.2543 E_Q_(f^2): 1.4951
+[21/30][100/3166][13334] IPM_enum: 3.4818 IPM_denom: 1.7529 IPM_ratio: 1.9863 E_P_f: 1.8375 E_Q_f: -1.6443 E_P_(f^2): 3.4228 E_Q_(f^2): 2.7226
+[21/30][200/3166][13354] IPM_enum: 3.7416 IPM_denom: 1.8953 IPM_ratio: 1.9741 E_P_f: 2.1188 E_Q_f: -1.6228 E_P_(f^2): 4.5325 E_Q_(f^2): 2.6521
+[21/30][300/3166][13374] IPM_enum: 3.1771 IPM_denom: 1.6023 IPM_ratio: 1.9829 E_P_f: 1.7297 E_Q_f: -1.4474 E_P_(f^2): 3.0271 E_Q_(f^2): 2.1074
+[21/30][400/3166][13394] IPM_enum: 3.6161 IPM_denom: 1.8250 IPM_ratio: 1.9814 E_P_f: 1.6166 E_Q_f: -1.9995 E_P_(f^2): 2.6477 E_Q_(f^2): 4.0137
+[21/30][500/3166][13414] IPM_enum: 3.6917 IPM_denom: 1.9038 IPM_ratio: 1.9391 E_P_f: 2.2838 E_Q_f: -1.4079 E_P_(f^2): 5.2487 E_Q_(f^2): 1.9999
+[21/30][600/3166][13434] IPM_enum: 3.7624 IPM_denom: 1.8895 IPM_ratio: 1.9912 E_P_f: 1.9031 E_Q_f: -1.8593 E_P_(f^2): 3.6623 E_Q_(f^2): 3.4782
+[21/30][700/3166][13454] IPM_enum: 3.9442 IPM_denom: 1.9848 IPM_ratio: 1.9871 E_P_f: 2.1116 E_Q_f: -1.8325 E_P_(f^2): 4.5036 E_Q_(f^2): 3.3755
+[21/30][800/3166][13474] IPM_enum: 3.3652 IPM_denom: 1.7579 IPM_ratio: 1.9144 E_P_f: 2.1539 E_Q_f: -1.2113 E_P_(f^2): 4.6777 E_Q_(f^2): 1.5024
+[21/30][900/3166][13494] IPM_enum: 3.7325 IPM_denom: 1.8795 IPM_ratio: 1.9859 E_P_f: 1.9343 E_Q_f: -1.7982 E_P_(f^2): 3.7895 E_Q_(f^2): 3.2753
+[21/30][1000/3166][13514] IPM_enum: 3.8196 IPM_denom: 1.9160 IPM_ratio: 1.9936 E_P_f: 1.8452 E_Q_f: -1.9744 E_P_(f^2): 3.4271 E_Q_(f^2): 3.9147
+[21/30][1100/3166][13534] IPM_enum: 3.8095 IPM_denom: 1.9479 IPM_ratio: 1.9557 E_P_f: 1.5679 E_Q_f: -2.2416 E_P_(f^2): 2.5273 E_Q_(f^2): 5.0614
+[21/30][1200/3166][13554] IPM_enum: 3.7086 IPM_denom: 1.8713 IPM_ratio: 1.9819 E_P_f: 2.0266 E_Q_f: -1.6820 E_P_(f^2): 4.1550 E_Q_(f^2): 2.8484
+[21/30][1300/3166][13574] IPM_enum: 3.5303 IPM_denom: 1.7708 IPM_ratio: 1.9936 E_P_f: 1.7342 E_Q_f: -1.7960 E_P_(f^2): 3.0270 E_Q_(f^2): 3.2446
+[21/30][1400/3166][13594] IPM_enum: 3.6109 IPM_denom: 1.8284 IPM_ratio: 1.9750 E_P_f: 2.0495 E_Q_f: -1.5614 E_P_(f^2): 4.2266 E_Q_(f^2): 2.4591
+[21/30][1500/3166][13614] IPM_enum: 3.7184 IPM_denom: 1.8706 IPM_ratio: 1.9878 E_P_f: 1.8118 E_Q_f: -1.9066 E_P_(f^2): 3.3418 E_Q_(f^2): 3.6561
+[21/30][1600/3166][13634] IPM_enum: 3.4121 IPM_denom: 1.7231 IPM_ratio: 1.9802 E_P_f: 1.8789 E_Q_f: -1.5332 E_P_(f^2): 3.5694 E_Q_(f^2): 2.3690
+[21/30][1700/3166][13654] IPM_enum: 3.7480 IPM_denom: 1.8930 IPM_ratio: 1.9799 E_P_f: 2.0926 E_Q_f: -1.6554 E_P_(f^2): 4.4142 E_Q_(f^2): 2.7524
+[21/30][1800/3166][13674] IPM_enum: 3.4782 IPM_denom: 1.7582 IPM_ratio: 1.9782 E_P_f: 1.9429 E_Q_f: -1.5353 E_P_(f^2): 3.8047 E_Q_(f^2): 2.3780
+[21/30][1900/3166][13694] IPM_enum: 3.8227 IPM_denom: 1.9236 IPM_ratio: 1.9872 E_P_f: 2.0288 E_Q_f: -1.7939 E_P_(f^2): 4.1513 E_Q_(f^2): 3.2494
+[21/30][2000/3166][13714] IPM_enum: 3.8397 IPM_denom: 1.9614 IPM_ratio: 1.9576 E_P_f: 1.5450 E_Q_f: -2.2947 E_P_(f^2): 2.4098 E_Q_(f^2): 5.2846
+[21/30][2100/3166][13734] IPM_enum: 3.6905 IPM_denom: 1.8564 IPM_ratio: 1.9880 E_P_f: 1.7284 E_Q_f: -1.9621 E_P_(f^2): 3.0325 E_Q_(f^2): 3.8596
+[21/30][2200/3166][13754] IPM_enum: 4.0875 IPM_denom: 2.0528 IPM_ratio: 1.9912 E_P_f: 1.9157 E_Q_f: -2.1718 E_P_(f^2): 3.7020 E_Q_(f^2): 4.7262
+[21/30][2300/3166][13774] IPM_enum: 3.5390 IPM_denom: 1.7902 IPM_ratio: 1.9768 E_P_f: 1.9780 E_Q_f: -1.5610 E_P_(f^2): 3.9460 E_Q_(f^2): 2.4637
+[21/30][2400/3166][13794] IPM_enum: 3.6679 IPM_denom: 1.8899 IPM_ratio: 1.9408 E_P_f: 2.2007 E_Q_f: -1.4672 E_P_(f^2): 4.8828 E_Q_(f^2): 2.2608
+[21/30][2500/3166][13814] IPM_enum: 3.4508 IPM_denom: 1.7846 IPM_ratio: 1.9336 E_P_f: 2.1432 E_Q_f: -1.3076 E_P_(f^2): 4.6426 E_Q_(f^2): 1.7273
+[21/30][2600/3166][13834] IPM_enum: 3.6931 IPM_denom: 1.8563 IPM_ratio: 1.9895 E_P_f: 1.7672 E_Q_f: -1.9259 E_P_(f^2): 3.1562 E_Q_(f^2): 3.7356
+[21/30][2700/3166][13854] IPM_enum: 3.9194 IPM_denom: 1.9792 IPM_ratio: 1.9803 E_P_f: 1.7458 E_Q_f: -2.1736 E_P_(f^2): 3.0846 E_Q_(f^2): 4.7498
+[21/30][2800/3166][13874] IPM_enum: 3.5858 IPM_denom: 1.8059 IPM_ratio: 1.9856 E_P_f: 1.9260 E_Q_f: -1.6598 E_P_(f^2): 3.7550 E_Q_(f^2): 2.7677
+[21/30][2900/3166][13894] IPM_enum: 3.8735 IPM_denom: 1.9591 IPM_ratio: 1.9771 E_P_f: 1.7029 E_Q_f: -2.1706 E_P_(f^2): 2.9429 E_Q_(f^2): 4.7336
+[21/30][3000/3166][13914] IPM_enum: 3.6628 IPM_denom: 1.8427 IPM_ratio: 1.9877 E_P_f: 1.9084 E_Q_f: -1.7544 E_P_(f^2): 3.6988 E_Q_(f^2): 3.0924
+[21/30][3100/3166][13934] IPM_enum: 3.4310 IPM_denom: 1.7571 IPM_ratio: 1.9527 E_P_f: 1.3886 E_Q_f: -2.0424 E_P_(f^2): 1.9868 E_Q_(f^2): 4.1878
+[22/30][100/3166][13968] IPM_enum: 3.4349 IPM_denom: 1.7338 IPM_ratio: 1.9812 E_P_f: 1.5508 E_Q_f: -1.8842 E_P_(f^2): 2.4505 E_Q_(f^2): 3.5613
+[22/30][200/3166][13988] IPM_enum: 3.6978 IPM_denom: 1.8577 IPM_ratio: 1.9905 E_P_f: 1.9389 E_Q_f: -1.7589 E_P_(f^2): 3.7973 E_Q_(f^2): 3.1048
+[22/30][300/3166][14008] IPM_enum: 3.5425 IPM_denom: 1.8020 IPM_ratio: 1.9659 E_P_f: 1.4922 E_Q_f: -2.0503 E_P_(f^2): 2.2735 E_Q_(f^2): 4.2207
+[22/30][400/3166][14028] IPM_enum: 3.5826 IPM_denom: 1.7998 IPM_ratio: 1.9906 E_P_f: 1.7744 E_Q_f: -1.8082 E_P_(f^2): 3.1878 E_Q_(f^2): 3.2908
+[22/30][500/3166][14048] IPM_enum: 3.5808 IPM_denom: 1.7989 IPM_ratio: 1.9905 E_P_f: 1.8418 E_Q_f: -1.7389 E_P_(f^2): 3.4322 E_Q_(f^2): 3.0400
+[22/30][600/3166][14068] IPM_enum: 3.5914 IPM_denom: 1.8065 IPM_ratio: 1.9880 E_P_f: 1.9029 E_Q_f: -1.6884 E_P_(f^2): 3.6635 E_Q_(f^2): 2.8632
+[22/30][700/3166][14088] IPM_enum: 3.6944 IPM_denom: 1.8653 IPM_ratio: 1.9806 E_P_f: 1.6542 E_Q_f: -2.0403 E_P_(f^2): 2.7772 E_Q_(f^2): 4.1817
+[22/30][800/3166][14108] IPM_enum: 3.5480 IPM_denom: 1.8135 IPM_ratio: 1.9564 E_P_f: 2.1170 E_Q_f: -1.4309 E_P_(f^2): 4.5144 E_Q_(f^2): 2.0633
+[22/30][900/3166][14128] IPM_enum: 3.5230 IPM_denom: 1.7692 IPM_ratio: 1.9913 E_P_f: 1.7227 E_Q_f: -1.8003 E_P_(f^2): 2.9998 E_Q_(f^2): 3.2606
+[22/30][1000/3166][14148] IPM_enum: 3.5284 IPM_denom: 1.7700 IPM_ratio: 1.9935 E_P_f: 1.7833 E_Q_f: -1.7451 E_P_(f^2): 3.2071 E_Q_(f^2): 3.0586
+[22/30][1100/3166][14168] IPM_enum: 3.5045 IPM_denom: 1.7589 IPM_ratio: 1.9924 E_P_f: 1.7509 E_Q_f: -1.7536 E_P_(f^2): 3.1022 E_Q_(f^2): 3.0854
+[22/30][1200/3166][14188] IPM_enum: 3.9444 IPM_denom: 1.9794 IPM_ratio: 1.9927 E_P_f: 1.9753 E_Q_f: -1.9691 E_P_(f^2): 3.9434 E_Q_(f^2): 3.8927
+[22/30][1300/3166][14208] IPM_enum: 3.6033 IPM_denom: 1.8383 IPM_ratio: 1.9601 E_P_f: 1.4874 E_Q_f: -2.1159 E_P_(f^2): 2.2622 E_Q_(f^2): 4.4968
+[22/30][1400/3166][14228] IPM_enum: 3.4509 IPM_denom: 1.7381 IPM_ratio: 1.9854 E_P_f: 1.8440 E_Q_f: -1.6069 E_P_(f^2): 3.4401 E_Q_(f^2): 2.6020
+[22/30][1500/3166][14248] IPM_enum: 3.7650 IPM_denom: 1.8961 IPM_ratio: 1.9856 E_P_f: 1.7483 E_Q_f: -2.0168 E_P_(f^2): 3.1006 E_Q_(f^2): 4.0901
+[22/30][1600/3166][14268] IPM_enum: 3.9326 IPM_denom: 1.9734 IPM_ratio: 1.9928 E_P_f: 1.9798 E_Q_f: -1.9528 E_P_(f^2): 3.9602 E_Q_(f^2): 3.8286
+[22/30][1700/3166][14288] IPM_enum: 3.3871 IPM_denom: 1.7023 IPM_ratio: 1.9897 E_P_f: 1.6560 E_Q_f: -1.7310 E_P_(f^2): 2.7811 E_Q_(f^2): 3.0148
+[22/30][1800/3166][14308] IPM_enum: 3.7908 IPM_denom: 1.9028 IPM_ratio: 1.9922 E_P_f: 1.9255 E_Q_f: -1.8654 E_P_(f^2): 3.7371 E_Q_(f^2): 3.5043
+[22/30][1900/3166][14328] IPM_enum: 3.6130 IPM_denom: 1.8126 IPM_ratio: 1.9933 E_P_f: 1.8048 E_Q_f: -1.8082 E_P_(f^2): 3.2874 E_Q_(f^2): 3.2836
+[22/30][2000/3166][14348] IPM_enum: 3.8086 IPM_denom: 1.9109 IPM_ratio: 1.9931 E_P_f: 1.8899 E_Q_f: -1.9188 E_P_(f^2): 3.6087 E_Q_(f^2): 3.6947
+[22/30][2100/3166][14368] IPM_enum: 3.2499 IPM_denom: 1.6330 IPM_ratio: 1.9901 E_P_f: 1.6904 E_Q_f: -1.5595 E_P_(f^2): 2.8852 E_Q_(f^2): 2.4484
+[22/30][2200/3166][14388] IPM_enum: 3.3480 IPM_denom: 1.6876 IPM_ratio: 1.9839 E_P_f: 1.7955 E_Q_f: -1.5525 E_P_(f^2): 3.2716 E_Q_(f^2): 2.4242
+[22/30][2300/3166][14408] IPM_enum: 3.6409 IPM_denom: 1.8329 IPM_ratio: 1.9864 E_P_f: 1.6757 E_Q_f: -1.9651 E_P_(f^2): 2.8436 E_Q_(f^2): 3.8755
+[22/30][2400/3166][14428] IPM_enum: 3.1609 IPM_denom: 1.5990 IPM_ratio: 1.9768 E_P_f: 1.7642 E_Q_f: -1.3966 E_P_(f^2): 3.1458 E_Q_(f^2): 1.9679
+[22/30][2500/3166][14448] IPM_enum: 3.2232 IPM_denom: 1.6838 IPM_ratio: 1.9142 E_P_f: 2.0731 E_Q_f: -1.1501 E_P_(f^2): 4.3292 E_Q_(f^2): 1.3413
+[22/30][2600/3166][14468] IPM_enum: 3.0809 IPM_denom: 1.5684 IPM_ratio: 1.9643 E_P_f: 1.2814 E_Q_f: -1.7995 E_P_(f^2): 1.6703 E_Q_(f^2): 3.2496
+[22/30][2700/3166][14488] IPM_enum: 3.4261 IPM_denom: 1.7238 IPM_ratio: 1.9875 E_P_f: 1.6674 E_Q_f: -1.7587 E_P_(f^2): 2.8258 E_Q_(f^2): 3.1172
+[22/30][2800/3166][14508] IPM_enum: 3.4988 IPM_denom: 1.7679 IPM_ratio: 1.9791 E_P_f: 1.5432 E_Q_f: -1.9555 E_P_(f^2): 2.4119 E_Q_(f^2): 3.8389
+[22/30][2900/3166][14528] IPM_enum: 3.3140 IPM_denom: 1.6892 IPM_ratio: 1.9619 E_P_f: 1.9493 E_Q_f: -1.3647 E_P_(f^2): 3.8276 E_Q_(f^2): 1.8789
+[22/30][3000/3166][14548] IPM_enum: 3.5328 IPM_denom: 1.7763 IPM_ratio: 1.9889 E_P_f: 1.7133 E_Q_f: -1.8194 E_P_(f^2): 2.9827 E_Q_(f^2): 3.3276
+[22/30][3100/3166][14568] IPM_enum: 3.9645 IPM_denom: 1.9949 IPM_ratio: 1.9873 E_P_f: 1.8092 E_Q_f: -2.1553 E_P_(f^2): 3.2986 E_Q_(f^2): 4.6610
+[23/30][100/3166][14602] IPM_enum: 3.5923 IPM_denom: 1.8184 IPM_ratio: 1.9756 E_P_f: 1.5744 E_Q_f: -2.0179 E_P_(f^2): 2.5168 E_Q_(f^2): 4.0961
+[23/30][200/3166][14622] IPM_enum: 3.4496 IPM_denom: 1.7412 IPM_ratio: 1.9812 E_P_f: 1.5530 E_Q_f: -1.8966 E_P_(f^2): 2.4467 E_Q_(f^2): 3.6169
+[23/30][300/3166][14642] IPM_enum: 3.4186 IPM_denom: 1.7179 IPM_ratio: 1.9900 E_P_f: 1.8036 E_Q_f: -1.6150 E_P_(f^2): 3.2832 E_Q_(f^2): 2.6191
+[23/30][400/3166][14662] IPM_enum: 2.8147 IPM_denom: 1.4355 IPM_ratio: 1.9607 E_P_f: 1.6517 E_Q_f: -1.1630 E_P_(f^2): 2.7524 E_Q_(f^2): 1.3691
+[23/30][500/3166][14682] IPM_enum: 3.3388 IPM_denom: 1.6822 IPM_ratio: 1.9848 E_P_f: 1.8179 E_Q_f: -1.5209 E_P_(f^2): 3.3344 E_Q_(f^2): 2.3251
+[23/30][600/3166][14702] IPM_enum: 3.5201 IPM_denom: 1.7706 IPM_ratio: 1.9881 E_P_f: 1.8264 E_Q_f: -1.6937 E_P_(f^2): 3.3845 E_Q_(f^2): 2.8858
+[23/30][700/3166][14722] IPM_enum: 3.4946 IPM_denom: 1.7932 IPM_ratio: 1.9488 E_P_f: 1.3912 E_Q_f: -2.1034 E_P_(f^2): 1.9787 E_Q_(f^2): 4.4524
+[23/30][800/3166][14742] IPM_enum: 3.4866 IPM_denom: 1.7662 IPM_ratio: 1.9741 E_P_f: 1.5251 E_Q_f: -1.9615 E_P_(f^2): 2.3785 E_Q_(f^2): 3.8605
+[23/30][900/3166][14762] IPM_enum: 3.9764 IPM_denom: 1.9997 IPM_ratio: 1.9885 E_P_f: 2.0938 E_Q_f: -1.8826 E_P_(f^2): 4.4328 E_Q_(f^2): 3.5651
+[23/30][1000/3166][14782] IPM_enum: 3.4199 IPM_denom: 1.7260 IPM_ratio: 1.9814 E_P_f: 1.8212 E_Q_f: -1.5987 E_P_(f^2): 3.3688 E_Q_(f^2): 2.5892
+[23/30][1100/3166][14802] IPM_enum: 3.5017 IPM_denom: 1.8591 IPM_ratio: 1.8835 E_P_f: 1.1512 E_Q_f: -2.3504 E_P_(f^2): 1.3675 E_Q_(f^2): 5.5451
+[23/30][1200/3166][14822] IPM_enum: 3.6889 IPM_denom: 1.8644 IPM_ratio: 1.9787 E_P_f: 2.0608 E_Q_f: -1.6281 E_P_(f^2): 4.2783 E_Q_(f^2): 2.6733
+[23/30][1300/3166][14842] IPM_enum: 3.3837 IPM_denom: 1.7102 IPM_ratio: 1.9786 E_P_f: 1.8674 E_Q_f: -1.5163 E_P_(f^2): 3.5282 E_Q_(f^2): 2.3211
+[23/30][1400/3166][14862] IPM_enum: 3.8530 IPM_denom: 1.9356 IPM_ratio: 1.9906 E_P_f: 1.9504 E_Q_f: -1.9026 E_P_(f^2): 3.8562 E_Q_(f^2): 3.6372
+[23/30][1500/3166][14882] IPM_enum: 3.2673 IPM_denom: 1.6939 IPM_ratio: 1.9288 E_P_f: 2.0495 E_Q_f: -1.2178 E_P_(f^2): 4.2430 E_Q_(f^2): 1.4958
+[23/30][1600/3166][14902] IPM_enum: 3.3915 IPM_denom: 1.7409 IPM_ratio: 1.9481 E_P_f: 1.3481 E_Q_f: -2.0435 E_P_(f^2): 1.8710 E_Q_(f^2): 4.1906
+[23/30][1700/3166][14922] IPM_enum: 3.3735 IPM_denom: 1.6965 IPM_ratio: 1.9885 E_P_f: 1.6266 E_Q_f: -1.7469 E_P_(f^2): 2.6843 E_Q_(f^2): 3.0720
+[23/30][1800/3166][14942] IPM_enum: 3.6716 IPM_denom: 1.8633 IPM_ratio: 1.9705 E_P_f: 1.5616 E_Q_f: -2.1100 E_P_(f^2): 2.4770 E_Q_(f^2): 4.4665
+[23/30][1900/3166][14962] IPM_enum: 3.7142 IPM_denom: 1.8651 IPM_ratio: 1.9914 E_P_f: 1.7735 E_Q_f: -1.9407 E_P_(f^2): 3.1754 E_Q_(f^2): 3.7819
+[23/30][2000/3166][14982] IPM_enum: 3.5197 IPM_denom: 1.7918 IPM_ratio: 1.9644 E_P_f: 2.0637 E_Q_f: -1.4560 E_P_(f^2): 4.2844 E_Q_(f^2): 2.1366
+[23/30][2100/3166][15002] IPM_enum: 3.0803 IPM_denom: 1.6394 IPM_ratio: 1.8789 E_P_f: 2.0713 E_Q_f: -1.0090 E_P_(f^2): 4.3340 E_Q_(f^2): 1.0413
+[23/30][2200/3166][15022] IPM_enum: 3.3005 IPM_denom: 1.6614 IPM_ratio: 1.9865 E_P_f: 1.7374 E_Q_f: -1.5631 E_P_(f^2): 3.0623 E_Q_(f^2): 2.4585
+[23/30][2300/3166][15042] IPM_enum: 3.6250 IPM_denom: 1.8316 IPM_ratio: 1.9792 E_P_f: 1.6152 E_Q_f: -2.0098 E_P_(f^2): 2.6579 E_Q_(f^2): 4.0514
+[23/30][2400/3166][15062] IPM_enum: 3.4310 IPM_denom: 1.7374 IPM_ratio: 1.9748 E_P_f: 1.9360 E_Q_f: -1.4950 E_P_(f^2): 3.7833 E_Q_(f^2): 2.2538
+[23/30][2500/3166][15082] IPM_enum: 3.6025 IPM_denom: 1.8125 IPM_ratio: 1.9876 E_P_f: 1.9074 E_Q_f: -1.6951 E_P_(f^2): 3.6832 E_Q_(f^2): 2.8869
+[23/30][2600/3166][15102] IPM_enum: 3.6905 IPM_denom: 1.8590 IPM_ratio: 1.9852 E_P_f: 1.7009 E_Q_f: -1.9896 E_P_(f^2): 2.9364 E_Q_(f^2): 3.9754
+[23/30][2700/3166][15122] IPM_enum: 3.5915 IPM_denom: 1.8051 IPM_ratio: 1.9897 E_P_f: 1.8096 E_Q_f: -1.7819 E_P_(f^2): 3.3215 E_Q_(f^2): 3.1953
+[23/30][2800/3166][15142] IPM_enum: 3.4191 IPM_denom: 1.7216 IPM_ratio: 1.9860 E_P_f: 1.8038 E_Q_f: -1.6153 E_P_(f^2): 3.3031 E_Q_(f^2): 2.6244
+[23/30][2900/3166][15162] IPM_enum: 3.7730 IPM_denom: 1.9153 IPM_ratio: 1.9699 E_P_f: 2.1659 E_Q_f: -1.6071 E_P_(f^2): 4.7379 E_Q_(f^2): 2.5989
+[23/30][3000/3166][15182] IPM_enum: 3.6218 IPM_denom: 1.8513 IPM_ratio: 1.9564 E_P_f: 1.4715 E_Q_f: -2.1503 E_P_(f^2): 2.2070 E_Q_(f^2): 4.6474
+[23/30][3100/3166][15202] IPM_enum: 3.7108 IPM_denom: 1.8655 IPM_ratio: 1.9892 E_P_f: 1.9696 E_Q_f: -1.7413 E_P_(f^2): 3.9124 E_Q_(f^2): 3.0478
+[24/30][100/3166][15236] IPM_enum: 3.2506 IPM_denom: 1.6613 IPM_ratio: 1.9566 E_P_f: 1.9315 E_Q_f: -1.3191 E_P_(f^2): 3.7575 E_Q_(f^2): 1.7625
+[24/30][200/3166][15256] IPM_enum: 2.8488 IPM_denom: 1.4375 IPM_ratio: 1.9818 E_P_f: 1.3204 E_Q_f: -1.5283 E_P_(f^2): 1.7807 E_Q_(f^2): 2.3520
+[24/30][300/3166][15276] IPM_enum: 3.6275 IPM_denom: 1.8350 IPM_ratio: 1.9769 E_P_f: 1.5857 E_Q_f: -2.0418 E_P_(f^2): 2.5438 E_Q_(f^2): 4.1907
+[24/30][400/3166][15296] IPM_enum: 3.3419 IPM_denom: 1.6799 IPM_ratio: 1.9893 E_P_f: 1.6442 E_Q_f: -1.6977 E_P_(f^2): 2.7489 E_Q_(f^2): 2.8952
+[24/30][500/3166][15316] IPM_enum: 3.5019 IPM_denom: 1.7749 IPM_ratio: 1.9730 E_P_f: 1.9817 E_Q_f: -1.5201 E_P_(f^2): 3.9704 E_Q_(f^2): 2.3304
+[24/30][600/3166][15336] IPM_enum: 3.5282 IPM_denom: 1.8142 IPM_ratio: 1.9448 E_P_f: 1.3667 E_Q_f: -2.1616 E_P_(f^2): 1.8929 E_Q_(f^2): 4.6896
+[24/30][700/3166][15356] IPM_enum: 3.8430 IPM_denom: 1.9525 IPM_ratio: 1.9683 E_P_f: 1.6225 E_Q_f: -2.2205 E_P_(f^2): 2.6693 E_Q_(f^2): 4.9548
+[24/30][800/3166][15376] IPM_enum: 3.6216 IPM_denom: 1.8276 IPM_ratio: 1.9816 E_P_f: 1.6155 E_Q_f: -2.0061 E_P_(f^2): 2.6413 E_Q_(f^2): 4.0391
+[24/30][900/3166][15396] IPM_enum: 3.5713 IPM_denom: 1.7990 IPM_ratio: 1.9852 E_P_f: 1.6680 E_Q_f: -1.9033 E_P_(f^2): 2.8225 E_Q_(f^2): 3.6501
+[24/30][1000/3166][15416] IPM_enum: 3.1310 IPM_denom: 1.6201 IPM_ratio: 1.9326 E_P_f: 1.9329 E_Q_f: -1.1982 E_P_(f^2): 3.7854 E_Q_(f^2): 1.4644
+[24/30][1100/3166][15436] IPM_enum: 3.3330 IPM_denom: 1.6825 IPM_ratio: 1.9810 E_P_f: 1.8071 E_Q_f: -1.5259 E_P_(f^2): 3.3126 E_Q_(f^2): 2.3490
+[24/30][1200/3166][15456] IPM_enum: 3.7462 IPM_denom: 1.8918 IPM_ratio: 1.9803 E_P_f: 1.6906 E_Q_f: -2.0556 E_P_(f^2): 2.9024 E_Q_(f^2): 4.2554
+[24/30][1300/3166][15476] IPM_enum: 3.2821 IPM_denom: 1.6524 IPM_ratio: 1.9863 E_P_f: 1.7140 E_Q_f: -1.5681 E_P_(f^2): 2.9819 E_Q_(f^2): 2.4788
+[24/30][1400/3166][15496] IPM_enum: 3.4389 IPM_denom: 1.7270 IPM_ratio: 1.9912 E_P_f: 1.8085 E_Q_f: -1.6303 E_P_(f^2): 3.2974 E_Q_(f^2): 2.6677
+[24/30][1500/3166][15516] IPM_enum: 3.7948 IPM_denom: 1.9136 IPM_ratio: 1.9831 E_P_f: 2.1000 E_Q_f: -1.6948 E_P_(f^2): 4.4387 E_Q_(f^2): 2.8850
+[24/30][1600/3166][15536] IPM_enum: 3.5033 IPM_denom: 1.7637 IPM_ratio: 1.9864 E_P_f: 1.8919 E_Q_f: -1.6114 E_P_(f^2): 3.6106 E_Q_(f^2): 2.6104
+[24/30][1700/3166][15556] IPM_enum: 3.5796 IPM_denom: 1.8043 IPM_ratio: 1.9839 E_P_f: 1.9604 E_Q_f: -1.6192 E_P_(f^2): 3.8714 E_Q_(f^2): 2.6396
+[24/30][1800/3166][15576] IPM_enum: 3.3702 IPM_denom: 1.6939 IPM_ratio: 1.9897 E_P_f: 1.6533 E_Q_f: -1.7170 E_P_(f^2): 2.7719 E_Q_(f^2): 2.9664
+[24/30][1900/3166][15596] IPM_enum: 3.5756 IPM_denom: 1.7991 IPM_ratio: 1.9874 E_P_f: 1.7407 E_Q_f: -1.8349 E_P_(f^2): 3.0879 E_Q_(f^2): 3.3856
+[24/30][2000/3166][15616] IPM_enum: 3.1758 IPM_denom: 1.6234 IPM_ratio: 1.9563 E_P_f: 1.8755 E_Q_f: -1.3003 E_P_(f^2): 3.5607 E_Q_(f^2): 1.7101
+[24/30][2100/3166][15636] IPM_enum: 3.5083 IPM_denom: 1.7916 IPM_ratio: 1.9582 E_P_f: 2.0698 E_Q_f: -1.4385 E_P_(f^2): 4.3360 E_Q_(f^2): 2.0835
+[24/30][2200/3166][15656] IPM_enum: 3.4774 IPM_denom: 1.7547 IPM_ratio: 1.9818 E_P_f: 1.6251 E_Q_f: -1.8523 E_P_(f^2): 2.7107 E_Q_(f^2): 3.4472
+[24/30][2300/3166][15676] IPM_enum: 3.2574 IPM_denom: 1.6434 IPM_ratio: 1.9821 E_P_f: 1.6447 E_Q_f: -1.6127 E_P_(f^2): 2.7761 E_Q_(f^2): 2.6255
+[24/30][2400/3166][15696] IPM_enum: 3.2119 IPM_denom: 1.6299 IPM_ratio: 1.9707 E_P_f: 1.8270 E_Q_f: -1.3849 E_P_(f^2): 3.3760 E_Q_(f^2): 1.9369
+[24/30][2500/3166][15716] IPM_enum: 3.6909 IPM_denom: 1.8532 IPM_ratio: 1.9916 E_P_f: 1.8739 E_Q_f: -1.8170 E_P_(f^2): 3.5495 E_Q_(f^2): 3.3194
+[24/30][2600/3166][15736] IPM_enum: 3.7742 IPM_denom: 1.9581 IPM_ratio: 1.9275 E_P_f: 1.3968 E_Q_f: -2.3774 E_P_(f^2): 1.9989 E_Q_(f^2): 5.6690
+[24/30][2700/3166][15756] IPM_enum: 3.5742 IPM_denom: 1.8053 IPM_ratio: 1.9798 E_P_f: 1.5883 E_Q_f: -1.9859 E_P_(f^2): 2.5581 E_Q_(f^2): 3.9604
+[24/30][2800/3166][15776] IPM_enum: 3.4542 IPM_denom: 1.7366 IPM_ratio: 1.9890 E_P_f: 1.6099 E_Q_f: -1.8442 E_P_(f^2): 2.6188 E_Q_(f^2): 3.4130
+[24/30][2900/3166][15796] IPM_enum: 3.5396 IPM_denom: 1.7832 IPM_ratio: 1.9850 E_P_f: 1.6179 E_Q_f: -1.9217 E_P_(f^2): 2.6511 E_Q_(f^2): 3.7084
+[24/30][3000/3166][15816] IPM_enum: 3.3455 IPM_denom: 1.6841 IPM_ratio: 1.9865 E_P_f: 1.8157 E_Q_f: -1.5298 E_P_(f^2): 3.3224 E_Q_(f^2): 2.3501
+[24/30][3100/3166][15836] IPM_enum: 3.5127 IPM_denom: 1.7694 IPM_ratio: 1.9852 E_P_f: 1.8927 E_Q_f: -1.6199 E_P_(f^2): 3.6283 E_Q_(f^2): 2.6335
+[25/30][100/3166][15870] IPM_enum: 3.3047 IPM_denom: 1.6644 IPM_ratio: 1.9856 E_P_f: 1.7770 E_Q_f: -1.5277 E_P_(f^2): 3.1865 E_Q_(f^2): 2.3536
+[25/30][200/3166][15890] IPM_enum: 3.1883 IPM_denom: 1.6118 IPM_ratio: 1.9780 E_P_f: 1.7737 E_Q_f: -1.4146 E_P_(f^2): 3.1788 E_Q_(f^2): 2.0173
+[25/30][300/3166][15910] IPM_enum: 3.0030 IPM_denom: 1.5325 IPM_ratio: 1.9596 E_P_f: 1.7404 E_Q_f: -1.2626 E_P_(f^2): 3.0775 E_Q_(f^2): 1.6195
+[25/30][400/3166][15930] IPM_enum: 3.4245 IPM_denom: 1.7203 IPM_ratio: 1.9907 E_P_f: 1.7223 E_Q_f: -1.7022 E_P_(f^2): 2.9999 E_Q_(f^2): 2.9187
+[25/30][500/3166][15950] IPM_enum: 3.3963 IPM_denom: 1.7093 IPM_ratio: 1.9870 E_P_f: 1.6836 E_Q_f: -1.7128 E_P_(f^2): 2.8848 E_Q_(f^2): 2.9585
+[25/30][600/3166][15970] IPM_enum: 3.1714 IPM_denom: 1.5978 IPM_ratio: 1.9849 E_P_f: 1.6473 E_Q_f: -1.5241 E_P_(f^2): 2.7669 E_Q_(f^2): 2.3388
+[25/30][700/3166][15990] IPM_enum: 3.5238 IPM_denom: 1.7701 IPM_ratio: 1.9907 E_P_f: 1.7282 E_Q_f: -1.7956 E_P_(f^2): 3.0235 E_Q_(f^2): 3.2432
+[25/30][800/3166][16010] IPM_enum: 2.5181 IPM_denom: 1.3384 IPM_ratio: 1.8815 E_P_f: 1.6648 E_Q_f: -0.8533 E_P_(f^2): 2.8165 E_Q_(f^2): 0.7659
+[25/30][900/3166][16030] IPM_enum: 3.4910 IPM_denom: 1.7565 IPM_ratio: 1.9875 E_P_f: 1.8536 E_Q_f: -1.6375 E_P_(f^2): 3.4728 E_Q_(f^2): 2.6976
+[25/30][1000/3166][16050] IPM_enum: 3.5716 IPM_denom: 1.8019 IPM_ratio: 1.9821 E_P_f: 1.6253 E_Q_f: -1.9462 E_P_(f^2): 2.6897 E_Q_(f^2): 3.8040
+[25/30][1100/3166][16070] IPM_enum: 3.7549 IPM_denom: 1.8833 IPM_ratio: 1.9937 E_P_f: 1.8406 E_Q_f: -1.9143 E_P_(f^2): 3.4161 E_Q_(f^2): 3.6778
+[25/30][1200/3166][16090] IPM_enum: 3.4180 IPM_denom: 1.7182 IPM_ratio: 1.9892 E_P_f: 1.8006 E_Q_f: -1.6174 E_P_(f^2): 3.2733 E_Q_(f^2): 2.6314
+[25/30][1300/3166][16110] IPM_enum: 3.1951 IPM_denom: 1.6102 IPM_ratio: 1.9842 E_P_f: 1.4874 E_Q_f: -1.7076 E_P_(f^2): 2.2521 E_Q_(f^2): 2.9337
+[25/30][1400/3166][16130] IPM_enum: 3.5370 IPM_denom: 1.7767 IPM_ratio: 1.9908 E_P_f: 1.6941 E_Q_f: -1.8429 E_P_(f^2): 2.9009 E_Q_(f^2): 3.4122
+[25/30][1500/3166][16150] IPM_enum: 3.5699 IPM_denom: 1.8023 IPM_ratio: 1.9807 E_P_f: 1.9798 E_Q_f: -1.5901 E_P_(f^2): 3.9509 E_Q_(f^2): 2.5460
+[25/30][1600/3166][16170] IPM_enum: 3.5533 IPM_denom: 1.7982 IPM_ratio: 1.9761 E_P_f: 1.5565 E_Q_f: -1.9968 E_P_(f^2): 2.4576 E_Q_(f^2): 4.0092
+[25/30][1700/3166][16190] IPM_enum: 3.6949 IPM_denom: 1.8668 IPM_ratio: 1.9793 E_P_f: 2.0220 E_Q_f: -1.6728 E_P_(f^2): 4.1273 E_Q_(f^2): 2.8425
+[25/30][1800/3166][16210] IPM_enum: 3.1602 IPM_denom: 1.6080 IPM_ratio: 1.9652 E_P_f: 1.3454 E_Q_f: -1.8147 E_P_(f^2): 1.8557 E_Q_(f^2): 3.3158
+[25/30][1900/3166][16230] IPM_enum: 3.4482 IPM_denom: 1.7418 IPM_ratio: 1.9797 E_P_f: 1.5707 E_Q_f: -1.8775 E_P_(f^2): 2.5224 E_Q_(f^2): 3.5455
+[25/30][2000/3166][16250] IPM_enum: 3.7249 IPM_denom: 1.8756 IPM_ratio: 1.9860 E_P_f: 1.7054 E_Q_f: -2.0195 E_P_(f^2): 2.9418 E_Q_(f^2): 4.0941
+[25/30][2100/3166][16270] IPM_enum: 3.4363 IPM_denom: 1.7496 IPM_ratio: 1.9640 E_P_f: 2.0086 E_Q_f: -1.4277 E_P_(f^2): 4.0671 E_Q_(f^2): 2.0554
+[25/30][2200/3166][16290] IPM_enum: 3.4678 IPM_denom: 1.7425 IPM_ratio: 1.9901 E_P_f: 1.6866 E_Q_f: -1.7812 E_P_(f^2): 2.8814 E_Q_(f^2): 3.1914
+[25/30][2300/3166][16310] IPM_enum: 3.5091 IPM_denom: 1.7753 IPM_ratio: 1.9766 E_P_f: 1.9529 E_Q_f: -1.5562 E_P_(f^2): 3.8648 E_Q_(f^2): 2.4386
+[25/30][2400/3166][16330] IPM_enum: 3.7072 IPM_denom: 1.8719 IPM_ratio: 1.9804 E_P_f: 2.0077 E_Q_f: -1.6994 E_P_(f^2): 4.0941 E_Q_(f^2): 2.9138
+[25/30][2500/3166][16350] IPM_enum: 3.3004 IPM_denom: 1.6636 IPM_ratio: 1.9839 E_P_f: 1.5680 E_Q_f: -1.7324 E_P_(f^2): 2.5114 E_Q_(f^2): 3.0238
+[25/30][2600/3166][16370] IPM_enum: 3.6345 IPM_denom: 1.8713 IPM_ratio: 1.9422 E_P_f: 1.4169 E_Q_f: -2.2175 E_P_(f^2): 2.0515 E_Q_(f^2): 4.9520
+[25/30][2700/3166][16390] IPM_enum: 3.2871 IPM_denom: 1.6853 IPM_ratio: 1.9505 E_P_f: 1.9789 E_Q_f: -1.3082 E_P_(f^2): 3.9477 E_Q_(f^2): 1.7325
+[25/30][2800/3166][16410] IPM_enum: 3.5739 IPM_denom: 1.8031 IPM_ratio: 1.9820 E_P_f: 1.6232 E_Q_f: -1.9506 E_P_(f^2): 2.6696 E_Q_(f^2): 3.8329
+[25/30][2900/3166][16430] IPM_enum: 3.5450 IPM_denom: 1.7945 IPM_ratio: 1.9755 E_P_f: 2.0023 E_Q_f: -1.5428 E_P_(f^2): 4.0459 E_Q_(f^2): 2.3944
+[25/30][3000/3166][16450] IPM_enum: 3.5043 IPM_denom: 1.7593 IPM_ratio: 1.9919 E_P_f: 1.7063 E_Q_f: -1.7980 E_P_(f^2): 2.9473 E_Q_(f^2): 3.2431
+[25/30][3100/3166][16470] IPM_enum: 3.4090 IPM_denom: 1.7265 IPM_ratio: 1.9745 E_P_f: 1.9261 E_Q_f: -1.4828 E_P_(f^2): 3.7448 E_Q_(f^2): 2.2169
+[26/30][100/3166][16504] IPM_enum: 3.0239 IPM_denom: 1.5402 IPM_ratio: 1.9634 E_P_f: 1.7244 E_Q_f: -1.2996 E_P_(f^2): 3.0196 E_Q_(f^2): 1.7246
+[26/30][200/3166][16524] IPM_enum: 3.7429 IPM_denom: 1.8807 IPM_ratio: 1.9902 E_P_f: 1.7934 E_Q_f: -1.9494 E_P_(f^2): 3.2540 E_Q_(f^2): 3.8199
+[26/30][300/3166][16544] IPM_enum: 3.1564 IPM_denom: 1.5847 IPM_ratio: 1.9919 E_P_f: 1.5473 E_Q_f: -1.6091 E_P_(f^2): 2.4220 E_Q_(f^2): 2.6002
+[26/30][400/3166][16564] IPM_enum: 3.5457 IPM_denom: 1.7934 IPM_ratio: 1.9771 E_P_f: 1.5571 E_Q_f: -1.9887 E_P_(f^2): 2.4586 E_Q_(f^2): 3.9739
+[26/30][500/3166][16584] IPM_enum: 3.4444 IPM_denom: 1.7310 IPM_ratio: 1.9898 E_P_f: 1.7259 E_Q_f: -1.7186 E_P_(f^2): 3.0246 E_Q_(f^2): 2.9684
+[26/30][600/3166][16604] IPM_enum: 3.3380 IPM_denom: 1.6803 IPM_ratio: 1.9865 E_P_f: 1.7784 E_Q_f: -1.5596 E_P_(f^2): 3.2003 E_Q_(f^2): 2.4466
+[26/30][700/3166][16624] IPM_enum: 3.2601 IPM_denom: 1.6436 IPM_ratio: 1.9835 E_P_f: 1.7302 E_Q_f: -1.5299 E_P_(f^2): 3.0345 E_Q_(f^2): 2.3682
+[26/30][800/3166][16644] IPM_enum: 3.4273 IPM_denom: 1.7269 IPM_ratio: 1.9847 E_P_f: 1.7650 E_Q_f: -1.6623 E_P_(f^2): 3.1835 E_Q_(f^2): 2.7808
+[26/30][900/3166][16664] IPM_enum: 3.5613 IPM_denom: 1.8028 IPM_ratio: 1.9754 E_P_f: 1.5683 E_Q_f: -1.9930 E_P_(f^2): 2.5116 E_Q_(f^2): 3.9889
+[26/30][1000/3166][16684] IPM_enum: 3.2702 IPM_denom: 1.6610 IPM_ratio: 1.9688 E_P_f: 1.4100 E_Q_f: -1.8602 E_P_(f^2): 2.0336 E_Q_(f^2): 3.4844
+[26/30][1100/3166][16704] IPM_enum: 3.6111 IPM_denom: 1.8293 IPM_ratio: 1.9740 E_P_f: 2.0567 E_Q_f: -1.5544 E_P_(f^2): 4.2663 E_Q_(f^2): 2.4267
+[26/30][1200/3166][16724] IPM_enum: 3.2667 IPM_denom: 1.6620 IPM_ratio: 1.9656 E_P_f: 1.8968 E_Q_f: -1.3699 E_P_(f^2): 3.6302 E_Q_(f^2): 1.8941
+[26/30][1300/3166][16744] IPM_enum: 3.3978 IPM_denom: 1.7076 IPM_ratio: 1.9898 E_P_f: 1.6640 E_Q_f: -1.7337 E_P_(f^2): 2.8121 E_Q_(f^2): 3.0199
+[26/30][1400/3166][16764] IPM_enum: 3.4171 IPM_denom: 1.7151 IPM_ratio: 1.9923 E_P_f: 1.7577 E_Q_f: -1.6594 E_P_(f^2): 3.1154 E_Q_(f^2): 2.7679
+[26/30][1500/3166][16784] IPM_enum: 3.3155 IPM_denom: 1.6652 IPM_ratio: 1.9910 E_P_f: 1.6390 E_Q_f: -1.6765 E_P_(f^2): 2.7201 E_Q_(f^2): 2.8258
+[26/30][1600/3166][16804] IPM_enum: 3.3203 IPM_denom: 1.6663 IPM_ratio: 1.9926 E_P_f: 1.6547 E_Q_f: -1.6656 E_P_(f^2): 2.7705 E_Q_(f^2): 2.7829
+[26/30][1700/3166][16824] IPM_enum: 3.8608 IPM_denom: 1.9598 IPM_ratio: 1.9700 E_P_f: 1.6355 E_Q_f: -2.2253 E_P_(f^2): 2.7038 E_Q_(f^2): 4.9781
+[26/30][1800/3166][16844] IPM_enum: 3.4980 IPM_denom: 1.7630 IPM_ratio: 1.9841 E_P_f: 1.9170 E_Q_f: -1.5810 E_P_(f^2): 3.7046 E_Q_(f^2): 2.5119
+[26/30][1900/3166][16864] IPM_enum: 3.3517 IPM_denom: 1.6853 IPM_ratio: 1.9888 E_P_f: 1.5754 E_Q_f: -1.7763 E_P_(f^2): 2.5162 E_Q_(f^2): 3.1639
+[26/30][2000/3166][16884] IPM_enum: 3.5581 IPM_denom: 1.7860 IPM_ratio: 1.9922 E_P_f: 1.8353 E_Q_f: -1.7228 E_P_(f^2): 3.3987 E_Q_(f^2): 2.9811
+[26/30][2100/3166][16904] IPM_enum: 3.6394 IPM_denom: 1.8296 IPM_ratio: 1.9892 E_P_f: 1.9517 E_Q_f: -1.6877 E_P_(f^2): 3.8328 E_Q_(f^2): 2.8622
+[26/30][2200/3166][16924] IPM_enum: 3.4389 IPM_denom: 1.7335 IPM_ratio: 1.9838 E_P_f: 1.5487 E_Q_f: -1.8902 E_P_(f^2): 2.4297 E_Q_(f^2): 3.5805
+[26/30][2300/3166][16944] IPM_enum: 3.3878 IPM_denom: 1.7006 IPM_ratio: 1.9921 E_P_f: 1.7428 E_Q_f: -1.6450 E_P_(f^2): 3.0699 E_Q_(f^2): 2.7143
+[26/30][2400/3166][16964] IPM_enum: 3.4114 IPM_denom: 1.7285 IPM_ratio: 1.9736 E_P_f: 1.9300 E_Q_f: -1.4814 E_P_(f^2): 3.7524 E_Q_(f^2): 2.2230
+[26/30][2500/3166][16984] IPM_enum: 3.3379 IPM_denom: 1.6790 IPM_ratio: 1.9880 E_P_f: 1.6846 E_Q_f: -1.6533 E_P_(f^2): 2.8859 E_Q_(f^2): 2.7523
+[26/30][2600/3166][17004] IPM_enum: 3.2337 IPM_denom: 1.6293 IPM_ratio: 1.9848 E_P_f: 1.7289 E_Q_f: -1.5048 E_P_(f^2): 3.0306 E_Q_(f^2): 2.2784
+[26/30][2700/3166][17024] IPM_enum: 3.5952 IPM_denom: 1.8151 IPM_ratio: 1.9807 E_P_f: 1.9645 E_Q_f: -1.6307 E_P_(f^2): 3.9055 E_Q_(f^2): 2.6835
+[26/30][2800/3166][17044] IPM_enum: 3.2682 IPM_denom: 1.6464 IPM_ratio: 1.9851 E_P_f: 1.7597 E_Q_f: -1.5085 E_P_(f^2): 3.1280 E_Q_(f^2): 2.2933
+[26/30][2900/3166][17064] IPM_enum: 3.4066 IPM_denom: 1.7106 IPM_ratio: 1.9915 E_P_f: 1.6767 E_Q_f: -1.7300 E_P_(f^2): 2.8391 E_Q_(f^2): 3.0132
+[26/30][3000/3166][17084] IPM_enum: 3.5929 IPM_denom: 1.8041 IPM_ratio: 1.9916 E_P_f: 1.8387 E_Q_f: -1.7542 E_P_(f^2): 3.4202 E_Q_(f^2): 3.0890
+[26/30][3100/3166][17104] IPM_enum: 3.0619 IPM_denom: 1.5839 IPM_ratio: 1.9332 E_P_f: 1.8931 E_Q_f: -1.1689 E_P_(f^2): 3.6200 E_Q_(f^2): 1.3974
+[27/30][100/3166][17138] IPM_enum: 3.5019 IPM_denom: 1.7595 IPM_ratio: 1.9903 E_P_f: 1.8243 E_Q_f: -1.6776 E_P_(f^2): 3.3613 E_Q_(f^2): 2.8303
+[27/30][200/3166][17158] IPM_enum: 3.2537 IPM_denom: 1.6576 IPM_ratio: 1.9629 E_P_f: 1.9106 E_Q_f: -1.3432 E_P_(f^2): 3.6757 E_Q_(f^2): 1.8196
+[27/30][300/3166][17178] IPM_enum: 3.6888 IPM_denom: 1.8559 IPM_ratio: 1.9876 E_P_f: 1.7023 E_Q_f: -1.9866 E_P_(f^2): 2.9221 E_Q_(f^2): 3.9668
+[27/30][400/3166][17198] IPM_enum: 3.4834 IPM_denom: 1.7495 IPM_ratio: 1.9910 E_P_f: 1.7648 E_Q_f: -1.7185 E_P_(f^2): 3.1469 E_Q_(f^2): 2.9748
+[27/30][500/3166][17218] IPM_enum: 3.3731 IPM_denom: 1.6945 IPM_ratio: 1.9906 E_P_f: 1.7324 E_Q_f: -1.6406 E_P_(f^2): 3.0387 E_Q_(f^2): 2.7037
+[27/30][600/3166][17238] IPM_enum: 3.4006 IPM_denom: 1.7136 IPM_ratio: 1.9845 E_P_f: 1.8377 E_Q_f: -1.5629 E_P_(f^2): 3.4113 E_Q_(f^2): 2.4616
+[27/30][700/3166][17258] IPM_enum: 3.3182 IPM_denom: 1.6704 IPM_ratio: 1.9865 E_P_f: 1.5449 E_Q_f: -1.7734 E_P_(f^2): 2.4203 E_Q_(f^2): 3.1600
+[27/30][800/3166][17278] IPM_enum: 3.3640 IPM_denom: 1.6919 IPM_ratio: 1.9883 E_P_f: 1.7742 E_Q_f: -1.5898 E_P_(f^2): 3.1859 E_Q_(f^2): 2.5392
+[27/30][900/3166][17298] IPM_enum: 3.3781 IPM_denom: 1.7175 IPM_ratio: 1.9669 E_P_f: 1.9712 E_Q_f: -1.4068 E_P_(f^2): 3.9134 E_Q_(f^2): 1.9862
+[27/30][1000/3166][17318] IPM_enum: 3.5317 IPM_denom: 1.7734 IPM_ratio: 1.9915 E_P_f: 1.8345 E_Q_f: -1.6972 E_P_(f^2): 3.3974 E_Q_(f^2): 2.8923
+[27/30][1100/3166][17338] IPM_enum: 3.7609 IPM_denom: 1.9005 IPM_ratio: 1.9789 E_P_f: 1.6459 E_Q_f: -2.1149 E_P_(f^2): 2.7386 E_Q_(f^2): 4.4852
+[27/30][1200/3166][17358] IPM_enum: 3.0922 IPM_denom: 1.5540 IPM_ratio: 1.9898 E_P_f: 1.5469 E_Q_f: -1.5453 E_P_(f^2): 2.4308 E_Q_(f^2): 2.3993
+[27/30][1300/3166][17378] IPM_enum: 3.1887 IPM_denom: 1.6108 IPM_ratio: 1.9797 E_P_f: 1.4253 E_Q_f: -1.7634 E_P_(f^2): 2.0690 E_Q_(f^2): 3.1200
+[27/30][1400/3166][17398] IPM_enum: 3.5181 IPM_denom: 1.8087 IPM_ratio: 1.9451 E_P_f: 1.3713 E_Q_f: -2.1469 E_P_(f^2): 1.9105 E_Q_(f^2): 4.6321
+[27/30][1500/3166][17418] IPM_enum: 3.1360 IPM_denom: 1.6123 IPM_ratio: 1.9450 E_P_f: 1.9139 E_Q_f: -1.2221 E_P_(f^2): 3.6880 E_Q_(f^2): 1.5112
+[27/30][1600/3166][17438] IPM_enum: 3.2273 IPM_denom: 1.6302 IPM_ratio: 1.9797 E_P_f: 1.7801 E_Q_f: -1.4472 E_P_(f^2): 3.2090 E_Q_(f^2): 2.1061
+[27/30][1700/3166][17458] IPM_enum: 3.6095 IPM_denom: 1.8250 IPM_ratio: 1.9778 E_P_f: 1.5881 E_Q_f: -2.0214 E_P_(f^2): 2.5617 E_Q_(f^2): 4.0997
+[27/30][1800/3166][17478] IPM_enum: 3.3741 IPM_denom: 1.6944 IPM_ratio: 1.9913 E_P_f: 1.6725 E_Q_f: -1.7017 E_P_(f^2): 2.8360 E_Q_(f^2): 2.9063
+[27/30][1900/3166][17498] IPM_enum: 3.4369 IPM_denom: 1.7354 IPM_ratio: 1.9805 E_P_f: 1.9179 E_Q_f: -1.5190 E_P_(f^2): 3.7031 E_Q_(f^2): 2.3199
+[27/30][2000/3166][17518] IPM_enum: 3.4601 IPM_denom: 1.7355 IPM_ratio: 1.9937 E_P_f: 1.7311 E_Q_f: -1.7290 E_P_(f^2): 3.0234 E_Q_(f^2): 3.0006
+[27/30][2100/3166][17538] IPM_enum: 3.5482 IPM_denom: 1.7871 IPM_ratio: 1.9854 E_P_f: 1.6272 E_Q_f: -1.9211 E_P_(f^2): 2.6829 E_Q_(f^2): 3.7047
+[27/30][2200/3166][17558] IPM_enum: 3.2164 IPM_denom: 1.6522 IPM_ratio: 1.9467 E_P_f: 1.9466 E_Q_f: -1.2698 E_P_(f^2): 3.8361 E_Q_(f^2): 1.6236
+[27/30][2300/3166][17578] IPM_enum: 3.2396 IPM_denom: 1.6358 IPM_ratio: 1.9804 E_P_f: 1.4513 E_Q_f: -1.7882 E_P_(f^2): 2.1368 E_Q_(f^2): 3.2150
+[27/30][2400/3166][17598] IPM_enum: 3.4170 IPM_denom: 1.7267 IPM_ratio: 1.9789 E_P_f: 1.9221 E_Q_f: -1.4949 E_P_(f^2): 3.7148 E_Q_(f^2): 2.2478
+[27/30][2500/3166][17618] IPM_enum: 3.2921 IPM_denom: 1.6884 IPM_ratio: 1.9498 E_P_f: 1.9779 E_Q_f: -1.3142 E_P_(f^2): 3.9547 E_Q_(f^2): 1.7468
+[27/30][2600/3166][17638] IPM_enum: 3.0545 IPM_denom: 1.5453 IPM_ratio: 1.9767 E_P_f: 1.7104 E_Q_f: -1.3441 E_P_(f^2): 2.9529 E_Q_(f^2): 1.8227
+[27/30][2700/3166][17658] IPM_enum: 3.3971 IPM_denom: 1.7046 IPM_ratio: 1.9929 E_P_f: 1.6608 E_Q_f: -1.7363 E_P_(f^2): 2.7882 E_Q_(f^2): 3.0233
+[27/30][2800/3166][17678] IPM_enum: 3.3440 IPM_denom: 1.6942 IPM_ratio: 1.9738 E_P_f: 1.4384 E_Q_f: -1.9057 E_P_(f^2): 2.0969 E_Q_(f^2): 3.6436
+[27/30][2900/3166][17698] IPM_enum: 3.6572 IPM_denom: 1.8586 IPM_ratio: 1.9677 E_P_f: 1.5414 E_Q_f: -2.1158 E_P_(f^2): 2.4201 E_Q_(f^2): 4.4886
+[27/30][3000/3166][17718] IPM_enum: 3.6114 IPM_denom: 1.8113 IPM_ratio: 1.9938 E_P_f: 1.8524 E_Q_f: -1.7590 E_P_(f^2): 3.4561 E_Q_(f^2): 3.1053
+[27/30][3100/3166][17738] IPM_enum: 3.4353 IPM_denom: 1.7308 IPM_ratio: 1.9848 E_P_f: 1.5529 E_Q_f: -1.8824 E_P_(f^2): 2.4335 E_Q_(f^2): 3.5577
+[28/30][100/3166][17772] IPM_enum: 3.5044 IPM_denom: 1.7821 IPM_ratio: 1.9665 E_P_f: 2.0388 E_Q_f: -1.4656 E_P_(f^2): 4.1860 E_Q_(f^2): 2.1657
+[28/30][200/3166][17792] IPM_enum: 3.3441 IPM_denom: 1.6869 IPM_ratio: 1.9823 E_P_f: 1.4997 E_Q_f: -1.8443 E_P_(f^2): 2.2784 E_Q_(f^2): 3.4131
+[28/30][300/3166][17812] IPM_enum: 3.5376 IPM_denom: 1.7875 IPM_ratio: 1.9791 E_P_f: 1.5796 E_Q_f: -1.9580 E_P_(f^2): 2.5249 E_Q_(f^2): 3.8653
+[28/30][400/3166][17832] IPM_enum: 2.9256 IPM_denom: 1.4937 IPM_ratio: 1.9587 E_P_f: 1.7174 E_Q_f: -1.2083 E_P_(f^2): 2.9844 E_Q_(f^2): 1.4777
+[28/30][500/3166][17852] IPM_enum: 3.0249 IPM_denom: 1.5222 IPM_ratio: 1.9872 E_P_f: 1.5977 E_Q_f: -1.4271 E_P_(f^2): 2.5842 E_Q_(f^2): 2.0498
+[28/30][600/3166][17872] IPM_enum: 3.1634 IPM_denom: 1.5900 IPM_ratio: 1.9895 E_P_f: 1.5368 E_Q_f: -1.6266 E_P_(f^2): 2.3950 E_Q_(f^2): 2.6613
+[28/30][700/3166][17892] IPM_enum: 3.4576 IPM_denom: 1.7418 IPM_ratio: 1.9850 E_P_f: 1.5812 E_Q_f: -1.8764 E_P_(f^2): 2.5328 E_Q_(f^2): 3.5352
+[28/30][800/3166][17912] IPM_enum: 3.1942 IPM_denom: 1.6124 IPM_ratio: 1.9810 E_P_f: 1.4564 E_Q_f: -1.7378 E_P_(f^2): 2.1504 E_Q_(f^2): 3.0495
+[28/30][900/3166][17932] IPM_enum: 3.1801 IPM_denom: 1.6081 IPM_ratio: 1.9776 E_P_f: 1.4186 E_Q_f: -1.7615 E_P_(f^2): 2.0557 E_Q_(f^2): 3.1162
+[28/30][1000/3166][17952] IPM_enum: 3.5077 IPM_denom: 1.7719 IPM_ratio: 1.9797 E_P_f: 1.5876 E_Q_f: -1.9201 E_P_(f^2): 2.5753 E_Q_(f^2): 3.7036
+[28/30][1100/3166][17972] IPM_enum: 3.2691 IPM_denom: 1.6528 IPM_ratio: 1.9779 E_P_f: 1.7227 E_Q_f: -1.5464 E_P_(f^2): 3.0037 E_Q_(f^2): 2.4595
+[28/30][1200/3166][17992] IPM_enum: 3.1540 IPM_denom: 1.5887 IPM_ratio: 1.9853 E_P_f: 1.7136 E_Q_f: -1.4405 E_P_(f^2): 2.9631 E_Q_(f^2): 2.0850
+[28/30][1300/3166][18012] IPM_enum: 3.5400 IPM_denom: 1.7779 IPM_ratio: 1.9911 E_P_f: 1.8214 E_Q_f: -1.7186 E_P_(f^2): 3.3582 E_Q_(f^2): 2.9637
+[28/30][1400/3166][18032] IPM_enum: 3.1756 IPM_denom: 1.5960 IPM_ratio: 1.9897 E_P_f: 1.6625 E_Q_f: -1.5131 E_P_(f^2): 2.7967 E_Q_(f^2): 2.2980
+[28/30][1500/3166][18052] IPM_enum: 3.2766 IPM_denom: 1.6464 IPM_ratio: 1.9902 E_P_f: 1.6884 E_Q_f: -1.5882 E_P_(f^2): 2.8813 E_Q_(f^2): 2.5398
+[28/30][1600/3166][18072] IPM_enum: 3.2286 IPM_denom: 1.6293 IPM_ratio: 1.9815 E_P_f: 1.7678 E_Q_f: -1.4607 E_P_(f^2): 3.1594 E_Q_(f^2): 2.1501
+[28/30][1700/3166][18092] IPM_enum: 3.4551 IPM_denom: 1.7355 IPM_ratio: 1.9909 E_P_f: 1.7006 E_Q_f: -1.7545 E_P_(f^2): 2.9329 E_Q_(f^2): 3.0909
+[28/30][1800/3166][18112] IPM_enum: 3.3739 IPM_denom: 1.7119 IPM_ratio: 1.9709 E_P_f: 1.9252 E_Q_f: -1.4487 E_P_(f^2): 3.7455 E_Q_(f^2): 2.1155
+[28/30][1900/3166][18132] IPM_enum: 3.2017 IPM_denom: 1.6147 IPM_ratio: 1.9829 E_P_f: 1.4631 E_Q_f: -1.7386 E_P_(f^2): 2.1824 E_Q_(f^2): 3.0318
+[28/30][2000/3166][18152] IPM_enum: 3.3358 IPM_denom: 1.7005 IPM_ratio: 1.9617 E_P_f: 1.9525 E_Q_f: -1.3833 E_P_(f^2): 3.8511 E_Q_(f^2): 1.9320
+[28/30][2100/3166][18172] IPM_enum: 3.0677 IPM_denom: 1.5453 IPM_ratio: 1.9851 E_P_f: 1.5885 E_Q_f: -1.4791 E_P_(f^2): 2.5643 E_Q_(f^2): 2.2116
+[28/30][2200/3166][18192] IPM_enum: 3.4019 IPM_denom: 1.7346 IPM_ratio: 1.9612 E_P_f: 1.9985 E_Q_f: -1.4034 E_P_(f^2): 4.0319 E_Q_(f^2): 1.9856
+[28/30][2300/3166][18212] IPM_enum: 3.5151 IPM_denom: 1.7782 IPM_ratio: 1.9768 E_P_f: 1.5641 E_Q_f: -1.9511 E_P_(f^2): 2.5012 E_Q_(f^2): 3.8225
+[28/30][2400/3166][18232] IPM_enum: 3.7043 IPM_denom: 1.8664 IPM_ratio: 1.9847 E_P_f: 1.6948 E_Q_f: -2.0095 E_P_(f^2): 2.9145 E_Q_(f^2): 4.0526
+[28/30][2500/3166][18252] IPM_enum: 3.0860 IPM_denom: 1.5764 IPM_ratio: 1.9576 E_P_f: 1.8196 E_Q_f: -1.2664 E_P_(f^2): 3.3533 E_Q_(f^2): 1.6168
+[28/30][2600/3166][18272] IPM_enum: 3.4318 IPM_denom: 1.7300 IPM_ratio: 1.9837 E_P_f: 1.8447 E_Q_f: -1.5871 E_P_(f^2): 3.4394 E_Q_(f^2): 2.5462
+[28/30][2700/3166][18292] IPM_enum: 3.2026 IPM_denom: 1.6174 IPM_ratio: 1.9801 E_P_f: 1.4513 E_Q_f: -1.7513 E_P_(f^2): 2.1472 E_Q_(f^2): 3.0850
+[28/30][2800/3166][18312] IPM_enum: 3.2429 IPM_denom: 1.6726 IPM_ratio: 1.9388 E_P_f: 1.2475 E_Q_f: -1.9954 E_P_(f^2): 1.6011 E_Q_(f^2): 3.9943
+[28/30][2900/3166][18332] IPM_enum: 3.2808 IPM_denom: 1.6642 IPM_ratio: 1.9714 E_P_f: 1.4166 E_Q_f: -1.8642 E_P_(f^2): 2.0413 E_Q_(f^2): 3.4976
+[28/30][3000/3166][18352] IPM_enum: 3.3579 IPM_denom: 1.6858 IPM_ratio: 1.9919 E_P_f: 1.6538 E_Q_f: -1.7041 E_P_(f^2): 2.7714 E_Q_(f^2): 2.9126
+[28/30][3100/3166][18372] IPM_enum: 3.2787 IPM_denom: 1.6562 IPM_ratio: 1.9797 E_P_f: 1.8000 E_Q_f: -1.4787 E_P_(f^2): 3.2883 E_Q_(f^2): 2.1978
+[29/30][100/3166][18406] IPM_enum: 3.0022 IPM_denom: 1.5141 IPM_ratio: 1.9828 E_P_f: 1.6047 E_Q_f: -1.3975 E_P_(f^2): 2.6198 E_Q_(f^2): 1.9651
+[29/30][200/3166][18426] IPM_enum: 3.7193 IPM_denom: 1.8734 IPM_ratio: 1.9853 E_P_f: 1.7139 E_Q_f: -2.0053 E_P_(f^2): 2.9682 E_Q_(f^2): 4.0509
+[29/30][300/3166][18446] IPM_enum: 3.2972 IPM_denom: 1.6917 IPM_ratio: 1.9490 E_P_f: 1.9502 E_Q_f: -1.3470 E_P_(f^2): 3.8404 E_Q_(f^2): 1.8833
+[29/30][400/3166][18466] IPM_enum: 3.5204 IPM_denom: 1.7906 IPM_ratio: 1.9660 E_P_f: 1.4738 E_Q_f: -2.0466 E_P_(f^2): 2.2053 E_Q_(f^2): 4.2076
+[29/30][500/3166][18486] IPM_enum: 3.4021 IPM_denom: 1.7071 IPM_ratio: 1.9929 E_P_f: 1.7019 E_Q_f: -1.7002 E_P_(f^2): 2.9245 E_Q_(f^2): 2.9036
+[29/30][600/3166][18506] IPM_enum: 3.0209 IPM_denom: 1.5182 IPM_ratio: 1.9898 E_P_f: 1.5284 E_Q_f: -1.4924 E_P_(f^2): 2.3705 E_Q_(f^2): 2.2392
+[29/30][700/3166][18526] IPM_enum: 2.8936 IPM_denom: 1.4802 IPM_ratio: 1.9549 E_P_f: 1.7181 E_Q_f: -1.1755 E_P_(f^2): 2.9845 E_Q_(f^2): 1.3975
+[29/30][800/3166][18546] IPM_enum: 3.3747 IPM_denom: 1.7086 IPM_ratio: 1.9751 E_P_f: 1.8947 E_Q_f: -1.4800 E_P_(f^2): 3.6364 E_Q_(f^2): 2.2024
+[29/30][900/3166][18566] IPM_enum: 3.0960 IPM_denom: 1.5815 IPM_ratio: 1.9576 E_P_f: 1.8205 E_Q_f: -1.2755 E_P_(f^2): 3.3469 E_Q_(f^2): 1.6556
+[29/30][1000/3166][18586] IPM_enum: 3.3163 IPM_denom: 1.6657 IPM_ratio: 1.9909 E_P_f: 1.6654 E_Q_f: -1.6509 E_P_(f^2): 2.8103 E_Q_(f^2): 2.7387
+[29/30][1100/3166][18606] IPM_enum: 3.3230 IPM_denom: 1.7095 IPM_ratio: 1.9438 E_P_f: 2.0274 E_Q_f: -1.2957 E_P_(f^2): 4.1515 E_Q_(f^2): 1.6933
+[29/30][1200/3166][18626] IPM_enum: 3.4184 IPM_denom: 1.7163 IPM_ratio: 1.9917 E_P_f: 1.7735 E_Q_f: -1.6450 E_P_(f^2): 3.1733 E_Q_(f^2): 2.7183
+[29/30][1300/3166][18646] IPM_enum: 3.3932 IPM_denom: 1.7044 IPM_ratio: 1.9909 E_P_f: 1.7784 E_Q_f: -1.6148 E_P_(f^2): 3.1921 E_Q_(f^2): 2.6176
+[29/30][1400/3166][18666] IPM_enum: 3.4970 IPM_denom: 1.7546 IPM_ratio: 1.9930 E_P_f: 1.7688 E_Q_f: -1.7281 E_P_(f^2): 3.1560 E_Q_(f^2): 3.0013
+[29/30][1500/3166][18686] IPM_enum: 3.4624 IPM_denom: 1.7357 IPM_ratio: 1.9948 E_P_f: 1.6996 E_Q_f: -1.7628 E_P_(f^2): 2.9100 E_Q_(f^2): 3.1151
+[29/30][1600/3166][18706] IPM_enum: 3.1044 IPM_denom: 1.5656 IPM_ratio: 1.9828 E_P_f: 1.6831 E_Q_f: -1.4213 E_P_(f^2): 2.8637 E_Q_(f^2): 2.0388
+[29/30][1700/3166][18726] IPM_enum: 3.2048 IPM_denom: 1.6366 IPM_ratio: 1.9582 E_P_f: 1.8874 E_Q_f: -1.3174 E_P_(f^2): 3.6073 E_Q_(f^2): 1.7498
+[29/30][1800/3166][18746] IPM_enum: 3.5262 IPM_denom: 1.7730 IPM_ratio: 1.9889 E_P_f: 1.8001 E_Q_f: -1.7261 E_P_(f^2): 3.2869 E_Q_(f^2): 3.0000
+[29/30][1900/3166][18766] IPM_enum: 3.2297 IPM_denom: 1.6231 IPM_ratio: 1.9898 E_P_f: 1.6143 E_Q_f: -1.6155 E_P_(f^2): 2.6452 E_Q_(f^2): 2.6237
+[29/30][2000/3166][18786] IPM_enum: 3.4400 IPM_denom: 1.7321 IPM_ratio: 1.9860 E_P_f: 1.8287 E_Q_f: -1.6113 E_P_(f^2): 3.3916 E_Q_(f^2): 2.6088
+[29/30][2100/3166][18806] IPM_enum: 3.2969 IPM_denom: 1.6564 IPM_ratio: 1.9904 E_P_f: 1.6061 E_Q_f: -1.6909 E_P_(f^2): 2.6140 E_Q_(f^2): 2.8732
+[29/30][2200/3166][18826] IPM_enum: 3.5012 IPM_denom: 1.7595 IPM_ratio: 1.9899 E_P_f: 1.7957 E_Q_f: -1.7055 E_P_(f^2): 3.2717 E_Q_(f^2): 2.9201
+[29/30][2300/3166][18846] IPM_enum: 3.1925 IPM_denom: 1.6299 IPM_ratio: 1.9587 E_P_f: 1.8856 E_Q_f: -1.3068 E_P_(f^2): 3.5805 E_Q_(f^2): 1.7327
+[29/30][2400/3166][18866] IPM_enum: 3.1659 IPM_denom: 1.6067 IPM_ratio: 1.9705 E_P_f: 1.3707 E_Q_f: -1.7952 E_P_(f^2): 1.9073 E_Q_(f^2): 3.2557
+[29/30][2500/3166][18886] IPM_enum: 3.2578 IPM_denom: 1.6366 IPM_ratio: 1.9906 E_P_f: 1.7362 E_Q_f: -1.5216 E_P_(f^2): 3.0348 E_Q_(f^2): 2.3221
+[29/30][2600/3166][18906] IPM_enum: 3.1224 IPM_denom: 1.5810 IPM_ratio: 1.9750 E_P_f: 1.7729 E_Q_f: -1.3495 E_P_(f^2): 3.1651 E_Q_(f^2): 1.8340
+[29/30][2700/3166][18926] IPM_enum: 3.3087 IPM_denom: 1.6855 IPM_ratio: 1.9630 E_P_f: 1.9359 E_Q_f: -1.3728 E_P_(f^2): 3.7865 E_Q_(f^2): 1.8954
+[29/30][2800/3166][18946] IPM_enum: 3.2826 IPM_denom: 1.6500 IPM_ratio: 1.9895 E_P_f: 1.5821 E_Q_f: -1.7005 E_P_(f^2): 2.5403 E_Q_(f^2): 2.9047
+[29/30][2900/3166][18966] IPM_enum: 3.2750 IPM_denom: 1.6508 IPM_ratio: 1.9839 E_P_f: 1.7613 E_Q_f: -1.5136 E_P_(f^2): 3.1370 E_Q_(f^2): 2.3131
+[29/30][3000/3166][18986] IPM_enum: 3.1618 IPM_denom: 1.5966 IPM_ratio: 1.9803 E_P_f: 1.4398 E_Q_f: -1.7219 E_P_(f^2): 2.1163 E_Q_(f^2): 2.9822
+[29/30][3100/3166][19006] IPM_enum: 3.3648 IPM_denom: 1.6937 IPM_ratio: 1.9867 E_P_f: 1.6087 E_Q_f: -1.7562 E_P_(f^2): 2.6351 E_Q_(f^2): 3.1022
