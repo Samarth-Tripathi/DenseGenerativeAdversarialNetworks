@@ -4,6 +4,8 @@ Dense-Generative models with DenseNet equivalent for Fisher GANs
 
 Added Complete Dense Connected Generator and Discriminator (~50 layers each). Size is still hard coded for Cifar, so 32*32 (will make it a parameter) Architecture is available below. The Generations dont converge properly, needs more tweaking.
 
+Please refer to the DenseFisher Folder for latest Source/Sample/Details.
+
 ######################D#####################
 Input shape torch.Size([64, 3, 32, 32])
 con1 shape torch.Size([64, 48, 32, 32])
@@ -107,51 +109,6 @@ The last convolution layer is now followed by a fully-connected layer and then s
 ###
 
 
-
-
-
-New Files -
-
-DenseFisher/main_dense.py - run a Dense F-GAN with 2 dense connections
-
-Run as (for Cifar 10) python3 main_dense.py --dataset cifar10 --dataroot dataroot/ --niter 50 --imageSize 32 --cuda
-
-DenseFisher/models/densegan.py has Pytorch Models
-
-DenseFisher/samples/ Has Generated Samples on Cifar10
-
-DenseFisher/outputs/ Has output loss/epoch on Cifar10
-
-Architecture -
-
-
-
-###############################G###############################
-
-torch.Size([64, 100, 1, 1])
-torch.Size([64, 256, 4, 4])
-torch.Size([64, 256, 4, 4])
-New size= torch.Size([64, 512, 4, 4])
-torch.Size([64, 128, 8, 8])
-torch.Size([64, 128, 8, 8])
-New size= torch.Size([64, 256, 8, 8])
-torch.Size([64, 64, 16, 16])
-torch.Size([64, 3, 32, 32])
-torch.Size([64, 3, 32, 32])
-###############################G###############################
-
-###############################D###############################
-torch.Size([64, 3, 32, 32])
-torch.Size([64, 64, 16, 16])
-torch.Size([64, 128, 8, 8])
-torch.Size([64, 128, 8, 8])
-New size= torch.Size([64, 256, 8, 8])
-torch.Size([64, 256, 4, 4])
-torch.Size([64, 256, 4, 4])
-New size= torch.Size([64, 512, 4, 4])
-torch.Size([64, 1, 1, 1])
-
-###############################D###############################
 
 
 Also in DCGAN folder you will find a DCGAN with Dense Connectioins - 
